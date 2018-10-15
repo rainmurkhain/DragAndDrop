@@ -10,6 +10,7 @@ let phase2AnswersCount = 0;
 let phase2Answers = "";
 let phase3NotAnswered = [["m1", "f1"], ["m1", "f2"], ["m2", "f1"], ["m2", "f2"], ["f1", "m1"], ["f1", "m2"], ["f2", "m1"], ["f2", "m2"]];
 let phase3Answers = [{left: "", right: ""}, {left: "", right: ""}, {left: "", right: ""}, {left: "", right: ""}];
+let phase3WrongAnswers = 0;
 let phase5Answers = 0;
 
 
@@ -78,7 +79,9 @@ async function startPhase1(){
     document.getElementById("welcome_screen").style.visibility = "hidden";
     phase = 1;
     document.getElementById("phase1").style.visibility = "visible";
+
     document.getElementById("phase1_video").play();
+
     console.log("video has now started");
     await sleep(1500);
     document.getElementById("phase1_video").pause();
@@ -144,6 +147,7 @@ function startPhase4() {
 
     phase3NotAnswered = [["m1", "f1"], ["m1", "f2"], ["m2", "f1"], ["m2", "f2"], ["f1", "m1"], ["f1", "m2"], ["f2", "m1"], ["f2", "m2"]];
     phase3Answers = [{left: "", right: ""}, {left: "", right: ""}, {left: "", right: ""}, {left: "", right: ""}];
+    phase3WrongAnswers = 0;
 
 }
 
@@ -439,10 +443,16 @@ async function registerDrop3(event) {
         await sleep(1000);
         event.relatedTarget.style.webkitAnimation = "disElement 1s forwards";
 
+        phase3WrongAnswers += 1;
+
         if (event.target.id.charAt(12) === "1") {
             phase3Answers[Number(event.target.id.charAt(11)) - 1].left = "";
         } else {
             phase3Answers[Number(event.target.id.charAt(11)) - 1].right = "";
+        }
+
+        if (phase3WrongAnswers >= 14) {
+            document.getElementById("fail_screen").style.visibility = "visible";
         }
     }
 
