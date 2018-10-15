@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vali mäng!</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<p id="vali_mang_text">Vali mäng!   Choose game!   Выберите игру!</p>
+
+<div class="mang" id="mang1"><img src="M2ng_Tuvid/assets/tuvi%20pruun.png" onclick="goToGame(1)"><p>Tuvi mäng</p></div>
+<div class="mang" id="mang2"><img src="M2ng_Meioos/assets/profaas%20i.png" onclick="goToGame(2)"><p>Meioosi mäng</p></div>
+<div class="mang" id="mang3"><img src="M2ng_Meioos/assets/profaas%20i.png" onclick="goToGame(3)"><p>Käbi mäng</p></div>
+
+<script>
+
+    function goToGame(index) {
+
+        if (index === 1) document.location = "M2ng_Meioos/index.html";
+        else if (index === 2) document.location = "M2ng_Tuvid/index.html";
+        else document.location = "M2ng_K2bi/index.html";
+
+    }
+
+
+</script>
+</body>
+</html>

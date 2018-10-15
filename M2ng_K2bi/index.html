@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | kuusk</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>  
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/kuuskweb.json", {onProgress: UnityProgress});
+    </script>
+  </head>
+  <body>
+  <p id="back_to_menu" onclick="back_to_menu()" style="position: fixed; top: 20px; left: 20px; z-index: 10; border: solid 2px;"><-- Tagasi menüüsse </p>
+    <div class="webgl-content">
+      <div id="gameContainer" style="width: 960px; height: 540px"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+        <div class="title">kuusk</div>
+      </div>
+    </div>
+  <script>
+      function back_to_menu() {
+          document.location = "../index.html"
+      }
+  </script>
+  </body>
+</html>
