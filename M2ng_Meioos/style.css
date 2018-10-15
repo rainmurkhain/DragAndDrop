@@ -1,0 +1,435 @@
+@font-face {
+    font-family: 'U8ProLight'; /*a name to be used later*/
+    src: url('assets/U8Pro-Light.otf'); /*URL to font*/
+}
+
+@font-face {
+    font-family: 'U8ProMedium'; /*a name to be used later*/
+    src: url('assets/U8Pro-Medium.otf'); /*URL to font*/
+}
+
+html, body {
+    margin: 0;
+    background-color: black;
+    font-family: U8ProLight;
+}
+
+body {
+    overflow: hidden;
+    position: absolute;
+    left: 200px;
+    top: 100px;
+}
+
+#back_to_menu {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    color: white;
+    border: solid white 2px;
+}
+
+#dialog_animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1500px;
+    height: 800px;
+    background-color: black;
+    z-index: 2;
+}
+
+#dialog {
+    position: absolute;
+    float: left;
+    top: 200px;
+    width: 50%;
+
+}
+
+#animation {
+    position: absolute;
+    top: 200px;
+    left: 950px;
+}
+
+#animation_img {
+    position: absolute;
+    height: 420px;
+    width: 420px;
+    top: 40px;
+    left: 40px;
+}
+
+#dialog h1 {
+    color: chartreuse;
+    font-size: 55px;
+    font-family: U8ProMedium;
+}
+
+#dialog p {
+    color: white;
+    font-size: 30px;
+}
+
+#playbutton {
+    position: absolute;
+    left: 550px;
+    top: 450px;
+}
+
+#game_animation {
+    position: absolute;
+    top: 1100px;
+    left: 0;
+    width: 1500px;
+    height: auto;
+    z-index: 3;
+}
+
+#game_animation img {
+    position: absolute;
+    width: 100%;
+}
+
+#game_animation #game_text {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    font-size: 30px;
+    color: white;
+    width: 60%;
+}
+
+#game_animation #start {
+    position: absolute;
+    left: 75%;
+    top: 100px;
+    color: white;
+    font-size: 50px;
+    z-index: 1;
+    border: solid white 3px;
+}
+
+#game_animation #phase_animation {
+    position: absolute;
+    left: 70%;
+    top: 40px;
+    width: 25%;
+    height: auto;
+}
+
+#game_animation #arrow_down {
+    position: absolute;
+    top: 300px;
+    left: 50%;
+}
+
+@keyframes moveIn {
+    100% {left:0; top:500px;}
+}
+
+@keyframes moveOut {
+    100% {left:0; top:1100px;}
+}
+
+/*The right answer!*/
+@-webkit-keyframes rightAnswerDropped {
+    0%   {filter: drop-shadow(0 0 0px lawngreen);}
+    50%  {filter: drop-shadow(0 0 30px lawngreen);}
+    100% {filter: drop-shadow(0 0 0px lawngreen);}
+}
+/*The wrong answer*/
+@-webkit-keyframes wrongAnswerDropped {
+    0%   {filter: drop-shadow(0 0 0px red);}
+    50%  {filter: drop-shadow(0 0 30px red);}
+    100% {filter: drop-shadow(0 0 0px red);}
+}
+
+#s22sk {
+    position: absolute;
+}
+
+#skeem {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 1500px;
+    height: auto;
+}
+
+.draggable {
+    position: absolute;
+    height: 130px;
+    width: 130px;
+
+}
+
+.non-draggable {
+    position: absolute;
+    height: 130px;
+    width: 130px;
+}
+
+.yesdrop {
+    position: absolute;
+    height: 130px;
+    width: 130px;
+}
+
+
+.dropzone {
+    height: 150px;
+    width: 150px;
+}
+#yes-drag {
+    position: absolute;
+    top: 500px;
+    left: 0;
+    width: 1200px;
+}
+
+#yes-drag img{
+    position: relative;
+}
+
+
+#a1 {
+    position: absolute;
+    top: 195px;
+    left: 0;
+}
+
+#a2 {
+    position: absolute;
+    top: 195px;
+    left: 187px;
+}
+
+
+#a3 {
+    position: absolute;
+    top: 195px;
+    left: 375px
+}
+
+#a4 {
+    position: absolute;
+    top: 195px;
+    left: 560px;
+}
+
+
+
+#a5 {
+    position: absolute;
+    top: 288px;
+    left: 788px;
+}
+
+#a6 {
+    position: absolute;
+    top: 288px;
+    left: 975px;
+}
+
+
+#a7 {
+    position: absolute;
+    top: 288px;
+    left: 1165px
+}
+
+#a8 {
+    position: absolute;
+    top: 288px;
+    left: 1350px;
+}
+
+
+@-webkit-keyframes nAnswerDropped {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
+
+#n1 {
+    position: absolute;
+    top: 108px;
+    left: 795px;
+    opacity: 1;
+    visibility: hidden;
+}
+
+#n2 {
+    position: absolute;
+    top: 108px;
+    left: 985px;
+    opacity: 1;
+    visibility: hidden;
+}
+
+
+#n3 {
+    position: absolute;
+    top: 108px;
+    left: 1175px;
+    opacity: 1;
+    visibility: hidden;
+}
+
+#n4 {
+    position: absolute;
+    top: 108px;
+    left: 1360px;
+    opacity: 1;
+    visibility: hidden;
+}
+/*
+Blocker
+*/
+
+#blocker {
+    position: fixed;
+    z-index: 2;
+    background-color: transparent;
+    width: 1920px;
+    height: 1080px;
+    top: 1080px;
+    left: 0;
+}
+
+#circle {
+    position: absolute;
+    top: -50px;
+    left: 600px;
+    background-color: black;
+    z-index: 1;
+    width: 150px;
+    height: 150px;
+    color: chartreuse;
+    border-radius: 100%;
+}
+
+#circle p {
+    text-align: center;
+    line-height: 100px;
+    font-size: 60px;
+}
+
+#endScreen {
+    position: absolute;
+    width: 1520px;
+    height: 1080px;
+    left: 0;
+    top: 0;
+    background-color: black;
+    color: chartreuse;
+    visibility: hidden;
+    z-index: 3;
+}
+
+
+#endScreenCongratz {
+    text-align: center;
+    line-height: 100px;
+    font-size: 60px;
+}
+
+#endScreenScore {
+    text-align: center;
+    line-height: 100px;
+    font-size: 60px;
+}
+
+#restartGame {
+    text-align: center;
+    line-height: 100px;
+    font-size: 60px;
+    color: white;
+    border: solid white 3px;
+}
+
+#hintBox {
+    position: absolute;
+    width: 1370px;
+    height: 200px;
+    top: 1100px;
+    left: 50px;
+    background-image: url('assets/vihje slaid.png');
+}
+
+@keyframes moveInHintBox {
+    100% {top:700px;}
+}
+
+
+#hint1 {
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    line-height: 70px;
+}
+
+#hint2 {
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    line-height: 20px;
+}
+
+#hi1 {
+    position: absolute;
+    color: chartreuse;
+    left: 58px;
+    top: 350px;
+}
+
+#hi2 {
+    position: absolute;
+    color: chartreuse;
+    left: 245px;
+    top: 350px;
+}
+
+#hi3 {
+    position: absolute;
+    color: chartreuse;
+    left: 432px;
+    top: 350px;
+}
+
+#hi4 {
+    position: absolute;
+    color: chartreuse;
+    left: 619px;
+    top: 350px;
+}
+
+#hi5 {
+    position: absolute;
+    color: chartreuse;
+    left: 843px;
+    top: 440px;
+}
+
+#hi6 {
+    position: absolute;
+    color: chartreuse;
+    left: 1035px;
+    top: 440px;
+}
+
+#hi7 {
+    position: absolute;
+    color: chartreuse;
+    left: 1227px;
+    top: 440px;
+}
+
+#hi8 {
+    position: absolute;
+    color: chartreuse;
+    left: 1419px;
+    top: 440px;
+}

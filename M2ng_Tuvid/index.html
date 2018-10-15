@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tuvid</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.8/interact.min.js"></script>
+</head>
+
+<body onload="startWelcomeScreenDialog()">
+
+<p id="back_to_menu" onclick="back_to_menu()"><-- Tagasi menüüsse </p>
+
+<div id="welcome_screen">
+
+
+    <div id="welcome_screen_text_box">
+        <h1 id="welcome_screen_header">Värviline pärandus tuvitibudele</h1>
+        <p id="welcome_screen_text"></p>
+        <img id="welcome_screen_arrow_back" src="assets/tagasi.png" onclick="welcomeScreenMoveBack()">
+        <img id="welcome_screen_arrow_forward" src="assets/edasi.png" onclick="welcomeScreenMoveForward()">
+    </div>
+
+
+    <div id="welcome_screen_animation_box">
+        <img id="welcome_screen_animation_box_border" src="assets/raam.png">
+        <img id="welcome_screen_animation_box_img" src="assets/tuvi%20punane.png">
+    </div>
+
+</div>
+
+<div id="clickable_screen" onclick="screenClicked()">
+
+</div>
+
+<p id="timer"></p>
+
+
+<div id="seletus_lahter">
+    <p id="tase_tekst">I TASE</p>
+    <p id="nimi_tekst">ÕPILANE</p>
+    <p id="seletus_lahtri_tekst">Siin on ka mingi tekst</p>
+</div>
+
+<div class="phase" id="phase1">
+
+    <!--
+
+    <div class="suur_tuvi_kast tuvi_vasak" id="phase1_tuvi_vasak">
+
+        <img class="sugu_mark" src="assets/sugu%20isane.png">
+        <img class="tuvi" src="assets/tuvi%20punane.png">
+        <img class="kromosoom kromosoom_vasak" src="assets/kromosoom%20isane.png">
+        <img class="kromosoom kromosoom_parem" src="assets/kromosoom%20isane.png">
+        <img class="kromosoom_tahis_vasak" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoomi_varv_vasak" src="assets/kromosoom%20punane.png">
+        <img class="kromosoomi_varv_parem" src="assets/kromosoom%20pruun.png">
+
+    </div>
+
+    <div class="suur_tuvi_kast tuvi_parem" id="phase1_tuvi_parem">
+
+        <img class="sugu_mark" src="assets/sugu%20emane.png">
+        <img class="tuvi" src="assets/tuvi%20sinine.png">
+        <img class="kromosoom kromosoom_vasak" src="assets/kromosoom%20isane.png">
+        <img class="kromosoom kromosoom_parem" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom_tahis_vasak" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem" src="assets/krom%20t2his%20w.png">
+        <img class="kromosoomi_varv_vasak" src="assets/kromosoom%20sinine.png">
+        <img class="kromosoomi_varv_parem" src="">
+
+    </div>
+
+    <div class="vaike_tuvi_kast tuvi1">
+
+
+        <img class="tuvi" id="phase1_old1" src="assets/tuvi%20must.png">
+        <img class="tuvi_algus" id="phase1_new1" src="assets/tuvi%20punane.png">
+        <img class="kromosoom kromosoom_vasak" id="phase1_krom11" src="assets/kromosoom%20punane_2.png" onclick="phase1Clicked(1, 1)">
+        <img class="kromosoom kromosoom_parem" id="phase1_krom12" src="assets/kromosoom%20sinine_2.png" onclick="phase1Clicked(1, 2)">
+        <img class="kromosoom_tahis_vasak" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem" src="assets/krom%20t2his%20z.png">
+
+    </div>
+
+    <div class="vaike_tuvi_kast tuvi2">
+
+        <img class="tuvi" id="phase1_old2" src="assets/tuvi%20must.png">
+        <img class="tuvi_algus" id="phase1_new2" src="assets/tuvi%20sinine.png">
+        <img class="kromosoom kromosoom_vasak" id="phase1_krom21" src="assets/kromosoom%20pruun_2.png" onclick="phase1Clicked(2, 1)">
+        <img class="kromosoom kromosoom_parem" id="phase1_krom22" src="assets/kromosoom%20sinine_2.png" onclick="phase1Clicked(2, 2)">
+        <img class="kromosoom_tahis_vasak" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem" src="assets/krom%20t2his%20z.png">
+
+    </div>
+
+    <div class="vaike_tuvi_kast tuvi3">
+
+        <img class="tuvi" id="phase1_old3" src="assets/tuvi%20must.png">
+        <img class="tuvi_algus" id="phase1_new3" src="assets/tuvi%20punane.png">
+        <img class="kromosoom kromosoom_vasak" id="phase1_krom31" src="assets/kromosoom%20punane_2.png" onclick="phase1Clicked(3, 1)">
+        <img class="kromosoom kromosoom_parem" id="phase1_krom32" src="assets/kromosoom%20emane.png" onclick="phase1Clicked(3, 2)">
+        <img class="kromosoom_tahis_vasak" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem" src="assets/krom%20t2his%20w.png">
+
+    </div>
+
+    <div class="vaike_tuvi_kast tuvi4">
+
+        <img class="tuvi" id="phase1_old4" src="assets/tuvi%20must.png">
+        <img class="tuvi_algus" id="phase1_new4" src="assets/tuvi%20pruun.png">
+        <img class="kromosoom kromosoom_vasak" id="phase1_krom41" src="assets/kromosoom%20pruun_2.png" onclick="phase1Clicked(4, 1)">
+        <img class="kromosoom kromosoom_parem" id="phase1_krom42" src="assets/kromosoom%20emane.png" onclick="phase1Clicked(4, 2)">
+        <img class="kromosoom_tahis_vasak" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem" src="assets/krom%20t2his%20w.png">
+
+    </div>
+
+    <img class = "edasi_nupp" id="phase1_edasi_nupp" src="assets/edasi.png" onclick="startPhase2()">
+
+    -->
+
+    <!-- <img class="skeemijoon" src="assets/skeemijoon.png"> -->
+
+    <video src="assets/tuvid5.mp4" id="phase1_video" muted></video>
+
+
+</div>
+
+
+
+<!-- PHASE 2
+#
+#
+#
+#
+#
+-->
+
+
+
+<div class="phase" id="phase2">
+
+    <div class="suur_tuvi_kast tuvi_vasak" id="phase2_tuvi_vasak">
+
+        <img class="sugu_mark" src="assets/sugu%20isane.png">
+        <img class="tuvi" src="assets/tuvi%20sinine.png">
+        <img class="kromosoom_tahis_vasak" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+
+    </div>
+
+    <div class="suur_tuvi_kast tuvi_parem" id="phase2_tuvi_parem">
+
+        <img class="sugu_mark" src="assets/sugu%20emane.png">
+        <img class="tuvi" src="assets/tuvi%20punane.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20punane_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20punane_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20punane_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20punane_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20punane_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20punane_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom_tahis_vasak" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem" src="assets/krom%20t2his%20w.png">
+
+    </div>
+
+    <img class="skeemijoon" src="assets/skeemijoon.png">
+
+    <div class="vaike_tuvi_kast tuvi1">
+
+        <img class="tuvi" id="phase2_old1" src="assets/tuvi%20punane.png">
+        <img class="kromosoom kromosoom_vasak" id="phase2_krom11" src="assets/kromosoom%20isane.png">
+        <img class="kromosoom kromosoom_parem" id="phase2_krom12" src="assets/kromosoom%20isane.png">
+        <img class="kromosoom_tahis_vasak" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoomi_varv_vasak" id="phase2_col11" src="assets/kromosoom%20pruun.png">
+        <img class="kromosoomi_varv_parem" id="phase2_col12" src="assets/kromosoom%20punane.png">
+
+    </div>
+
+    <div class="vaike_tuvi_kast tuvi2">
+
+        <img class="tuvi" id="phase2_old2" src="assets/tuvi%20pruun.png">
+        <img class="kromosoom kromosoom_vasak" id="phase2_krom21" src="assets/kromosoom%20isane.png">
+        <img class="kromosoom kromosoom_parem" id="phase2_krom22" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom_tahis_vasak" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem" src="assets/krom%20t2his%20w.png">
+        <img class="kromosoomi_varv_vasak" id="phase2_col21" src="assets/kromosoom%20pruun.png">
+        <img class="kromosoomi_varv_parem" id="phase2_col22" src="">
+
+    </div>
+
+    <div class="vaike_tuvi_kast tuvi3">
+
+        <img class="tuvi" id="phase2_old3" src="assets/tuvi%20sinine.png">
+        <img class="kromosoom kromosoom_vasak" id="phase2_krom31" src="assets/kromosoom%20isane.png">
+        <img class="kromosoom kromosoom_parem" id="phase2_krom32" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom_tahis_vasak" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem" src="assets/krom%20t2his%20w.png">
+        <img class="kromosoomi_varv_vasak" id="phase2_col31" src="assets/kromosoom%20sinine.png">
+        <img class="kromosoomi_varv_parem" id="phase2_col32" src="">
+
+    </div>
+
+    <div class="vaike_tuvi_kast tuvi4">
+
+        <img class="tuvi" id="phase2_old4" src="assets/tuvi%20must.png">
+        <img class="tuvi_algus" id="phase2_new4" src="assets/tuvi%20punane.png">
+        <img class="kromosoom kromosoom_vasak" id="phase2_krom41" src="assets/kromosoom%20dashed.png">
+        <img class="kromosoom kromosoom_parem" id="phase2_krom42" src="assets/kromosoom%20dashed.png">
+        <img class="kromosoom_tahis_vasak" src="assets/krom%20t2his%20dashed.png">
+        <img class="kromosoom_tahis_parem" src="assets/krom%20t2his%20dashed.png">
+        <img class="kromosoom_tahis_vasak_new" id="phase2_krom_tah41" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem_new" id="phase2_krom_tah42" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoomi_varv_vasak" id="phase2_col41" src="">
+        <img class="kromosoomi_varv_parem" id="phase2_col42" src="">
+
+    </div>
+
+    <div class="dropzone krom_tuvi41" id="phase2_tuvi41">
+
+    </div>
+
+    <div class="dropzone krom_tuvi42" id="phase2_tuvi42">
+
+    </div>
+
+    <img class = "edasi_nupp" id="phase2_edasi_nupp" src="assets/edasi.png" onclick="startPhase3()">
+
+
+</div>
+
+
+
+
+<!-- PHASE 3
+#
+#
+#
+#
+#
+-->
+
+
+
+
+<div class="phase" id="phase3">
+
+    <div class="suur_tuvi_kast tuvi_vasak" id="phase3_tuvi_vasak">
+
+        <img class="sugu_mark" src="assets/sugu%20isane.png">
+        <img class="tuvi" src="assets/tuvi%20sinine.png">
+        <img class="kromosoom_tahis_vasak" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+
+    </div>
+
+    <div class="suur_tuvi_kast tuvi_parem" id="phase3_tuvi_parem">
+
+        <img class="sugu_mark" src="assets/sugu%20emane.png">
+        <img class="tuvi" src="assets/tuvi%20pruun.png">
+        <img class="kromosoom_tahis_vasak" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem" src="assets/krom%20t2his%20w.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+
+    </div>
+
+    <img class="skeemijoon" src="assets/skeemijoon.png">
+
+    <div class="vaike_tuvi_kast tuvi1">
+
+        <img class="tuvi" id="phase3_old1" src="assets/tuvi%20must.png">
+        <img class="tuvi_algus" id="phase3_new1" src="">
+        <img class="kromosoom kromosoom_vasak" id="phase3_krom11" src="assets/kromosoom%20dashed.png">
+        <img class="kromosoom kromosoom_parem" id="phase3_krom12" src="assets/kromosoom%20dashed.png">
+        <img class="kromosoomi_varv_vasak" id="phase3_col11" src="">
+        <img class="kromosoomi_varv_parem" id="phase3_col12" src="">
+
+    </div>
+
+    <div class="vaike_tuvi_kast tuvi2">
+
+        <img class="tuvi" id="phase3_old2" src="assets/tuvi%20must.png">
+        <img class="tuvi_algus" id="phase3_new2" src="">
+        <img class="kromosoom kromosoom_vasak" id="phase3_krom21" src="assets/kromosoom%20dashed.png">
+        <img class="kromosoom kromosoom_parem" id="phase3_krom22" src="assets/kromosoom%20dashed.png">
+        <img class="kromosoomi_varv_vasak" id="phase3_col21" src="">
+        <img class="kromosoomi_varv_parem" id="phase3_col22" src="">
+
+    </div>
+
+    <div class="vaike_tuvi_kast tuvi3">
+
+        <img class="tuvi" id="phase3_old3" src="assets/tuvi%20must.png">
+        <img class="tuvi_algus" id="phase3_new3" src="">
+        <img class="kromosoom kromosoom_vasak" id="phase3_krom31" src="assets/kromosoom%20dashed.png">
+        <img class="kromosoom kromosoom_parem" id="phase3_krom32" src="assets/kromosoom%20dashed.png">
+        <img class="kromosoomi_varv_vasak" id="phase3_col31" src="">
+        <img class="kromosoomi_varv_parem" id="phase3_col32" src="">
+
+    </div>
+
+    <div class="vaike_tuvi_kast tuvi4">
+
+        <img class="tuvi" id="phase3_old4" src="assets/tuvi%20must.png">
+        <img class="tuvi_algus" id="phase3_new4" src="">
+        <img class="kromosoom kromosoom_vasak" id="phase3_krom41" src="assets/kromosoom%20dashed.png">
+        <img class="kromosoom kromosoom_parem" id="phase3_krom42" src="assets/kromosoom%20dashed.png">
+        <img class="kromosoomi_varv_vasak" id="phase3_col41" src="">
+        <img class="kromosoomi_varv_parem" id="phase3_col42" src="">
+
+    </div>
+
+    <div class="dropzone krom_tuvi11" id="phase3_tuvi11">
+
+    </div>
+
+    <div class="dropzone krom_tuvi12" id="phase3_tuvi12">
+
+    </div>
+
+    <div class="dropzone krom_tuvi21" id="phase3_tuvi21">
+
+    </div>
+
+    <div class="dropzone krom_tuvi22" id="phase3_tuvi22">
+
+    </div>
+
+    <div class="dropzone krom_tuvi31" id="phase3_tuvi31">
+
+    </div>
+
+    <div class="dropzone krom_tuvi32" id="phase3_tuvi32">
+
+    </div>
+
+    <div class="dropzone krom_tuvi41" id="phase3_tuvi41">
+
+    </div>
+
+    <div class="dropzone krom_tuvi42" id="phase3_tuvi42">
+
+    </div>
+
+    <img class = "edasi_nupp" id="phase3_edasi_nupp" src="assets/edasi.png" onclick="startPhase4()">
+
+</div>
+
+
+
+<!-- PHASE 4
+#
+#
+#
+#
+#
+-->
+
+<div class="phase" id="phase4">
+
+    <div class="suur_tuvi_kast tuvi_vasak" id="phase4_tuvi_vasak">
+
+        <img class="sugu_mark" src="assets/sugu%20isane.png">
+        <img class="tuvi" src="assets/tuvi%20sinine.png">
+        <img class="kromosoom_tahis_vasak" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem" src="assets/krom%20t2his%20z.png">
+
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+
+    </div>
+
+    <div class="suur_tuvi_kast tuvi_parem" id="phase4_tuvi_parem">
+
+        <img class="sugu_mark" src="assets/sugu%20emane.png">
+        <img class="tuvi" src="assets/tuvi%20pruun.png">
+        <img class="kromosoom_tahis_vasak" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem" src="assets/krom%20t2his%20w.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20pruun_2.png">
+
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+
+    </div>
+
+    <img class="skeemijoon" src="assets/skeemijoon.png">
+
+    <div class="vaike_tuvi_kast tuvi1">
+
+        <img class="tuvi" id="phase4_old1" src="assets/tuvi%20must.png">
+        <img class="tuvi_algus" id="phase4_new1" src="">
+        <img class="kromosoom kromosoom_vasak" id="phase4_krom11" src="assets/kromosoom%20dashed.png">
+        <img class="kromosoom kromosoom_parem" id="phase4_krom12" src="assets/kromosoom%20dashed.png">
+        <img class="kromosoomi_varv_vasak" id="phase4_col11" src="">
+        <img class="kromosoomi_varv_parem" id="phase4_col12" src="">
+
+    </div>
+
+    <div class="vaike_tuvi_kast tuvi2">
+
+        <img class="tuvi" id="phase4_old2" src="assets/tuvi%20must.png">
+        <img class="tuvi_algus" id="phase4_new2" src="">
+        <img class="kromosoom kromosoom_vasak" id="phase4_krom21" src="assets/kromosoom%20dashed.png">
+        <img class="kromosoom kromosoom_parem" id="phase4_krom22" src="assets/kromosoom%20dashed.png">
+        <img class="kromosoomi_varv_vasak" id="phase4_col21" src="">
+        <img class="kromosoomi_varv_parem" id="phase4_col22" src="">
+
+    </div>
+
+    <div class="vaike_tuvi_kast tuvi3">
+
+        <img class="tuvi" id="phase4_old3" src="assets/tuvi%20must.png">
+        <img class="tuvi_algus" id="phase4_new3" src="">
+        <img class="kromosoom kromosoom_vasak" id="phase4_krom31" src="assets/kromosoom%20dashed.png">
+        <img class="kromosoom kromosoom_parem" id="phase4_krom32" src="assets/kromosoom%20dashed.png">
+        <img class="kromosoomi_varv_vasak" id="phase4_col31" src="">
+        <img class="kromosoomi_varv_parem" id="phase4_col32" src="">
+
+    </div>
+
+    <div class="vaike_tuvi_kast tuvi4">
+
+        <img class="tuvi" id="phase4_old4" src="assets/tuvi%20must.png">
+        <img class="tuvi_algus" id="phase4_new4" src="">
+        <img class="kromosoom kromosoom_vasak" id="phase4_krom41" src="assets/kromosoom%20dashed.png">
+        <img class="kromosoom kromosoom_parem" id="phase4_krom42" src="assets/kromosoom%20dashed.png">
+        <img class="kromosoomi_varv_vasak" id="phase4_col41" src="">
+        <img class="kromosoomi_varv_parem" id="phase4_col42" src="">
+
+    </div>
+
+    <div class="dropzone krom_tuvi11" id="phase4_tuvi11">
+
+    </div>
+
+    <div class="dropzone krom_tuvi12" id="phase4_tuvi12">
+
+    </div>
+
+    <div class="dropzone krom_tuvi21" id="phase4_tuvi21">
+
+    </div>
+
+    <div class="dropzone krom_tuvi22" id="phase4_tuvi22">
+
+    </div>
+
+    <div class="dropzone krom_tuvi31" id="phase4_tuvi31">
+
+    </div>
+
+    <div class="dropzone krom_tuvi32" id="phase4_tuvi32">
+
+    </div>
+
+    <div class="dropzone krom_tuvi41" id="phase4_tuvi41">
+
+    </div>
+
+    <div class="dropzone krom_tuvi42" id="phase4_tuvi42">
+
+    </div>
+
+    <img class = "edasi_nupp" id="phase4_edasi_nupp" src="assets/edasi.png" onclick="startPhase5()">
+
+</div>
+
+
+<!-- PHASE 5
+#
+#
+#
+#
+#
+-->
+
+<div class="phase" id="phase5">
+
+    <div class="suur_tuvi_kast tuvi_vasak" id="phase5_tuvi_vasak">
+
+        <img class="sugu_mark" src="assets/sugu%20isane.png">
+        <img class="tuvi" src="assets/tuvi%20sinine.png">
+        <img class="kromosoom_tahis_vasak" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig m1" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragBig m2" src="assets/kromosoom%20sinine_2.png">
+
+    </div>
+
+    <div class="suur_tuvi_kast tuvi_parem" id="phase5_tuvi_parem">
+
+        <img class="sugu_mark" src="assets/sugu%20emane.png">
+        <img class="tuvi" src="assets/tuvi%20punane.png">
+        <img class="kromosoom_tahis_vasak" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem" src="assets/krom%20t2his%20w.png">
+        <img class="kromosoom kromosoom_vasak draggable dragBig f1" src="assets/kromosoom%20punane_2.png">
+        <img class="kromosoom kromosoom_parem draggable dragSmall f2" src="assets/kromosoom%20emane.png">
+
+
+
+    </div>
+
+    <img class="skeemijoon" src="assets/skeemijoon.png">
+
+    <div class="vaike_tuvi_kast tuvi1">
+
+        <img class="tuvi" id="phase5_old1" src="assets/tuvi%20punane.png">
+        <img class="kromosoom kromosoom_vasak invis" id="phase5_krom11" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_parem invis" id="phase5_krom12" src="assets/kromosoom%20punane_2.png">
+        <img class="kromosoom_tahis_vasak invis" id="phase5_tah11" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem invis" id="phase5_tah12" src="assets/krom%20t2his%20z.png">
+        <img class="sugu1" id="phase5_sugu11" src="assets/sugu%20emane.png" onclick="phase5Clicked(1, 1)">
+        <img class="sugu2" id="phase5_sugu12" src="assets/sugu%20isane.png" onclick="phase5Clicked(1, 2)">
+
+    </div>
+
+    <div class="vaike_tuvi_kast tuvi2">
+
+        <img class="tuvi" id="phase5_old2" src="assets/tuvi%20pruun.png">
+        <img class="tuvi_algus" id="phase5_new2" src="">
+        <img class="kromosoom kromosoom_vasak invis" id="phase5_krom21" src="assets/kromosoom%20pruun_2.png">
+        <img class="kromosoom kromosoom_parem invis" id="phase5_krom22" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom_tahis_vasak invis" id="phase5_tah21" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem invis" id="phase5_tah22" src="assets/krom%20t2his%20w.png">
+        <img class="sugu1" id="phase5_sugu21" src="assets/sugu%20emane.png" onclick="phase5Clicked(2, 1)">
+        <img class="sugu2" id="phase5_sugu22" src="assets/sugu%20isane.png" onclick="phase5Clicked(2, 2)">
+
+    </div>
+
+    <div class="vaike_tuvi_kast tuvi3">
+
+        <img class="tuvi" id="phase5_old3" src="assets/tuvi%20sinine.png">
+        <img class="kromosoom kromosoom_vasak invis" id="phase5_krom31" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem invis" id="phase5_krom32" src="assets/kromosoom%20emane.png">
+        <img class="kromosoom_tahis_vasak invis" id="phase5_tah31" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem invis" id="phase5_tah32" src="assets/krom%20t2his%20w.png">
+        <img class="sugu1" id="phase5_sugu31" src="assets/sugu%20emane.png" onclick="phase5Clicked(3, 1)">
+        <img class="sugu2" id="phase5_sugu32" src="assets/sugu%20isane.png" onclick="phase5Clicked(3, 2)">
+
+    </div>
+
+    <div class="vaike_tuvi_kast tuvi4">
+
+        <img class="tuvi" id="phase5_old4" src="assets/tuvi%20punane.png">
+        <img class="kromosoom kromosoom_vasak invis" id="phase5_krom41" src="assets/kromosoom%20sinine_2.png">
+        <img class="kromosoom kromosoom_parem invis" id="phase5_krom42" src="assets/kromosoom%20punane_2.png">
+        <img class="kromosoom_tahis_vasak invis" id="phase5_tah41" src="assets/krom%20t2his%20z.png">
+        <img class="kromosoom_tahis_parem invis" id="phase5_tah42" src="assets/krom%20t2his%20z.png">
+        <img class="sugu1" id="phase5_sugu41" src="assets/sugu%20emane.png" onclick="phase5Clicked(4, 1)">
+        <img class="sugu2" id="phase5_sugu42" src="assets/sugu%20isane.png" onclick="phase5Clicked(4, 2)">
+
+    </div>
+
+</div>
+
+
+<div id="endScreen">
+    <p id="endScreenCongratz">Mäng läbi!</p>
+    <p id="endScreenScore">Sul kulus x sekundit!</p>
+    <p id="restartGame" onclick="restartGame()">Alusta uuesti!</p>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

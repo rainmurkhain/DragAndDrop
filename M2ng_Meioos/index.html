@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Meioos</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.8/interact.min.js"></script>
+</head>
+<body onload="beginDialog()">
+
+<p id="back_to_menu" onclick="back_to_menu()"><-- Tagasi menüüsse </p>
+
+<div id="endScreen">
+    <p id="endScreenCongratz">Mäng läbi!</p>
+    <p id="endScreenScore"></p>
+    <p id="restartGame" onclick="restartGame()">Alusta uuesti!</p>
+</div>
+
+<div id="dialog_animation">
+
+    <div id="dialog">
+        <h1>MEIOOS</h1>event.relatedTarget.classList.remove("dragBig");
+        <p id="dialog_text"></p>
+        <img id="playbutton" src="" onclick="beginGame()">
+    </div>
+
+    <div id="animation">
+        <img src="assets/raam.png" width="500" height="500">
+        <img id="animation_img" src="assets/profaas%20i.png">
+    </div>
+
+</div>
+
+<div id="game_animation">
+    <img src="assets/seletuse%20ja%20anim%20slaid.png">
+    <img src="" id="arrow_down" onclick="startGame()">
+
+    <p id="game_text"></p>
+    <p id="start" onclick="startGame()">Alusta!</p>
+    <video id="phase_animation" width="300" height="300" autoplay loop></video>
+</div>
+
+<img src="assets/s22sk.png" id="s22sk">
+<img src="assets/skeem.png" id="skeem">
+<div class="dropzone" id="a1"><p>This is dragHere</p></div>
+<div class="dropzone" id="a2"></div>
+<div class="dropzone" id="a3"></div>
+<div class="dropzone" id="a4"></div>
+
+<div class="dropzone" id="a5"></div>
+<div class="dropzone" id="a6"></div>
+<div class="dropzone" id="a7"></div>
+<div class="dropzone" id="a8"></div>
+
+<img class="non-draggable" id="n1" src="assets/profaas%20ii%20sin.png">
+<img class="non-draggable" id="n2" src="assets/metafaas%20ii%20sin.png">
+<img class="non-draggable" id="n3" src="assets/anafaas%20ii%20sin.png">
+<img class="non-draggable" id="n4" src="assets/telofaas%20ii%20sin.png">
+
+<div id = "yes-drag">
+    <img src="assets/profaas%20i.png" id="d1" class="draggable">
+    <img src="assets/metafaas%20i.png" id="d2" class="draggable">
+    <img src="assets/anafaas%20i.png" id="d3" class="draggable">
+    <img src="assets/telofaas%20i.png" id="d4" class="draggable">
+    <img src="assets/profaas%20ii%20pun.png" id="d5" class="draggable">
+    <img src="assets/metafaas%20ii%20pun.png" id="d6" class="draggable">
+    <img src="assets/anafaas%20ii%20pun.png" id="d7" class="draggable">
+    <img src="assets/telofaas%20ii%20pun.png" id="d8" class="draggable">
+</div>
+
+<p id="hi1" onclick="showHint('hi1')">Vihje</p>
+<p id="hi2" onclick="showHint('hi2')">Vihje</p>
+<p id="hi3" onclick="showHint('hi3')">Vihje</p>
+<p id="hi4" onclick="showHint('hi4')">Vihje</p>
+<p id="hi5" onclick="showHint('hi5')">Vihje</p>
+<p id="hi6" onclick="showHint('hi6')">Vihje</p>
+<p id="hi7" onclick="showHint('hi7')">Vihje</p>
+<p id="hi8" onclick="showHint('hi8')">Vihje</p>
+
+<div id="blocker"></div>
+
+<div id="hintBox">
+    <p id="hint1"></p>
+    <p id="hint2"></p>
+</div>
+
+<div id="circle"><p id="timer"></p></div>
+
+<script src="app.js"></script>
+</body>
+</html>

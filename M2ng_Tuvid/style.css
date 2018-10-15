@@ -1,0 +1,516 @@
+@font-face {
+    font-family: 'U8ProLight'; /*a name to be used later*/
+    src: url('assets/U8Pro-Light.otf'); /*URL to font*/
+}
+
+@font-face {
+    font-family: 'U8ProMedium'; /*a name to be used later*/
+    src: url('assets/U8Pro-Medium.otf'); /*URL to font*/
+}
+
+html, body {
+    background-color: black;
+    margin: 0;
+    font-family: U8ProLight;
+}
+
+#back_to_menu {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    color: white;
+    border: solid white 2px;
+}
+
+#welcome_screen {
+    position: fixed;
+    width: 1320px;
+    height: 600px;
+    left: 300px;
+    top: 200px;
+}
+
+#welcome_screen_text_box {
+    float: left;
+    height: 100%;
+    width: 50%;
+}
+
+#welcome_screen_header {
+    color: aqua;
+    font-size: 50px;
+}
+
+#welcome_screen_text {
+    color: white;
+    font-size: 30px;
+}
+
+#welcome_screen_arrow_back {
+    position: absolute;
+    height: 35px;
+    width: auto;
+    top: 550px;
+    left: 0;
+}
+
+#welcome_screen_arrow_forward{
+    position: absolute;
+    height: 35px;
+    width: auto;
+    top: 550px;
+    left: 450px;
+}
+
+#welcome_screen_animation_box {
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+
+
+
+#welcome_screen_animation_box_border {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+}
+
+#welcome_screen_animation_box_img {
+    position: absolute;
+    height: 518px;
+    width: 518px;
+    top: 42px;
+    left: 730px;
+}
+
+#seletus_lahter {
+    position: fixed;
+    width: 1652px;
+    /*
+    top: 506 et oleks nähtav
+     */
+    height: 574px;
+    top: 1100px;
+    left: 134px;
+    background-image: url("assets/seletus lahter.png");
+    z-index: 1;
+}
+
+#seletus_lahter p{
+    position: absolute;
+    color: white;
+    left: 100px;
+}
+
+#tase_tekst {
+    top: 0;
+    font-size: 40px;
+}
+
+#nimi_tekst {
+    top: 80px;
+    font-size: 40px;
+    color: aqua;
+}
+
+#seletus_lahtri_tekst {
+    font-size: 30px;
+    top: 225px;
+    max-width: 1400px;
+}
+
+
+#phase1_video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 1080px;
+    width: 1920px;
+    z-index: 3;
+}
+
+
+
+
+
+
+#timer {
+    visibility: hidden;
+    z-index: 1;
+    position: fixed;
+    left: 900px;
+    top: 750px;
+    font-size: 75px;
+    color: white;
+}
+
+@-webkit-keyframes moveIn {
+    100% {top: 550px}
+}
+
+@-webkit-keyframes moveOut {
+    100% {top: 1100px}
+}
+
+
+#clickable_screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    z-index: 2;
+}
+
+
+
+.phase {
+    position: fixed;
+    /*
+    muuda hiljem nähtamatuks
+     */
+    visibility: hidden;
+    width: 1920px;
+    height: 1080px;
+    top: 0;
+    left: 0;
+    background-color: black;
+}
+
+.skeemijoon {
+    position: absolute;
+    left: 298px;
+    top: 330px;
+}
+
+#phase5 {
+    visibility: hidden;
+}
+
+
+
+.suur_tuvi_kast {
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    top: 150px
+}
+
+.suur_tuvi_kast img {
+    position: absolute;
+}
+
+.suur_tuvi_kast .tuvi {
+    width: 300px;
+    height: 300px;
+}
+
+.suur_tuvi_kast .kromosoom {
+    height: 300px;
+    z-index: 1;
+}
+
+.suur_tuvi_kast .kromosoom_vasak {
+    left: 350px;
+}
+
+.suur_tuvi_kast .kromosoom_parem {
+    left: 430px;
+}
+
+.suur_tuvi_kast .kromosoom_tahis_vasak {
+    left: 345px;
+    top: 310px;
+}
+
+.suur_tuvi_kast .kromosoom_tahis_parem {
+    left: 425px;
+    top: 310px;
+}
+
+.suur_tuvi_kast .kromosoomi_varv_vasak {
+    left: 347px;
+    top: -30px;
+}
+
+.suur_tuvi_kast .kromosoomi_varv_parem {
+    left: 427px;
+    top: -30px;
+}
+
+.suur_tuvi_kast .sugu_mark {
+    width: 130px;
+    height: 130px;
+    left: 195px;
+    top: 140px;
+}
+
+.tuvi_vasak {
+    left: 350px;
+}
+
+.tuvi_parem {
+    left: 950px;
+}
+
+.vaike_tuvi_kast {
+    position: absolute;
+    top: 600px;
+    width: 200px;
+    height: 150px;
+}
+
+.vaike_tuvi_kast img{
+    position: absolute;
+}
+
+.vaike_tuvi_kast .tuvi {
+    width: 150px;
+    height: 150px;
+}
+
+.vaike_tuvi_kast .kromosoom {
+    height: 150px;
+}
+
+.vaike_tuvi_kast .kromosoom_vasak {
+    left: 180px;
+}
+
+.vaike_tuvi_kast .kromosoom_parem {
+    left: 230px;
+}
+
+.vaike_tuvi_kast .kromosoom_tahis_vasak {
+    width: 30px;
+    height: 30px;
+    left: 178px;
+    top: 155px;
+}
+
+.vaike_tuvi_kast .kromosoom_tahis_parem {
+    width: 30px;
+    height: 30px;
+    left: 228px;
+    top: 155px;
+}
+
+.vaike_tuvi_kast .kromosoom_tahis_vasak_new {
+    width: 30px;
+    height: 30px;
+    left: 178px;
+    top: 155px;
+    opacity: 0;
+}
+
+.vaike_tuvi_kast .kromosoom_tahis_parem_new {
+    width: 30px;
+    height: 30px;
+    left: 228px;
+    top: 155px;
+    opacity: 0;
+}
+
+.vaike_tuvi_kast .kromosoomi_varv_vasak {
+    width: 32px;
+    height: auto;
+    left: 179px;
+    top: -15px;
+}
+
+.vaike_tuvi_kast .kromosoomi_varv_parem {
+    width: 32px;
+    height: auto;
+    left: 229px;
+    top: -15px;
+}
+
+.vaike_tuvi_kast .tuvi_algus {
+    width: 150px;
+    height: 150px;
+    opacity: 0;
+}
+
+.tuvi1 {
+    left: 200px;
+}
+
+.tuvi2 {
+    left: 580px;
+}
+
+.tuvi3 {
+    left: 1010px;
+}
+
+.tuvi4 {
+    left: 1440px;
+}
+
+.edasi_nupp {
+    visibility: hidden;
+    position: fixed;
+    top: 850px;
+    left: 1600px;
+}
+
+@-webkit-keyframes largen {
+    50% {height: 120%; top: 550px}
+    100% {height: 100%; top: 600px}
+}
+
+@-webkit-keyframes toVisible {
+    0% {visibility: visible;}
+    100% {opacity: 1}
+}
+
+@-webkit-keyframes toInvisible {
+    100% {opacity: 0}
+}
+
+@-webkit-keyframes toVisibleAndRight {
+    25% {opacity: 1}
+    100% {-webkit-transform: translate(20px, 0px)}
+}
+
+
+/*
+DRUPZONE RELATED STUFF
+ */
+
+.dropzone {
+    position: fixed;
+    width: 65px;
+    height: 350px;
+    top: 475px;
+    z-index: 0;
+}
+
+.krom_tuvi11 {
+    left: 360px;
+}
+
+.krom_tuvi12 {
+    left: 415px;
+}
+
+.krom_tuvi21 {
+    left: 740px;
+}
+
+.krom_tuvi22 {
+    left: 795px;
+}
+
+.krom_tuvi31 {
+    left: 1170px;
+}
+
+.krom_tuvi32 {
+    left: 1225px;
+}
+
+.krom_tuvi41 {
+    left: 1600px;
+}
+
+.krom_tuvi42 {
+    left: 1655px;
+}
+
+.vaike_tuvi_kast .sugu1 {
+    position: absolute;
+    top: 0;
+    left: 120px;
+    height: 80px;
+    width: 80px;
+}
+
+.vaike_tuvi_kast .sugu2 {
+    position: absolute;
+    top: 90px;
+    left: 120px;
+    height: 80px;
+    width: 80px;
+}
+
+.invis {
+    visibility: hidden;
+    opacity: 0;
+}
+
+@-webkit-keyframes kromDropped {
+    100% {
+        height: 150px;
+        width: 30px;
+    }
+}
+
+@-webkit-keyframes disElement {
+    0% {
+        height: 150px;
+        width: 30px;
+    }
+    100% {
+        height: 150px;
+        width: 30px;
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@-webkit-keyframes appElement {
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+#endScreen {
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    left: 0;
+    top: 0;
+    background-color: black;
+    color: chartreuse;
+    visibility: hidden;
+    z-index: 3;
+}
+
+
+#endScreenCongratz {
+    text-align: center;
+    line-height: 100px;
+    font-size: 60px;
+}
+
+#endScreenScore {
+    text-align: center;
+    line-height: 100px;
+    font-size: 60px;
+}
+
+#restartGame {
+    text-align: center;
+    line-height: 100px;
+    font-size: 60px;
+    color: white;
+    border: solid white 3px;
+}
+
+/*The right answer!*/
+@-webkit-keyframes rightAnswerDropped {
+    0%   {filter: drop-shadow(0 0 0px lawngreen);}
+    50%  {filter: drop-shadow(0 0 30px lawngreen);}
+    100% {filter: drop-shadow(0 0 0px lawngreen);}
+}
+/*The wrong answer*/
+@-webkit-keyframes wrongAnswerDropped {
+    0%   {filter: drop-shadow(0 0 0px red);}
+    50%  {filter: drop-shadow(0 0 30px red);}
+    100% {filter: drop-shadow(0 0 0px red);}
+}
