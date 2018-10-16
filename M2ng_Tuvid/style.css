@@ -183,10 +183,12 @@ html, body {
 }
 
 @-webkit-keyframes moveIn {
+    0% {top: 1100px}
     100% {top: 550px}
 }
 
 @-webkit-keyframes moveOut {
+    0% {top: 550px}
     100% {top: 1100px}
 }
 

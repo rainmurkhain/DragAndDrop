@@ -108,11 +108,18 @@ async function startPhase1(){
     document.getElementById("welcome_screen").style.visibility = "hidden";
     phase = 1;
     document.getElementById("phase1").style.visibility = "visible";
+    if (lang === 1) {
+        document.getElementById("seletus_lahter").style.WebkitAnimation = "moveIn 0.1s forwards";
+        document.getElementById("seletus_lahtri_tekst").innerHTML = "The male is ash-red and carries two different alleles: ash-red and brown." +
+            "The female is blue and carries one allele - blue.</p>Touch the screen to continue!";
+        document.getElementById("nimi_tekst").innerHTML = "GENETICS STUDENT";
+        document.getElementById("tase_tekst").innerHTML = "LEVEL I";
+    }
 
     document.getElementById("phase1_video").play();
 
     console.log("video has now started");
-    await sleep(1500);
+    await sleep(1800);
     document.getElementById("phase1_video").pause();
     document.getElementById("clickable_screen").style.visibility = "visible";
 
@@ -228,7 +235,7 @@ function startPhase5() {
 
 
 async function screenClicked() {
-    document.getElementById("seletus_lahter").style.WebkitAnimation = "moveOut 1s forwards";
+    document.getElementById("seletus_lahter").style.WebkitAnimation = "moveOut 2s forwards";
     document.getElementById("clickable_screen").style.visibility = "hidden";
 
     if (phase === 1) {
