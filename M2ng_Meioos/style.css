@@ -48,6 +48,22 @@ body {
 
 }
 
+#welcome_screen_arrow_back {
+    position: absolute;
+    height: 35px;
+    width: auto;
+    top: 450px;
+    left: 0;
+}
+
+#welcome_screen_arrow_forward{
+    position: absolute;
+    height: 35px;
+    width: auto;
+    top: 450px;
+    left: 550px;
+}
+
 #animation {
     position: absolute;
     top: 200px;

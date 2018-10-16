@@ -6,7 +6,7 @@
     <link href="style.css" rel="stylesheet" type="text/css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.8/interact.min.js"></script>
 </head>
-<body onload="beginDialog()">
+<body onload="startWelcomeScreenDialog()">
 
 <p id="back_to_menu" onclick="back_to_menu()"><-- Tagasi menüüsse </p>
 
@@ -19,10 +19,12 @@
 <div id="dialog_animation">
 
     <div id="dialog">
-        <h1>MEIOOS</h1>event.relatedTarget.classList.remove("dragBig");
-        <p id="dialog_text"></p>
-        <img id="playbutton" src="" onclick="beginGame()">
+        <h1 id="dialog_header">MEIOOS</h1>
+        <p id="welcome_screen_text"></p>
+        <img id="welcome_screen_arrow_back" src="assets/tagasi.png" onclick="welcomeScreenMoveBack()">
+        <img id="welcome_screen_arrow_forward" src="assets/edasi.png" onclick="welcomeScreenMoveForward()">
     </div>
+
 
     <div id="animation">
         <img src="assets/raam.png" width="500" height="500">

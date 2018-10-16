@@ -4,7 +4,14 @@ const timerDuration = 15;
 let currentTimerTime = 0;
 let elapsedTime = 0;
 let timer;
+let welcomeScreenTextNr = 0;
 
+const welcomeScreenText = [
+    "Kõik suguliselt sigivad organismid, kaasa arvatud inimene, on geneetiliselt ainulaadsed: nad erinevad oma vanematest ja õdedest-vendadest. Selle alge peitub suguraku tekkimises.\n" +
+    "</p>Sugurakud tekivad raku jagunemisel, mida nimetatakse meioosiks.",
+    "Meioosi käigus jaguneb keharakk kaks korda. Esimesel jagunemisel segatakse vanematelt päritud geneetiline informatsioon läbi ja teise jagunemisega tekib neli ainulaadse geneetilise sisuga sugurakku.",
+    "Sääsel on keharakkudes kuus kromosoomi. Paiguta sääse meioosi etappide pildid õigesse järjestusse!</p> Iga faasi paigutamiseks on sul aega 15 sekundit ja võimalik saada vihjeid. Mida kiiremini vastad, seda rohkem punkte kogud.\n" +
+    "</p>Alusta!"];
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -14,6 +21,24 @@ function moveBlocker(pix) {
     let blocker = document.getElementById("blocker");
     blocker.style.top = pix + "px";
 }
+
+function startWelcomeScreenDialog() {
+    let welcome_screen_text = document.getElementById("welcome_screen_text");
+    welcome_screen_text.innerHTML=welcomeScreenText[0]
+}
+
+function welcomeScreenMoveForward() {
+    welcomeScreenTextNr += 1;
+    if (welcomeScreenTextNr >= 3) {
+        //kutsu välja funktsioon, mis paneb järgmise screeni peale
+        beginGame();
+    } else {
+        let welcome_screen_text = document.getElementById("welcome_screen_text");
+        welcome_screen_text.innerHTML=welcomeScreenText[welcomeScreenTextNr]
+    }
+
+}
+
 
 async function beginDialog() {
     let dialog_text = document.getElementById("dialog_text");
