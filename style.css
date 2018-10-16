@@ -1,6 +1,18 @@
+@font-face {
+    font-family: 'U8ProLight'; /*a name to be used later*/
+    src: url('M2ng_Tuvid/assets/U8Pro-Light.otf'); /*URL to font*/
+}
+
+@font-face {
+    font-family: 'U8ProMedium'; /*a name to be used later*/
+    src: url('M2ng_Tuvid/assets/U8Pro-Medium.otf'); /*URL to font*/
+}
+
+
 html {
     background-color: black;
     color: white;
+    font-family: U8ProMedium;
 }
 
 p {
