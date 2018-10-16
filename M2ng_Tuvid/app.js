@@ -311,8 +311,7 @@ interact('.dragBig')
         inertia: true,
         // keep the element within the area of it's parent
         restrict: {
-            restriction: {left: 0, top: 0},
-            elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+            restriction: { top: 100, left: 100, bottom: 1000, right: 1850 }
         },
         onstart: function (event) {
             console.log('onstart');
@@ -350,8 +349,7 @@ interact('.dragSmall')
         inertia: true,
         // keep the element within the area of it's parent
         restrict: {
-            restriction: {left: 0, top: 0},
-            elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+            restriction: { top: 100, left: 100, bottom: 1000, right: 1850 }
         },
         onstart: function (event) {
             console.log('onstart small');

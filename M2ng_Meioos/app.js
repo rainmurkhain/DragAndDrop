@@ -410,8 +410,7 @@ interact('.draggable')
         inertia: true,
         // keep the element within the area of it's parent
         restrict: {
-            restriction: {left: 0, top: 0},
-            elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+            restriction: { top: 100, left: 100, bottom: 1000, right: 1800 }
         },
         onstart: function (event) {
             console.log('onstart');
@@ -446,6 +445,7 @@ function dragMoveListener (event) {
         // keep the dragged position in the data-x/data-y attributes
         x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
         y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+    console.log("x is " + x + " and y is " + y);
     // translate the element
     target.style.webkitTransform =
         target.style.transform =
