@@ -16,6 +16,44 @@ let phase5Answers = 0;
 let lang = 0; //0 is Estonian, 1 is English
 let welcomeScreenTextNr = 0;
 
+
+/* ********************** */
+
+document.onload = function() {
+    inactivityTime();
+};
+document.onmousedown = function() {
+    inactivityTime();
+};
+document.onkeypress = function() {
+    inactivityTime();
+};
+document.ontouchstart = function() {
+    inactivityTime();
+};
+
+let inactivityTime = function () {
+    let t;
+    window.onload = resetTimer;
+    // DOM Events
+    document.onmousemove = resetTimer;
+    document.onkeypress = resetTimer;
+    document.onmousedown = resetTimer;
+
+    function restartGame() {
+        window.location = "../index.html";
+    }
+
+    function resetTimer() {
+        clearTimeout(t);
+        t = setTimeout(restartGame, 1000 * 60 * 10) // 10minutes
+    }
+};
+
+
+
+/* ********************** */
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
