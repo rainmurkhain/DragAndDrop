@@ -14,6 +14,42 @@ html, body {
     font-family: U8ProLight;
 }
 
+#chooseLang {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 4;
+}
+
+.mang {
+    position: absolute;
+    top: 400px;
+}
+
+#mang1 {
+    left: 200px;
+}
+
+#mang2 {
+    left: 810px;
+}
+
+#mang3 {
+    left: 1420px;
+}
+
+.mang img {
+    width: 300px;
+    height: 300px;
+    border: solid white 3px;
+}
+
+
+
+
 #back_to_menu {
     position: fixed;
     top: 20px;

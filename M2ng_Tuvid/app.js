@@ -13,7 +13,7 @@ let phase3Answers = [{left: "", right: ""}, {left: "", right: ""}, {left: "", ri
 let phase3WrongAnswers = 0;
 let phase5Answers = 0;
 
-
+let lang;
 let welcomeScreenTextNr = 0;
 
 function sleep(ms) {
@@ -48,6 +48,13 @@ const welcomeScreenText = [
 
 function back_to_menu() {
     document.location = "../index.html"
+}
+
+function chooseLang(langNr) {
+    lang = langNr;
+    console.log("lang is " + lang);
+    document.getElementById("chooseLang").style.visibility = "hidden";
+    startWelcomeScreenDialog()
 }
 
 function startWelcomeScreenDialog() {
