@@ -13,7 +13,7 @@ let phase3Answers = [{left: "", right: ""}, {left: "", right: ""}, {left: "", ri
 let phase3WrongAnswers = 0;
 let phase5Answers = 0;
 
-let lang;
+let lang = 0; //0 is Estonian, 1 is English
 let welcomeScreenTextNr = 0;
 
 function sleep(ms) {
@@ -46,20 +46,33 @@ const welcomeScreenText = [
     "Kuna tuvitüdrukud pärivad Z-kromosoomi alati isalt, siis pärivad nad ka oma värvuse alati isalt.</p>Tuvipoisid aga pärivad värvuse isalt vaid siis, kui isalt saadud alleel domineerib emalt saadud alleeli üle.</p>Pronkspunane alleel domineerib nii halli kui pruuni üle. Halli värvuse alleel on dominantne pruuni üle."
 ];
 
+const welcomeScreenTextEng = [
+    "The sex of birds is determined at the moment of fertilization by sex chromosomes.</p> Females have a sex chromosome named Z in about half of their egg cells and one named W in others.</p> The sperm cells of males always contain a Z chromosome. Thus, the joining of a Z and a W at fertilization leads to the hatching of a female bird.",
+    "If a Z joins with another Z, the chick will be male. The W chromosome is small and has few genes but the Z chromosome has many genes.</p> In pigeons, for example, the Z chromosome, unlike the W chromosome, houses the gene that controls feather color.</p> ",
+    "This gene comes in three alternative forms known as alleles, each determining one of three colors: ash-red, blue or brown. Female pigeons have just one Z chromosome and their color is determined by the allele in it.</p>Males have two alleles, one in each Z chromosome, and these alleles work together to determine their color.",
+    "As girl pigeons always inherit their Z chromosome from the father, they always also inherit their color from the father, while boy pigeons inherit their color from the father only when the allele received from the father is dominant to the one from the mother. The ash-red allele is dominant to both blue and brown."
+];
+
+
 function back_to_menu() {
     document.location = "../index.html"
 }
 
 function chooseLang(langNr) {
     lang = langNr;
-    console.log("lang is " + lang);
     document.getElementById("chooseLang").style.visibility = "hidden";
     startWelcomeScreenDialog()
 }
 
 function startWelcomeScreenDialog() {
     let welcome_screen_text = document.getElementById("welcome_screen_text");
-    welcome_screen_text.innerHTML=welcomeScreenText[0]
+    if (lang === 0) {
+        welcome_screen_text.innerHTML=welcomeScreenText[0]
+    } else if (lang === 1) {
+        welcome_screen_text.innerHTML=welcomeScreenTextEng[0];
+        document.getElementById("welcome_screen_header").innerHTML = "COLOR HERITAGE TO PIGEON CHICKS";
+    }
+
 }
 
 function welcomeScreenMoveForward() {
@@ -69,7 +82,12 @@ function welcomeScreenMoveForward() {
         startPhase1();
     } else {
         let welcome_screen_text = document.getElementById("welcome_screen_text");
-        welcome_screen_text.innerHTML=welcomeScreenText[welcomeScreenTextNr]
+        if (lang === 0) {
+            welcome_screen_text.innerHTML=welcomeScreenText[welcomeScreenTextNr]
+        } else if (lang === 1) {
+            welcome_screen_text.innerHTML=welcomeScreenTextEng[welcomeScreenTextNr]
+        }
+
     }
 
 }
@@ -78,7 +96,11 @@ function welcomeScreenMoveBack() {
     if (welcomeScreenTextNr > 0) {
         welcomeScreenTextNr -= 1;
         let welcome_screen_text = document.getElementById("welcome_screen_text");
-        welcome_screen_text.innerHTML=welcomeScreenText[welcomeScreenTextNr]
+        if (lang === 0) {
+            welcome_screen_text.innerHTML=welcomeScreenText[welcomeScreenTextNr]
+        } else if (lang === 1) {
+            welcome_screen_text.innerHTML=welcomeScreenTextEng[welcomeScreenTextNr]
+        }
     }
 }
 
@@ -107,9 +129,17 @@ function startPhase2(){
     document.getElementById("seletus_lahter").style.WebkitAnimation = "moveIn 1s forwards";
     document.getElementById("clickable_screen").style.visibility = "visible";
 
-    document.getElementById("seletus_lahtri_tekst").innerHTML = "Tõmba õiged vanemate geenid viimase järglaste juurde! Vajuta ekraanile, et jätkata!";
-    document.getElementById("nimi_tekst").innerHTML = "ALGAJA GENEETIK";
-    document.getElementById("tase_tekst").innerHTML = "TASE II";
+
+    if (lang === 0) {
+        document.getElementById("seletus_lahtri_tekst").innerHTML = "Tõmba õiged vanemate geenid viimase järglase juurde! Vajuta ekraanile, et jätkata!";
+        document.getElementById("nimi_tekst").innerHTML = "ALGAJA GENEETIK";
+        document.getElementById("tase_tekst").innerHTML = "TASE II";
+    } else if (lang === 1) {
+        document.getElementById("seletus_lahtri_tekst").innerHTML = "Drag right genes to the last pigeon! Touch the screen to continue!";
+        document.getElementById("nimi_tekst").innerHTML = "BEGINNER GENETICIST";
+        document.getElementById("tase_tekst").innerHTML = "LEVEL II";
+    }
+
 
 }
 
@@ -129,9 +159,16 @@ function startPhase3() {
     document.getElementById("seletus_lahter").style.WebkitAnimation = "moveIn 1s forwards";
     document.getElementById("clickable_screen").style.visibility = "visible";
 
-    document.getElementById("seletus_lahtri_tekst").innerHTML = "Tõmba vanemate geenid järglaste juurde! Vajuta ekraanile, et jätkata!";
-    document.getElementById("nimi_tekst").innerHTML = "NOOR GENEETIK";
-    document.getElementById("tase_tekst").innerHTML = "TASE III";
+    if (lang === 0) {
+        document.getElementById("seletus_lahtri_tekst").innerHTML = "Tõmba vanemate geenid järglaste juurde! Vajuta ekraanile, et jätkata!";
+        document.getElementById("nimi_tekst").innerHTML = "NOOR GENEETIK";
+        document.getElementById("tase_tekst").innerHTML = "TASE III";
+    } else if (lang === 1) {
+        document.getElementById("seletus_lahtri_tekst").innerHTML = "Drag right genes to the offspring! Touch the screen to continue!";
+        document.getElementById("nimi_tekst").innerHTML = "YOUNG GENETICIST";
+        document.getElementById("tase_tekst").innerHTML = "LEVEL III";
+    }
+
 
 
 }
@@ -146,9 +183,17 @@ function startPhase4() {
     document.getElementById("seletus_lahter").style.WebkitAnimation = "moveIn 1s forwards";
     document.getElementById("clickable_screen").style.visibility = "visible";
 
-    document.getElementById("seletus_lahtri_tekst").innerHTML = "Milliseid järglasi võivad need tuvivanemad saada? Aeg tiksub! Vasta kiiresti!";
-    document.getElementById("nimi_tekst").innerHTML = "GEENIUURIJA";
-    document.getElementById("tase_tekst").innerHTML = "TASE IV";
+
+    if (lang === 0) {
+        document.getElementById("seletus_lahtri_tekst").innerHTML = "Milliseid järglasi võivad need tuvivanemad saada? Aeg tiksub! Vasta kiiresti!";
+        document.getElementById("nimi_tekst").innerHTML = "GEENIUURIJA";
+        document.getElementById("tase_tekst").innerHTML = "TASE IV";
+    } else if (lang === 1) {
+        document.getElementById("seletus_lahtri_tekst").innerHTML = "What kinds of offspring could these parent pigeons have? Time is ticking away! You have to be fast.";
+        document.getElementById("nimi_tekst").innerHTML = "GENE RESEARCHER";
+        document.getElementById("tase_tekst").innerHTML = "LEVEL IV";
+    }
+
 
     document.getElementById("timer").style.visibility = "visible";
 
@@ -168,9 +213,16 @@ function startPhase5() {
     document.getElementById("seletus_lahter").style.WebkitAnimation = "moveIn 1s forwards";
     document.getElementById("clickable_screen").style.visibility = "visible";
 
-    document.getElementById("seletus_lahtri_tekst").innerHTML = "Otsusta järglaste sugu nende värvuse järgi! Aeg tiksub! Vasta kiiresti! Iga vale vastus toob lisa aega!";
-    document.getElementById("nimi_tekst").innerHTML = "MEISTER GENEETIK";
-    document.getElementById("tase_tekst").innerHTML = "TASE V";
+    if (lang === 0) {
+        document.getElementById("seletus_lahtri_tekst").innerHTML = "Otsusta järglaste sugu nende värvuse järgi! Aeg tiksub! Vasta kiiresti! Iga vale vastus toob lisa aega!";
+        document.getElementById("nimi_tekst").innerHTML = "MEISTER GENEETIK";
+        document.getElementById("tase_tekst").innerHTML = "TASE V";
+    } else if (lang === 1) {
+        document.getElementById("seletus_lahtri_tekst").innerHTML = "Which alleles should the birds have in order that the offspring of a blue male and an ash-red female would have the opposite colors: the females would be blue and the males ash-red?";
+        document.getElementById("nimi_tekst").innerHTML = "GENETICS EXPERT";
+        document.getElementById("tase_tekst").innerHTML = "LEVEL V";
+    }
+
 
 }
 
@@ -460,6 +512,10 @@ async function registerDrop3(event) {
 
         if (phase3WrongAnswers >= 14) {
             document.getElementById("fail_screen").style.visibility = "visible";
+            if (lang === 1) {
+                document.getElementById("fail_screen_header").innerHTML = "Game over! You answered wrong too many times!";
+                document.getElementById("fail_screen_restart").innerHTML = "Try again!";
+            }
         }
     }
 
@@ -571,7 +627,14 @@ async function phase5Clicked(index, place) {
         stopTimer();
         await sleep(1000);
         document.getElementById("endScreen").style.visibility = "visible";
-        document.getElementById("endScreenScore").innerHTML = "Sul kulus " + currentTimerTime + " sekundit!";
+        if (lang === 0) {
+            document.getElementById("endScreenScore").innerHTML = "Sul kulus " + currentTimerTime + " sekundit!";
+        } else if (lang === 1) {
+            document.getElementById("endScreenScore").innerHTML = "It took you " + currentTimerTime + " seconds!";
+            document.getElementById("endScreenCongratz").innerHTML = "Game over! Congratulations!";
+            document.getElementById("restartGame").innerHTML = "Play again!";
+        }
+
     }
 }
 
@@ -661,5 +724,5 @@ event.relatedTarget.style.animation = null;
 */
 
 function restartGame() {
-    window.location.reload(false);
+    window.location = "../index.html";
 }

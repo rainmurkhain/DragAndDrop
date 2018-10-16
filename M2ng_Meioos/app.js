@@ -1,12 +1,12 @@
 let stage;
 let score = 0;
-const timerDuration = 30;
+const timerDuration = 120;
 let currentTimerTime = 0;
 let elapsedTime = 0;
 let timer;
 let welcomeScreenTextNr = 0;
 
-let lang; //Estonian is 0, English is 1;
+let lang = 0; //Estonian is 0, English is 1;
 
 const welcomeScreenText = [
     "Kõik suguliselt sigivad organismid, kaasa arvatud inimene, on geneetiliselt ainulaadsed: nad erinevad oma vanematest ja õdedest-vendadest. Selle alge peitub suguraku tekkimises." +
@@ -159,7 +159,7 @@ function back_to_menu() {
 
 function restartGame() {
 
-    window.location.reload(false);
+    document.location = "../index.html";
 
 }
 
