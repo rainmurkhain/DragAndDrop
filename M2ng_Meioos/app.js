@@ -7,6 +7,7 @@ let timer;
 let welcomeScreenTextNr = 0;
 
 let lang = 0; //Estonian is 0, English is 1;
+const hints = ["hi1", "hi2", "hi3", "hi4", "hi5", "hi6", "hi7", "hi8"];
 
 
 /* ********************** */
@@ -76,9 +77,24 @@ function sleep(ms) {
 
 function chooseLang(langNr) {
     lang = langNr;
-    console.log("lang is " + lang);
     document.getElementById("chooseLang").style.visibility = "hidden";
+
+    if (lang !== 0) {
+        changeHintLang()
+    }
+
     startWelcomeScreenDialog()
+}
+
+function changeHintLang() {
+    for (let i = 0; i < hints.length; i++) {
+        if (lang === 1) {
+            document.getElementById(hints[i]).innerText = "Hint"
+        } else if (lang === 2) {
+            document.getElementById(hints[i]).innerText = "Намек"
+        }
+
+    }
 }
 
 function moveBlocker(pix) {
