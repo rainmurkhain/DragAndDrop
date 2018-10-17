@@ -87,8 +87,8 @@ const welcomeScreenText = [
 const welcomeScreenTextEng = [
     "The sex of birds is determined at the moment of fertilization by sex chromosomes.</p> Females have a sex chromosome named Z in about half of their egg cells and one named W in others.</p> The sperm cells of males always contain a Z chromosome. Thus, the joining of a Z and a W at fertilization leads to the hatching of a female bird.",
     "If a Z joins with another Z, the chick will be male. The W chromosome is small and has few genes but the Z chromosome has many genes.</p> In pigeons, for example, the Z chromosome, unlike the W chromosome, houses the gene that controls feather color.</p> ",
-    "This gene comes in three alternative forms known as alleles, each determining one of three colors: ash-red, blue or brown. Female pigeons have just one Z chromosome and their color is determined by the allele in it.</p>Males have two alleles, one in each Z chromosome, and these alleles work together to determine their color.",
-    "As girl pigeons always inherit their Z chromosome from the father, they always also inherit their color from the father, while boy pigeons inherit their color from the father only when the allele received from the father is dominant to the one from the mother. The ash-red allele is dominant to both blue and brown."
+    "This gene comes in three alternative forms known as alleles, each determining one of three colors: ash-red, grey or brown. Female pigeons have just one Z chromosome and their color is determined by the allele in it.</p>Males have two alleles, one in each Z chromosome, and these alleles work together to determine their color.",
+    "As girl pigeons always inherit their Z chromosome from the father, they always also inherit their color from the father, while boy pigeons inherit their color from the father only when the allele received from the father is dominant to the one from the mother. The ash-red allele is dominant to both grey and brown."
 ];
 
 const welcomeScreenTextRus = [
@@ -163,7 +163,7 @@ async function startPhase1(){
     if (lang === 1) {
         document.getElementById("seletus_lahter").style.WebkitAnimation = "moveIn 0.1s forwards";
         document.getElementById("seletus_lahtri_tekst").innerHTML = "The male is ash-red and carries two different alleles: ash-red and brown." +
-            "The female is blue and carries one allele - blue.</p>Touch the screen to continue!";
+            "The female is grey and carries one allele - grey.</p>Touch the screen to continue!";
         document.getElementById("nimi_tekst").innerHTML = "GENETICS STUDENT";
         document.getElementById("tase_tekst").innerHTML = "LEVEL I";
     } else if (lang === 2) {
@@ -297,7 +297,7 @@ function startPhase5() {
         document.getElementById("nimi_tekst").innerHTML = "MEISTER GENEETIK";
         document.getElementById("tase_tekst").innerHTML = "TASE V";
     } else if (lang === 1) {
-        document.getElementById("seletus_lahtri_tekst").innerHTML = "Which alleles should the birds have in order that the offspring of a blue male and an ash-red female would have the opposite colors: the females would be blue and the males ash-red?";
+        document.getElementById("seletus_lahtri_tekst").innerHTML = "Which alleles should the birds have in order that the offspring of a grey male and an ash-red female would have the opposite colors: the females would be grey and the males ash-red?";
         document.getElementById("nimi_tekst").innerHTML = "GENETICS EXPERT";
         document.getElementById("tase_tekst").innerHTML = "LEVEL V";
     } else {
