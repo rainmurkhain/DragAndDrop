@@ -163,6 +163,7 @@ body {
 
 #game_animation #phase_animation {
     position: absolute;
+    visibility: hidden;
     left: 70%;
     top: 40px;
     width: 25%;

@@ -304,7 +304,7 @@ async function rightAnswer(id) {
         } else {
             game_text.innerHTML="Хромосомы упакованы в плотные палочки. Двухроматидные хромосомы находят свои пары, одна из которых унаследована от отца, а другая от матери. Хромосомы прилепляются одна к другой и обмениваются частями равной длины. Здесь перемешивается генетический материал, и поэтому каждая образующаяся половая клетка генетически уникальна. Центросомы, начинающие тянуть хромосомы своими нитями, движутся к противоположным концам клетки.";
         }
-        phase_animation.setAttribute("src", "assets/bears.mp4");
+        //phase_animation.setAttribute("src", "assets/bears.mp4");
     } else if (id === "d2") {
         if (lang === 0) {
             game_text.innerHTML="Kõik kromosoomid liiguvad paaridena ühele tasapinnale. Sääse puhul on neid kuus. Tsentrosoomid on raku poolustele jõudnud. Tsentrosoomidest lähtuvad niidikesed kinnituvad kromosoomide keskosa külge, kus kromatiidid on teineteisega ühendatud.";
@@ -313,7 +313,7 @@ async function rightAnswer(id) {
         } else {
             game_text.innerHTML="Все хромосомы выстраиваются парами в одной плоскости. У комара хромосом шесть. Центросомы достигли полюсов клетки. Нити, исходящие из центросом, прикрепляются к центральной части хромосом, где хроматиды соединены друг с другом.";
         }
-        phase_animation.setAttribute("src", "assets/bears.mp4");
+        //phase_animation.setAttribute("src", "assets/bears.mp4");
     } else if (id === "d3") {
         if (lang === 0) {
             game_text.innerHTML="Kuna niidikesed lühenevad, siis tõmmatakse kromosoomide paarilised teineteisest lahku tsentrosoomide poole, raku poolustele. Kromosoomid on endiselt kahekromatiidilised.";
@@ -322,7 +322,7 @@ async function rightAnswer(id) {
         } else {
             game_text.innerHTML="Так как нити укорачиаются, то парные хромосомы отделяются друг от друга и растаскиваются в сторону центросом, к полюсам клетки. Хромосомы по-прежнему двухроматидные.";
         }
-        phase_animation.setAttribute("src", "assets/bears.mp4");
+        //phase_animation.setAttribute("src", "assets/bears.mp4");
     } else if (id === "d4") {
         if (lang === 0) {
             game_text.innerHTML = "Kuna  paarilised kromosoomid on teineteisest lahutatud, siis on kummaski tekkivas rakus poole vähem kromosoome. Tekivad rakumembraanid, kuid rakud hakkavad kohe uuesti jagunema.";
@@ -331,7 +331,7 @@ async function rightAnswer(id) {
         } else {
             game_text.innerHTML = "Так как парные хромосомы отделены друг от друга, то в каждой образующейся клетке хромосом вдвое меньше. Образуются клеточные мембраны, однако клетки сразу начинают делиться снова.";
         }
-        phase_animation.setAttribute("src", "assets/bears.mp4");
+        //phase_animation.setAttribute("src", "assets/bears.mp4");
     } else if (id === "d5") {
         if (lang === 0) {
             game_text.innerHTML="Enne teist jagunemist ei toimu DNA kahekordistumist. Sääse puhul on rakus kolm kromosoomi. Kromosoomid on endiselt kahekromatiidilised. Tuumamembraan laguneb. Tsentrosoomid liiguvad raku poolustele.";
@@ -340,7 +340,7 @@ async function rightAnswer(id) {
         } else {
             game_text.innerHTML="До второго деления удвоения ДНК не происходит. У комара в клетке три хромосомы. Хромосомы по-прежнему двухроматидные. Ядерная мембрана распадается. Центросомы движутся к полюсам клетки.";
         }
-        phase_animation.setAttribute("src", "assets/bears.mp4");
+        //phase_animation.setAttribute("src", "assets/bears.mp4");
         document.getElementById("n1").style.visibility = "visible";
         document.getElementById("n1").style.WebkitAnimation = "nAnswerDropped 2s";
     } else if (id === "d6") {
@@ -352,7 +352,7 @@ async function rightAnswer(id) {
         } else {
             game_text.innerHTML="Все двухроматидные хромосомы движутся в одну плоскость, а центросомы достигли полюсов клетки. Нити, исходящие из центросом, прикрепляются к центральной части хромосом, где хроматиды соединены друг с другом.";
         }
-        phase_animation.setAttribute("src", "assets/bears.mp4");
+        //phase_animation.setAttribute("src", "assets/bears.mp4");
         document.getElementById("n2").style.visibility = "visible";
         document.getElementById("n2").style.WebkitAnimation = "nAnswerDropped 2s";
     } else if (id === "d7") {
@@ -363,7 +363,7 @@ async function rightAnswer(id) {
         } else {
             game_text.innerHTML="Так как нити укорачиваются, то хроматиды хромосом отделяются друг от друга и растаскиваются в сторону центросом, к полюсам клетки. Теперь хромосомы снова становятся однохроматидными.";
         }
-        phase_animation.setAttribute("src", "assets/bears.mp4");
+        //phase_animation.setAttribute("src", "assets/bears.mp4");
         document.getElementById("n3").style.visibility = "visible";
         document.getElementById("n3").style.WebkitAnimation = "nAnswerDropped 2s";
     } else if (id === "d8") {
@@ -374,7 +374,7 @@ async function rightAnswer(id) {
         } else {
             game_text.innerHTML="Хромосомы, теперь однохроматидные, начинают расщепляться. Образуются клеточные мембраны. В образовавшихся половых клетках число хромосом уменьшилось в два раза. У комара три хромосомы, и они однохроматидные. Все четыре половые клетки генетически уникальны, так как между парными частями хромосом произошёл обмен.";
         }
-        phase_animation.setAttribute("src", "assets/bears.mp4");
+        //phase_animation.setAttribute("src", "assets/bears.mp4");
         document.getElementById("n4").style.visibility = "visible";
         document.getElementById("n4").style.WebkitAnimation = "nAnswerDropped 2s";
     }

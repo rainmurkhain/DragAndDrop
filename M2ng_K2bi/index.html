@@ -1,15 +1,75 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | kuusk</title>
+
     <script src="Build/UnityLoader.js"></script>
+
     <script>
-      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/kuuskweb.json");
+
     </script>
+
   </head>
+
+
   <body>
-    <div id="gameContainer" style="width: 1920px; height: 1080px; margin: auto"></div>
+    <div id="gameContainer" style="position:fixed; top: 0; left: 0; width: 1920px; height: 1080px; margin: 0"></div>
+
+    <div id="chooseLang">
+        <div class="mang" id="mang1"><img src="assets/eestiK_btn.svg" onclick="chooseLang(0)"><p>Eesti keel</p></div>
+        <div class="mang" id="mang2"><img src="assets/ingliseK_btn.svg" onclick="chooseLang(1)"><p>English</p></div>
+        <div class="mang" id="mang3"><img src="assets/veneK_btn.svg" onclick="chooseLang(2)"><p>Русский</p></div>
+    </div>
+    <style>
+
+        #chooseLang {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 4;
+        }
+
+        .mang {
+            position: absolute;
+            top: 400px;
+        }
+
+        #mang1 {
+            left: 200px;
+        }
+
+        #mang2 {
+            left: 810px;
+        }
+
+        #mang3 {
+            left: 1420px;
+        }
+
+        .mang img {
+            width: 300px;
+            height: 300px;
+            border: solid white 3px;
+        }
+
+    </style>
+
+    <script>
+
+        function chooseLang(langNr) {
+            document.getElementById("chooseLang").style.visibility = "hidden";
+            let gameInstance = UnityLoader.instantiate("gameContainer", "Build/kuuskweb.json");
+        }
+
+    </script>
   </body>
+
+
 </html>
