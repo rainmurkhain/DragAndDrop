@@ -91,6 +91,13 @@ const welcomeScreenTextEng = [
     "As girl pigeons always inherit their Z chromosome from the father, they always also inherit their color from the father, while boy pigeons inherit their color from the father only when the allele received from the father is dominant to the one from the mother. The ash-red allele is dominant to both blue and brown."
 ];
 
+const welcomeScreenTextRus = [
+    "Пол птиц определяют половые хромосомы в момент оплодотворения. У самок примерно в половине яйцеклеток находится половая хромосома, обозначаемая буквой Z, а в остальных — обозначаемая буквой W. У сперматозоидов самцов всегда наличествует Z-хромосома. Таким образом, если при оплодотворении сольются Z и W, то вылупится самка. Если же сольются Z и Z, то вылупится самец.",
+    "W-хромосома маленькая, и в ней находится мало генов, а в Z-хромосоме много генов. Например, у голубей в Z-хромосоме находится ген, определяющий окраску перьев, которого в W-хромосоме нет. У этого гена три формы состояния, или аллели, которые определяют одну из трёх окрасок: бронзово-красную, серую или коричневую.",
+    "У самки только одна Z-хромосома, и окраску птицы определяет аллель, находящаяся в ней. У самца две аллели, одна в обеих Z-хромосомах, и окраску птицы они определяют, воздействуя совместно.",
+    "Поскольку птенцы-самки наследуют Z-хромосому всегда от отца, то и свою окраску они также наследуют всегда от отца. Однако птенцы-самцы наследуют окраску от отца лишь тогда, если полученная от отца аллель доминирует над аллелью, полученной от матери. Бронзово-красная аллель доминирует как над серой, так и над коричневой. Аллель серой окраски является доминантной по отношению к коричневой."
+];
+
 
 function back_to_menu() {
     document.location = "../index.html"
@@ -109,6 +116,9 @@ function startWelcomeScreenDialog() {
     } else if (lang === 1) {
         welcome_screen_text.innerHTML=welcomeScreenTextEng[0];
         document.getElementById("welcome_screen_header").innerHTML = "COLOR HERITAGE TO PIGEON CHICKS";
+    } else {
+        welcome_screen_text.innerHTML=welcomeScreenTextRus[0];
+        document.getElementById("welcome_screen_header").innerHTML = "ПЁСТРОЕ НАСЛЕДИЕ У ПТЕНЦОВ ГОЛУБЕЙ";
     }
 
 }
@@ -124,6 +134,8 @@ function welcomeScreenMoveForward() {
             welcome_screen_text.innerHTML=welcomeScreenText[welcomeScreenTextNr]
         } else if (lang === 1) {
             welcome_screen_text.innerHTML=welcomeScreenTextEng[welcomeScreenTextNr]
+        } else {
+            welcome_screen_text.innerHTML=welcomeScreenTextRus[welcomeScreenTextNr]
         }
 
     }
@@ -138,6 +150,8 @@ function welcomeScreenMoveBack() {
             welcome_screen_text.innerHTML=welcomeScreenText[welcomeScreenTextNr]
         } else if (lang === 1) {
             welcome_screen_text.innerHTML=welcomeScreenTextEng[welcomeScreenTextNr]
+        } else {
+            welcome_screen_text.innerHTML=welcomeScreenTextRus[welcomeScreenTextNr]
         }
     }
 }
@@ -152,6 +166,12 @@ async function startPhase1(){
             "The female is blue and carries one allele - blue.</p>Touch the screen to continue!";
         document.getElementById("nimi_tekst").innerHTML = "GENETICS STUDENT";
         document.getElementById("tase_tekst").innerHTML = "LEVEL I";
+    } else if (lang === 2) {
+        document.getElementById("seletus_lahter").style.WebkitAnimation = "moveIn 0.1s forwards";
+        document.getElementById("seletus_lahtri_tekst").innerHTML = "Самец — бронзово-красный, он является носителем двух разных аллелей: бронзово-красной и коричневой.</p>" +
+            "Самка — серая, она является носителем одной аллели, серой.</p>Потомки этих голубей-родителей могут быть следующими.";
+        document.getElementById("nimi_tekst").innerHTML = "ученик-генетик";
+        document.getElementById("tase_tekst").innerHTML = "I уровень";
     }
 
     document.getElementById("phase1_video").play();
@@ -183,6 +203,12 @@ function startPhase2(){
         document.getElementById("seletus_lahtri_tekst").innerHTML = "Drag right genes to the last pigeon! Touch the screen to continue!";
         document.getElementById("nimi_tekst").innerHTML = "BEGINNER GENETICIST";
         document.getElementById("tase_tekst").innerHTML = "LEVEL II";
+    } else {
+        document.getElementById("seletus_lahtri_tekst").innerHTML = "Самец серый, и он является носителем двух разных аллелей: серой и коричневой.</p>" +
+            "Самка бронзово-красная и является носителем одной, бронзово-красной аллели.</p>" +
+            "Потомки этих голубей-родителей могут быть следующими.";
+        document.getElementById("nimi_tekst").innerHTML = "начинающий генетик";
+        document.getElementById("tase_tekst").innerHTML = "II уровень";
     }
 
 
@@ -212,6 +238,10 @@ function startPhase3() {
         document.getElementById("seletus_lahtri_tekst").innerHTML = "Drag right genes to the offspring! Touch the screen to continue!";
         document.getElementById("nimi_tekst").innerHTML = "YOUNG GENETICIST";
         document.getElementById("tase_tekst").innerHTML = "LEVEL III";
+    } else {
+        document.getElementById("seletus_lahtri_tekst").innerHTML = "Какие потомки могут быть у этих голубей-родителей?";
+        document.getElementById("nimi_tekst").innerHTML = "юный генетик";
+        document.getElementById("tase_tekst").innerHTML = "III уровень";
     }
 
 
@@ -237,6 +267,10 @@ function startPhase4() {
         document.getElementById("seletus_lahtri_tekst").innerHTML = "What kinds of offspring could these parent pigeons have? Time is ticking away! You have to be fast.";
         document.getElementById("nimi_tekst").innerHTML = "GENE RESEARCHER";
         document.getElementById("tase_tekst").innerHTML = "LEVEL IV";
+    } else {
+        document.getElementById("seletus_lahtri_tekst").innerHTML = "Какие потомки могут быть у этих голубей-родителей? Время идёт! Ты должен действовать быстро.";
+        document.getElementById("nimi_tekst").innerHTML = "генетик-исследователь";
+        document.getElementById("tase_tekst").innerHTML = "IV уровень";
     }
 
 
@@ -266,6 +300,10 @@ function startPhase5() {
         document.getElementById("seletus_lahtri_tekst").innerHTML = "Which alleles should the birds have in order that the offspring of a blue male and an ash-red female would have the opposite colors: the females would be blue and the males ash-red?";
         document.getElementById("nimi_tekst").innerHTML = "GENETICS EXPERT";
         document.getElementById("tase_tekst").innerHTML = "LEVEL V";
+    } else {
+        document.getElementById("seletus_lahtri_tekst").innerHTML = "Какими должны быть аллели птиц, чтобы окраска потомков серого самца и бронзово-красной самки была противоположной: самки серые, а самцы бронзово-красные?";
+        document.getElementById("nimi_tekst").innerHTML = "генетик-мастер";
+        document.getElementById("tase_tekst").innerHTML = "V уровень ";
     }
 
 
@@ -558,6 +596,9 @@ async function registerDrop3(event) {
             if (lang === 1) {
                 document.getElementById("fail_screen_header").innerHTML = "Game over! You answered wrong too many times!";
                 document.getElementById("fail_screen_restart").innerHTML = "Try again!";
+            } if (lang === 2) {
+                document.getElementById("fail_screen_header").innerHTML = "Игра окончена! Вы ответили неправильно слишком много раз!";
+                document.getElementById("fail_screen_restart").innerHTML = "Попробуйте снова";
             }
         }
     }
@@ -676,6 +717,10 @@ async function phase5Clicked(index, place) {
             document.getElementById("endScreenScore").innerHTML = "It took you " + currentTimerTime + " seconds!";
             document.getElementById("endScreenCongratz").innerHTML = "Game over! Congratulations!";
             document.getElementById("restartGame").innerHTML = "Play again!";
+        } else {
+            document.getElementById("endScreenScore").innerHTML = "Ваше время " + currentTimerTime + " секунд!";
+            document.getElementById("endScreenCongratz").innerHTML = "Игра окончена! Поздравляем!";
+            document.getElementById("restartGame").innerHTML = "Играть снова!";
         }
 
     }
