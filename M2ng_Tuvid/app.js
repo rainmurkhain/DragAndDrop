@@ -166,17 +166,18 @@ async function startPhase1(){
             "The female is grey and carries one allele - grey.</p>Touch the screen to continue!";
         document.getElementById("nimi_tekst").innerHTML = "GENETICS STUDENT";
         document.getElementById("tase_tekst").innerHTML = "LEVEL I";
+        document.getElementById("phase1_video").style.src = "assets/tuvid5.mp4"
     } else if (lang === 2) {
         document.getElementById("seletus_lahter").style.WebkitAnimation = "moveIn 0.1s forwards";
         document.getElementById("seletus_lahtri_tekst").innerHTML = "Самец — бронзово-красный, он является носителем двух разных аллелей: бронзово-красной и коричневой.</p>" +
             "Самка — серая, она является носителем одной аллели, серой.</p>Потомки этих голубей-родителей могут быть следующими.";
         document.getElementById("nimi_tekst").innerHTML = "ученик-генетик";
         document.getElementById("tase_tekst").innerHTML = "I уровень";
+        document.getElementById("phase1_video").style.src = "assets/tuvid5.mp4"
     }
 
     document.getElementById("phase1_video").play();
 
-    console.log("video has now started");
     await sleep(1800);
     document.getElementById("phase1_video").pause();
     document.getElementById("clickable_screen").style.visibility = "visible";

@@ -65,7 +65,14 @@
 
         function chooseLang(langNr) {
             document.getElementById("chooseLang").style.visibility = "hidden";
-            let gameInstance = UnityLoader.instantiate("gameContainer", "Build/kuuskweb.json");
+            if (langNr === 0) {
+                let gameInstance = UnityLoader.instantiate("gameContainer", "Build/kuusem2ng_EST.json");
+            } else if (langNr === 1) {
+                let gameInstance = UnityLoader.instantiate("gameContainer", "BuildEng/kuusem2ng_ENG.json");
+            } else {
+                let gameInstance = UnityLoader.instantiate("gameContainer", "BuildRus/kuusem2ng_RUS.json");
+            }
+
         }
 
     </script>
