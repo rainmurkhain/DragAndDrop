@@ -45,12 +45,12 @@ let inactivityTime = function () {
 
 /* ********************** */
 
-
+const welcomeScreenVideoEst = ["assets/vid_est1.mp4", "assets/vid_est2.mp4", "assets/vid_est3.mp4", "assets/vid_est4.mp4"];
 
 const welcomeScreenText = [
     "Kõik suguliselt sigivad organismid, kaasa arvatud inimene, on geneetiliselt ainulaadsed: nad erinevad oma vanematest ja õdedest-vendadest. Selle alge peitub suguraku tekkimises." +
     "</p>Sugurakud tekivad raku jagunemisel, mida nimetatakse meioosiks.",
-    "Meioosi käigus jaguneb keharakk kaks korda. Esimesel jagunemisel segatakse vanematelt päritud geneetiline informatsioon läbi ja teise jagunemisega tekib neli ainulaadse geneetilise sisuga sugurakku.",
+    "Enne meioosi toimub keharakus DNA kahekordistumine, mille tulemusel muutuvad kromosoomid kahekromatiidilisteks ja hakkavad meenutama X-tähte. </p> Meioosi käigus jaguneb keharakk kaks korda. Esimesel jagunemisel segatakse vanematelt päritud geneetiline informatsioon läbi ja teise jagunemisega tekib neli ainulaadse geneetilise sisuga sugurakku.",
     "Sääsel on keharakkudes kuus kromosoomi. Paiguta sääse meioosi etappide pildid õigesse järjestusse!</p> Iga faasi paigutamiseks on sul aega 15 sekundit ja võimalik saada vihjeid. Mida kiiremini vastad, seda rohkem punkte kogud.\n" +
     "</p>Alusta!"];
 
@@ -104,9 +104,12 @@ function moveBlocker(pix) {
 
 function startWelcomeScreenDialog() {
     let welcome_screen_text = document.getElementById("welcome_screen_text");
+    let welcomeScreenVid = document.getElementById("animation_img");
+
     if (lang === 0) {
         welcome_screen_text.innerHTML=welcomeScreenText[0];
         document.getElementById("dialog_header").innerHTML = "MEIOOS";
+        welcomeScreenVid.setAttribute("src", welcomeScreenVideoEst[0]);
     } else if (lang === 1) {
         welcome_screen_text.innerHTML=welcomeScreenTextEng[0];
         document.getElementById("dialog_header").innerHTML = "MEIOSIS";
@@ -115,17 +118,22 @@ function startWelcomeScreenDialog() {
         document.getElementById("dialog_header").innerHTML = "МЕЙОЗ";
     }
 
+    document.getElementById("animation_img").play();
+
 }
 
 function welcomeScreenMoveForward() {
     welcomeScreenTextNr += 1;
+    let welcomeScreenVid = document.getElementById("animation_img");
+    welcomeScreenVid.setAttribute("src", "");
     if (welcomeScreenTextNr >= 3) {
         //kutsu välja funktsioon, mis paneb järgmise screeni peale
         beginGame();
     } else {
         let welcome_screen_text = document.getElementById("welcome_screen_text");
         if (lang === 0) {
-            welcome_screen_text.innerHTML=welcomeScreenText[welcomeScreenTextNr]
+            welcome_screen_text.innerHTML=welcomeScreenText[welcomeScreenTextNr];
+            welcomeScreenVid.setAttribute("src", welcomeScreenVideoEst[welcomeScreenTextNr]);
         } else if (lang === 1) {
             welcome_screen_text.innerHTML=welcomeScreenTextEng[welcomeScreenTextNr]
         } else {
@@ -133,15 +141,22 @@ function welcomeScreenMoveForward() {
         }
 
     }
+    welcomeScreenVid.play();
 
 }
 
 function welcomeScreenMoveBack() {
+
     if (welcomeScreenTextNr > 0) {
         welcomeScreenTextNr -= 1;
+
+        let welcomeScreenVid = document.getElementById("animation_img");
+        welcomeScreenVid.setAttribute("src", "");
+
         let welcome_screen_text = document.getElementById("welcome_screen_text");
         if (lang === 0) {
-            welcome_screen_text.innerHTML=welcomeScreenText[welcomeScreenTextNr]
+            welcome_screen_text.innerHTML=welcomeScreenText[welcomeScreenTextNr];
+            welcomeScreenVid.setAttribute("src", welcomeScreenVideoEst[welcomeScreenTextNr]);
         } else if (lang === 1) {
             welcome_screen_text.innerHTML=welcomeScreenTextEng[welcomeScreenTextNr]
         } else {
