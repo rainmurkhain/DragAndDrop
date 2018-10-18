@@ -483,3 +483,9 @@ Blocker
     left: 1419px;
     top: 440px;
 }
+
+.hi {
+    border: solid chartreuse 2px;
+    border-radius: 30%;
+    padding: 3px 10px;
+}

@@ -80,8 +80,17 @@ function chooseLang(langNr) {
     document.getElementById("chooseLang").style.visibility = "hidden";
 
     if (lang !== 0) {
-        changeHintLang()
+        changeHintLang();
+        document.getElementById("welcome_screen_arrow_forward").src = "assets/edasiEngRus.png";
+        document.getElementById("welcome_screen_arrow_back").src = "assets/tagasiEngRus.png";
+
+        if (lang === 1) {
+            document.getElementById("skeem").src = "assets/skeem_eng.png"
+        } else {
+            document.getElementById("skeem").src = "assets/skeem_rus.png"
+        }
     }
+
 
     startWelcomeScreenDialog()
 }

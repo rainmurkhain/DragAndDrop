@@ -11,6 +11,7 @@
 html, body {
     background-color: black;
     margin: 0;
+    overflow: hidden;
     font-family: U8ProLight;
 }
 
