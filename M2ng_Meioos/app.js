@@ -46,6 +46,8 @@ let inactivityTime = function () {
 /* ********************** */
 
 const welcomeScreenVideoEst = ["assets/vid_est1.mp4", "assets/vid_est2.mp4", "assets/vid_est3.mp4", "assets/vid_est4.mp4"];
+const welcomeScreenVideoRus = ["assets/vid_rus1.mp4", "assets/vid_rus2.mp4", "assets/vid_rus3.mp4", "assets/vid_rus4.mp4"];
+const welcomeScreenVideoEng = ["assets/vid_eng1.mp4", "assets/vid_eng2.mp4", "assets/vid_eng3.mp4", "assets/vid_eng4.mp4"];
 
 const welcomeScreenText = [
     "Kõik suguliselt sigivad organismid, kaasa arvatud inimene, on geneetiliselt ainulaadsed: nad erinevad oma vanematest ja õdedest-vendadest. Selle alge peitub suguraku tekkimises." +
@@ -64,8 +66,8 @@ const welcomeScreenTextEng = [
 ];
 
 const welcomeScreenTextRus = [
-    "Все организмы, размножающиеся половым путём, в том числе и человек, генетически уникальны: они отличаются от своих родителей и братьев, сестёр. Первоначало этого скрывается в образовании половой клетки.",
-    "Половые клетки образуются при делении клетки, это называется мейозом. В ходе мейоза клетка тела делится дважды. При первом делении унаследованная от родителей генетическая информация перемешивается, а при втором делении образуются четыре половые клетки с уникальным генетическим содержанием.",
+    "Все организмы, размножающиеся половым путём, в том числе и человек, генетически уникальны: они отличаются от своих родителей и братьев, сестёр. Первоначало этого скрывается в образовании половой клетки.</p>Половые клетки образуются при делении клетки, это называется мейозом.",
+    "В ходе мейоза клетка тела делится дважды.</p>При первом делении унаследованная от родителей генетическая информация перемешивается, а при втором делении образуются четыре половые клетки с уникальным генетическим содержанием.",
     "В клетках тела комара шесть хромосом. Расставь картинки этапов мейоза комара в правильном порядке.</p>" +
     "На расстановку каждой фазы у тебя есть 15 секунд, и ты можешь получить ссылки-подсказки. Чем быстрее ты ответишь, тем больше наберёшь очков.</p>" +
     "Начинай!"
@@ -125,6 +127,7 @@ function startWelcomeScreenDialog() {
     } else {
         welcome_screen_text.innerHTML=welcomeScreenTextRus[0];
         document.getElementById("dialog_header").innerHTML = "МЕЙОЗ";
+        welcomeScreenVid.setAttribute("src", welcomeScreenVideoRus[0]);
     }
 
     document.getElementById("animation_img").play();
@@ -147,6 +150,7 @@ function welcomeScreenMoveForward() {
             welcome_screen_text.innerHTML=welcomeScreenTextEng[welcomeScreenTextNr]
         } else {
             welcome_screen_text.innerHTML=welcomeScreenTextRus[welcomeScreenTextNr]
+            welcomeScreenVid.setAttribute("src", welcomeScreenVideoRus[welcomeScreenTextNr]);
         }
 
     }
@@ -169,7 +173,8 @@ function welcomeScreenMoveBack() {
         } else if (lang === 1) {
             welcome_screen_text.innerHTML=welcomeScreenTextEng[welcomeScreenTextNr]
         } else {
-            welcome_screen_text.innerHTML=welcomeScreenTextRus[welcomeScreenTextNr]
+            welcome_screen_text.innerHTML=welcomeScreenTextRus[welcomeScreenTextNr];
+            welcomeScreenVid.setAttribute("src", welcomeScreenVideoRus[welcomeScreenTextNr]);
         }
 
     }

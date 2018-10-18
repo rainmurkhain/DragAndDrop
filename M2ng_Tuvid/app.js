@@ -106,6 +106,15 @@ function back_to_menu() {
 function chooseLang(langNr) {
     lang = langNr;
     document.getElementById("chooseLang").style.visibility = "hidden";
+
+    if (lang !== 0) {
+        document.getElementById("welcome_screen_arrow_forward").src = "assets/edasiEngRus.png";
+        document.getElementById("welcome_screen_arrow_back").src = "assets/tagasiEngRus.png";
+        document.getElementById("phase2_edasi_nupp").src = "assets/edasiEngRus.png";
+        document.getElementById("phase3_edasi_nupp").src = "assets/edasiEngRus.png";
+        document.getElementById("phase4_edasi_nupp").src = "assets/edasiEngRus.png";
+    }
+    console.log("lang is " + lang);
     startWelcomeScreenDialog()
 }
 
