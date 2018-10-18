@@ -177,6 +177,7 @@ function welcomeScreenMoveBack() {
             welcomeScreenVid.setAttribute("src", welcomeScreenVideoRus[welcomeScreenTextNr]);
         }
 
+        welcomeScreenVid.play();
     }
 }
 
