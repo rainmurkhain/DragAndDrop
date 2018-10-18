@@ -124,6 +124,7 @@ function startWelcomeScreenDialog() {
     } else if (lang === 1) {
         welcome_screen_text.innerHTML=welcomeScreenTextEng[0];
         document.getElementById("dialog_header").innerHTML = "MEIOSIS";
+        welcomeScreenVid.setAttribute("src", welcomeScreenVideoEng[0]);
     } else {
         welcome_screen_text.innerHTML=welcomeScreenTextRus[0];
         document.getElementById("dialog_header").innerHTML = "МЕЙОЗ";
@@ -147,9 +148,10 @@ function welcomeScreenMoveForward() {
             welcome_screen_text.innerHTML=welcomeScreenText[welcomeScreenTextNr];
             welcomeScreenVid.setAttribute("src", welcomeScreenVideoEst[welcomeScreenTextNr]);
         } else if (lang === 1) {
-            welcome_screen_text.innerHTML=welcomeScreenTextEng[welcomeScreenTextNr]
+            welcome_screen_text.innerHTML=welcomeScreenTextEng[welcomeScreenTextNr];
+            welcomeScreenVid.setAttribute("src", welcomeScreenVideoEng[welcomeScreenTextNr]);
         } else {
-            welcome_screen_text.innerHTML=welcomeScreenTextRus[welcomeScreenTextNr]
+            welcome_screen_text.innerHTML=welcomeScreenTextRus[welcomeScreenTextNr];
             welcomeScreenVid.setAttribute("src", welcomeScreenVideoRus[welcomeScreenTextNr]);
         }
 
@@ -171,7 +173,8 @@ function welcomeScreenMoveBack() {
             welcome_screen_text.innerHTML=welcomeScreenText[welcomeScreenTextNr];
             welcomeScreenVid.setAttribute("src", welcomeScreenVideoEst[welcomeScreenTextNr]);
         } else if (lang === 1) {
-            welcome_screen_text.innerHTML=welcomeScreenTextEng[welcomeScreenTextNr]
+            welcome_screen_text.innerHTML=welcomeScreenTextEng[welcomeScreenTextNr];
+            welcomeScreenVid.setAttribute("src", welcomeScreenVideoEng[welcomeScreenTextNr]);
         } else {
             welcome_screen_text.innerHTML=welcomeScreenTextRus[welcomeScreenTextNr];
             welcomeScreenVid.setAttribute("src", welcomeScreenVideoRus[welcomeScreenTextNr]);

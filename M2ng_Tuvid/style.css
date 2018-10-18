@@ -124,9 +124,9 @@ body {
 
 #welcome_screen_animation_box_img {
     position: absolute;
-    height: 518px;
-    width: 518px;
-    top: 42px;
+    height: 512px;
+    width: 512px;
+    top: 44px;
     left: 730px;
 }
 

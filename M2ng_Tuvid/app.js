@@ -16,6 +16,10 @@ let phase5Answers = 0;
 let lang = 0; //0 is Estonian, 1 is English
 let welcomeScreenTextNr = 0;
 
+const welcomeScreenVideoEst = ["assets/vid_est1.mp4", "assets/vid_est2.mp4", "assets/vid_est3.mp4", "assets/vid_est4.mp4"];
+const welcomeScreenVideoRus = ["assets/vid_rus1.mp4", "assets/vid_rus2.mp4", "assets/vid_rus3.mp4", "assets/vid_rus44.mp4"];
+const welcomeScreenVideoEng = ["assets/vid_eng1.mp4", "assets/vid_eng2.mp4", "assets/vid_eng3.mp4", "assets/vid_eng4.mp4"];
+
 
 /* ********************** */
 
@@ -92,9 +96,9 @@ const welcomeScreenTextEng = [
 ];
 
 const welcomeScreenTextRus = [
-    "Пол птиц определяют половые хромосомы в момент оплодотворения. У самок примерно в половине яйцеклеток находится половая хромосома, обозначаемая буквой Z, а в остальных — обозначаемая буквой W. У сперматозоидов самцов всегда наличествует Z-хромосома. Таким образом, если при оплодотворении сольются Z и W, то вылупится самка. Если же сольются Z и Z, то вылупится самец.",
-    "W-хромосома маленькая, и в ней находится мало генов, а в Z-хромосоме много генов. Например, у голубей в Z-хромосоме находится ген, определяющий окраску перьев, которого в W-хромосоме нет. У этого гена три формы состояния, или аллели, которые определяют одну из трёх окрасок: бронзово-красную, серую или коричневую.",
-    "У самки только одна Z-хромосома, и окраску птицы определяет аллель, находящаяся в ней. У самца две аллели, одна в обеих Z-хромосомах, и окраску птицы они определяют, воздействуя совместно.",
+    "Пол птиц определяют половые хромосомы в момент оплодотворения. У самок примерно в половине яйцеклеток находится половая хромосома, обозначаемая буквой Z, а в остальных — обозначаемая буквой W. У сперматозоидов самцов всегда наличествует Z-хромосома. Таким образом, если при оплодотворении сольются Z и W, то вылупится самка.",
+    "Если же сольются Z и Z, то вылупится самец. W-хромосома маленькая, и в ней находится мало генов, а в Z-хромосоме много генов. Например, у голубей в Z-хромосоме находится ген, определяющий окраску перьев, которого в W-хромосоме нет. У этого гена три формы состояния, или аллели, которые определяют одну из трёх окрасок: бронзово-красную, серую или коричневую.",
+    "У самки только одна Z-хромосома, и окраску птицы определяет аллель, находящаяся в ней.</p>У самца две аллели, одна в обеих Z-хромосомах, и окраску птицы они определяют, воздействуя совместно.",
     "Поскольку птенцы-самки наследуют Z-хромосому всегда от отца, то и свою окраску они также наследуют всегда от отца. Однако птенцы-самцы наследуют окраску от отца лишь тогда, если полученная от отца аллель доминирует над аллелью, полученной от матери. Бронзово-красная аллель доминирует как над серой, так и над коричневой. Аллель серой окраски является доминантной по отношению к коричневой."
 ];
 
@@ -120,33 +124,44 @@ function chooseLang(langNr) {
 
 function startWelcomeScreenDialog() {
     let welcome_screen_text = document.getElementById("welcome_screen_text");
+    let welcomeScreenVid = document.getElementById("welcome_screen_animation_box_img");
     if (lang === 0) {
-        welcome_screen_text.innerHTML=welcomeScreenText[0]
+        welcome_screen_text.innerHTML=welcomeScreenText[0];
+        welcomeScreenVid.setAttribute("src", welcomeScreenVideoEst[0]);
     } else if (lang === 1) {
         welcome_screen_text.innerHTML=welcomeScreenTextEng[0];
         document.getElementById("welcome_screen_header").innerHTML = "COLOR HERITAGE TO PIGEON CHICKS";
+        welcomeScreenVid.setAttribute("src", welcomeScreenVideoEng[0]);
     } else {
         welcome_screen_text.innerHTML=welcomeScreenTextRus[0];
         document.getElementById("welcome_screen_header").innerHTML = "ПЁСТРОЕ НАСЛЕДИЕ У ПТЕНЦОВ ГОЛУБЕЙ";
+        welcomeScreenVid.setAttribute("src", welcomeScreenVideoRus[0]);
     }
+
+    welcomeScreenVid.play();
 
 }
 
 function welcomeScreenMoveForward() {
     welcomeScreenTextNr += 1;
+    let welcomeScreenVid = document.getElementById("welcome_screen_animation_box_img");
+    welcomeScreenVid.setAttribute("src", "");
     if (welcomeScreenTextNr >= 4) {
         //kutsu välja funktsioon, mis paneb järgmise screeni peale
         startPhase1();
     } else {
         let welcome_screen_text = document.getElementById("welcome_screen_text");
         if (lang === 0) {
-            welcome_screen_text.innerHTML=welcomeScreenText[welcomeScreenTextNr]
+            welcome_screen_text.innerHTML=welcomeScreenText[welcomeScreenTextNr];
+            welcomeScreenVid.setAttribute("src", welcomeScreenVideoEst[welcomeScreenTextNr]);
         } else if (lang === 1) {
-            welcome_screen_text.innerHTML=welcomeScreenTextEng[welcomeScreenTextNr]
+            welcome_screen_text.innerHTML=welcomeScreenTextEng[welcomeScreenTextNr];
+            welcomeScreenVid.setAttribute("src", welcomeScreenVideoEng[welcomeScreenTextNr]);
         } else {
-            welcome_screen_text.innerHTML=welcomeScreenTextRus[welcomeScreenTextNr]
+            welcome_screen_text.innerHTML=welcomeScreenTextRus[welcomeScreenTextNr];
+            welcomeScreenVid.setAttribute("src", welcomeScreenVideoRus[welcomeScreenTextNr]);
         }
-
+        welcomeScreenVid.play();
     }
 
 }
@@ -154,14 +169,20 @@ function welcomeScreenMoveForward() {
 function welcomeScreenMoveBack() {
     if (welcomeScreenTextNr > 0) {
         welcomeScreenTextNr -= 1;
+        let welcomeScreenVid = document.getElementById("welcome_screen_animation_box_img");
+        welcomeScreenVid.setAttribute("src", "");
         let welcome_screen_text = document.getElementById("welcome_screen_text");
         if (lang === 0) {
-            welcome_screen_text.innerHTML=welcomeScreenText[welcomeScreenTextNr]
+            welcome_screen_text.innerHTML=welcomeScreenText[welcomeScreenTextNr];
+            welcomeScreenVid.setAttribute("src", welcomeScreenVideoEst[welcomeScreenTextNr]);
         } else if (lang === 1) {
-            welcome_screen_text.innerHTML=welcomeScreenTextEng[welcomeScreenTextNr]
+            welcome_screen_text.innerHTML=welcomeScreenTextEng[welcomeScreenTextNr];
+            welcomeScreenVid.setAttribute("src", welcomeScreenVideoEng[welcomeScreenTextNr]);
         } else {
-            welcome_screen_text.innerHTML=welcomeScreenTextRus[welcomeScreenTextNr]
+            welcome_screen_text.innerHTML=welcomeScreenTextRus[welcomeScreenTextNr];
+            welcomeScreenVid.setAttribute("src", welcomeScreenVideoRus[welcomeScreenTextNr]);
         }
+        welcomeScreenVid.play();
     }
 }
 
