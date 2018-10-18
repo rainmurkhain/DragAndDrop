@@ -6,7 +6,7 @@ let elapsedTime = 0;
 let timer;
 let welcomeScreenTextNr = 0;
 
-let lang = 0; //Estonian is 0, English is 1;
+let lang; //Estonian is 0, English is 1;
 const hints = ["hi1", "hi2", "hi3", "hi4", "hi5", "hi6", "hi7", "hi8"];
 
 
@@ -260,7 +260,19 @@ function startGame() {
         }
 
     } else {
+        if (stage > 1) {
+            document.getElementById("a" + (stage - 1)).style.animation = "";
+            document.getElementById("hi" + (stage - 1)).style.animation = "";
+        }
+
         resumeTimer();
+
+        document.getElementById("a" + stage).style.animation = "dragHere 3s";
+        document.getElementById("a" + stage).style.animationIterationCount = "infinite";
+
+        document.getElementById("hi" + stage).style.animation = "dragHere 3s";
+        document.getElementById("hi" + stage).style.animationIterationCount = "infinite";
+
     }
 
 

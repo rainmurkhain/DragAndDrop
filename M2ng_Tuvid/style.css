@@ -8,12 +8,25 @@
     src: url('assets/U8Pro-Medium.otf'); /*URL to font*/
 }
 
+@-webkit-keyframes moveMe {
+    0%   {filter: drop-shadow(0 0 0px white);}
+    50%  {filter: drop-shadow(0 0 1px white);}
+    100% {filter: drop-shadow(0 0 0px white);}
+}
+
+
 .dragBig {
     z-index: 4;
+    -moz-animation-duration: 3s;
+    -moz-animation-name: moveMe;
+    -moz-animation-iteration-count: infinite;
 }
 
 .dragSmall {
     z-index: 4;
+    -moz-animation-duration: 3s;
+    -moz-animation-name: moveMe;
+    -moz-animation-iteration-count: infinite;
 }
 
 html, body {

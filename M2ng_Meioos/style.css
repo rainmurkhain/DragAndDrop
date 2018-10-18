@@ -191,10 +191,17 @@ body {
     100% {filter: drop-shadow(0 0 0px lawngreen);}
 }
 /*The wrong answer*/
-@-webkit-keyframes wrongAnswerDropped {
+@keyframes wrongAnswerDropped {
     0%   {filter: drop-shadow(0 0 0px red);}
     50%  {filter: drop-shadow(0 0 30px red);}
     100% {filter: drop-shadow(0 0 0px red);}
+}
+
+@keyframes dragHere {
+    0% { box-shadow: 0 0 0 chartreuse; }
+    40% { box-shadow: 0 0 30px chartreuse; }
+    60% { box-shadow: 0 0 30px chartreuse; }
+    100% { box-shadow: 0 0 0 chartreuse; }
 }
 
 #s22sk {
@@ -232,6 +239,8 @@ body {
 .dropzone {
     height: 150px;
     width: 150px;
+    border-radius: 100%;
+
 }
 #yes-drag {
     position: absolute;

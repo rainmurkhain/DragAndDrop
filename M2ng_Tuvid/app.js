@@ -13,7 +13,7 @@ let phase3Answers = [{left: "", right: ""}, {left: "", right: ""}, {left: "", ri
 let phase3WrongAnswers = 0;
 let phase5Answers = 0;
 
-let lang = 0; //0 is Estonian, 1 is English
+let lang = -1; //0 is Estonian, 1 is English
 let welcomeScreenTextNr = 0;
 
 const welcomeScreenVideoEst = ["assets/vid_est1.mp4", "assets/vid_est2.mp4", "assets/vid_est3.mp4", "assets/vid_est4.mp4"];
@@ -108,6 +108,7 @@ function back_to_menu() {
 }
 
 function chooseLang(langNr) {
+
     lang = langNr;
     document.getElementById("chooseLang").style.visibility = "hidden";
 
@@ -137,9 +138,11 @@ function startWelcomeScreenDialog() {
         document.getElementById("welcome_screen_header").innerHTML = "ПЁСТРОЕ НАСЛЕДИЕ У ПТЕНЦОВ ГОЛУБЕЙ";
         welcomeScreenVid.setAttribute("src", welcomeScreenVideoRus[0]);
     }
-
+    console.log("lang is " + lang);
     if (lang >= 0) {
         welcomeScreenVid.play();
+    } else {
+        welcomeScreenVid.pause();
     }
 
 
@@ -442,14 +445,14 @@ interact('.dragBig')
         snap: {
             targets: [
                 //siia pane midagi, et snapiks
-                {x: 393, y:677, range: 60},
-                {x: 444, y:677, range: 60},
-                {x: 773, y:677, range: 60},
-                {x: 824, y:677, range: 60},
-                {x: 1204, y:677, range: 60},
-                {x: 1255, y:677, range: 60},
-                {x: 1634, y:677, range: 60},
-                {x: 1684, y:677, range: 60}
+                {x: 393, y:677, range: 100},
+                {x: 444, y:677, range: 100},
+                {x: 773, y:677, range: 100},
+                {x: 824, y:677, range: 100},
+                {x: 1204, y:677, range: 100},
+                {x: 1255, y:677, range: 100},
+                {x: 1634, y:677, range: 100},
+                {x: 1684, y:677, range: 100}
             ],
             relativePoints: [
                 // snap relative to the element's top-left,
@@ -480,14 +483,14 @@ interact('.dragSmall')
         snap: {
             targets: [
                 //siia pane midagi, et snapiks
-                {x: 393, y:677, range: 50},
-                {x: 444, y:677, range: 50},
-                {x: 773, y:676, range: 50},
-                {x: 824, y:677, range: 50},
-                {x: 1204, y:677, range: 50},
-                {x: 1255, y:677, range: 50},
-                {x: 1634, y:677, range: 50},
-                {x: 1684, y:677, range: 50}
+                {x: 393, y:677, range: 100},
+                {x: 444, y:677, range: 100},
+                {x: 773, y:676, range: 100},
+                {x: 824, y:677, range: 100},
+                {x: 1204, y:677, range: 100},
+                {x: 1255, y:677, range: 100},
+                {x: 1634, y:677, range: 100},
+                {x: 1684, y:677, range: 100}
             ],
             relativePoints: [
                 // snap relative to the element's top-left,
