@@ -156,7 +156,10 @@ function welcomeScreenMoveForward() {
         }
 
     }
-    welcomeScreenVid.play();
+    if (lang >= 0) {
+        welcomeScreenVid.play();
+    }
+
 
 }
 

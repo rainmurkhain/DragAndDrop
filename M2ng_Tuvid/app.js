@@ -138,7 +138,10 @@ function startWelcomeScreenDialog() {
         welcomeScreenVid.setAttribute("src", welcomeScreenVideoRus[0]);
     }
 
-    welcomeScreenVid.play();
+    if (lang >= 0) {
+        welcomeScreenVid.play();
+    }
+
 
 }
 

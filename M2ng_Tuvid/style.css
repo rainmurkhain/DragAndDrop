@@ -8,6 +8,14 @@
     src: url('assets/U8Pro-Medium.otf'); /*URL to font*/
 }
 
+.dragBig {
+    z-index: 4;
+}
+
+.dragSmall {
+    z-index: 4;
+}
+
 html, body {
     background-color: black;
     margin: 0;
