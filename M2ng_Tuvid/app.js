@@ -623,6 +623,7 @@ async function registerDrop3(event) {
 
     } else {
         await sleep(1000);
+        event.target.style.Animation = "dragHereWrong 2s";
         event.relatedTarget.style.webkitAnimation = "disElement 1s forwards";
 
         phase3WrongAnswers += 1;
@@ -807,6 +808,9 @@ interact('.dropzone').dropzone({
             if (registerDrop2(event)) {
                 phase2AnswersCount += 1;
             } else {
+                await sleep(1000);
+                event.target.style.animation = "dragHereWrong 2s";
+                console.log(event.target.style.Animation);
                 event.relatedTarget.style.webkitAnimation = "disElement 1s forwards";
             }
 

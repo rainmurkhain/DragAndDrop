@@ -2,13 +2,12 @@
 "companyName": "BOP!",
 "productName": "kuusk",
 "dataUrl": "kuusem2ng_RUS.data.unityweb",
-"asmCodeUrl": "kuusem2ng_RUS.asm.code.unityweb",
-"asmMemoryUrl": "kuusem2ng_RUS.asm.memory.unityweb",
-"asmFrameworkUrl": "kuusem2ng_RUS.asm.framework.unityweb",
+"wasmCodeUrl": "kuusem2ng_RUS.wasm.code.unityweb",
+"wasmFrameworkUrl": "kuusem2ng_RUS.wasm.framework.unityweb",
 "TOTAL_MEMORY": 268435456,
 "graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
 "webglContextAttributes": {"preserveDrawingBuffer": false},
 "splashScreenStyle": "Dark",
 "backgroundColor": "#231F20",
-"cacheControl": {"dataUrl": "must-revalidate"}
+"cacheControl": {"default": "must-revalidate"}
 }
