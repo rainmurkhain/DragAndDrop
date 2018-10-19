@@ -133,7 +133,7 @@ function startWelcomeScreenDialog() {
         welcome_screen_text.innerHTML=welcomeScreenTextEng[0];
         document.getElementById("welcome_screen_header").innerHTML = "COLOR HERITAGE TO PIGEON CHICKS";
         welcomeScreenVid.setAttribute("src", welcomeScreenVideoEng[0]);
-    } else {
+    } else if (lang === 2) {
         welcome_screen_text.innerHTML=welcomeScreenTextRus[0];
         document.getElementById("welcome_screen_header").innerHTML = "ПЁСТРОЕ НАСЛЕДИЕ У ПТЕНЦОВ ГОЛУБЕЙ";
         welcomeScreenVid.setAttribute("src", welcomeScreenVideoRus[0]);
