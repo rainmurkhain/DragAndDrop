@@ -44,6 +44,12 @@ let inactivityTime = function () {
     }
 };
 
+window.oncontextmenu = function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    return false;
+};
+
 /* ********************** */
 
 const welcomeScreenVideoEst = ["assets/vid_est1.mp4", "assets/vid_est2.mp4", "assets/vid_est3.mp4", "assets/vid_est4.mp4"];
@@ -54,7 +60,7 @@ const welcomeScreenText = [
     "Kõik suguliselt sigivad organismid, kaasa arvatud inimene, on geneetiliselt ainulaadsed: nad erinevad oma vanematest ja õdedest-vendadest. Selle alge peitub suguraku tekkimises." +
     "</p>Sugurakud tekivad raku jagunemisel, mida nimetatakse meioosiks.",
     "Enne meioosi toimub keharakus DNA kahekordistumine, mille tulemusel muutuvad kromosoomid kahekromatiidilisteks ja hakkavad meenutama X-tähte. </p> Meioosi käigus jaguneb keharakk kaks korda. Esimesel jagunemisel segatakse vanematelt päritud geneetiline informatsioon läbi ja teise jagunemisega tekib neli ainulaadse geneetilise sisuga sugurakku.",
-    "Sääsel on keharakkudes kuus kromosoomi. Paiguta sääse meioosi etappide pildid õigesse järjestusse!</p> Iga faasi paigutamiseks on sul aega 15 sekundit ja võimalik saada vihjeid. Mida kiiremini vastad, seda rohkem punkte kogud.\n" +
+    "Sääsel on keharakkudes kuus kromosoomi. Paiguta sääse meioosi etappide pildid õigesse järjestusse!</p> Iga faasi paigutamiseks on sul aega 120 sekundit ja võimalik saada vihjeid. Mida kiiremini vastad, seda rohkem punkte kogud.\n" +
     "</p>Alusta!"];
 
 const welcomeScreenTextEng = [
@@ -618,14 +624,14 @@ interact('.draggable')
         },
         snap: {
             targets: [
-                {x: 274, y:368, range: 50},
-                {x: 458, y:368, range: 50},
-                {x: 647, y:368, range: 50},
-                {x: 835, y:368, range: 50},
-                {x: 1060, y:465, range: 50},
-                {x: 1250, y:465, range: 50},
-                {x: 1439, y:465, range: 50},
-                {x: 1625, y:465, range: 50},
+                {x: 274, y:368, range: 100},
+                {x: 458, y:368, range: 100},
+                {x: 647, y:368, range: 100},
+                {x: 835, y:368, range: 100},
+                {x: 1060, y:465, range: 100},
+                {x: 1250, y:465, range: 100},
+                {x: 1439, y:465, range: 100},
+                {x: 1625, y:465, range: 100},
                 ],
             relativePoints: [
                    // snap relative to the element's top-left,
