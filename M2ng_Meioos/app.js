@@ -5,6 +5,7 @@ let currentTimerTime = 0;
 let elapsedTime = 0;
 let timer;
 let welcomeScreenTextNr = 0;
+let playAudio = true;
 
 let lang; //Estonian is 0, English is 1;
 const hints = ["hi1", "hi2", "hi3", "hi4", "hi5", "hi6", "hi7", "hi8"];
@@ -213,7 +214,7 @@ function beginGame() {
     }
 
     if (lang === 0) {
-        game_text.innerHTML = "Sääsel on keharakkudes kuus kromosoomi. Paiguta sääse meioosi etappide pildid õigesse järjestusse. Iga faasi paigutamiseks on sul aega " + timerDuration + " sekundit ja võimalik saada vihjeid. Mida kiiremini vastad, seda rohkem punkte kogud.";
+        game_text.innerHTML = "</p>Sääsel on keharakkudes kuus kromosoomi.</p>Paiguta sääse meioosi etappide pildid õigesse järjestusse.</p>Iga faasi paigutamiseks on sul aega " + timerDuration + " sekundit ja võimalik saada vihjeid. Mida kiiremini vastad, seda rohkem punkte kogud.";
     } else if (lang === 1) {
         game_text.innerHTML = "Before meiosis begins, a body cell undergoes DNA replication, which results in each chromosome becoming double-chromatid and starting to resemble the letter X.";
     } else {
@@ -232,6 +233,8 @@ function startGame() {
 
     phase_animation = document.getElementById("phase_animation");
     phase_animation.pause();
+
+    playAudio = false;
 
     game_animation = document.getElementById("game_animation");
     arrow_down = document.getElementById("arrow_down");
@@ -335,100 +338,115 @@ async function rightAnswer(id) {
 
     game_text = document.getElementById("game_text");
     game_animation = document.getElementById("game_animation");
+
+    game_animation.style.WebkitAnimation = "moveIn 1s";
+    game_animation.style.animationFillMode = "forwards";
+
     phase_animation = document.getElementById("phase_animation");
+    phase_animation.setAttribute("src", "");
+    phase_animation.style.visibility = "visible";
 
-    /*
-
-    Muuda allolevates ridades ära assets/bears.mp4 iga etapi vastavaks animatsiooniks!
-
-
-     */
+    playAudio = true;
 
     if (id === "d1") {
         if (lang === 0) {
-            game_text.innerHTML="Kromosoomid pakendatakse tihedateks pulgakesteks. Kahekromatiidilised kromosoomid leiavad oma paarilised, millest üks on pärit isalt ja teine emalt. Kromosoomid  liibuvad teineteise vastu ning vahetavad võrdse pikkusega osi. Siin segatakse geneetiline materjal läbi ja seetõttu on iga tekkiv sugurakk geneetiliselt ainulaadne. Tsentrosoomid, mis hakkavad oma niidikestega kromosoome tõmbama, liiguvad raku otstesse.";
+            game_text.innerHTML="Kromosoomid pakendatakse tihedateks pulgakesteks. Kahekromatiidilised kromosoomid leiavad oma paarilised, millest üks on pärit isalt ja teine emalt.</p>Kromosoomid  liibuvad teineteise vastu ning vahetavad võrdse pikkusega osi. Siin segatakse geneetiline materjal läbi ja seetõttu on iga tekkiv sugurakk geneetiliselt ainulaadne. Tsentrosoomid, mis hakkavad oma niidikestega kromosoome tõmbama, liiguvad raku otstesse.";
+            phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_1.mp4");
+            await sleep(9200);
+            if (playAudio) {phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_2.mp4");}
         } else if (lang === 1) {
             game_text.innerHTML="Chromosomes are packed into dense rods. Double-chromatid chromosomes pair up: each chromosome from the father pairs up with one from the mother. Chromosomes cling together and exchange segments of equal length. This is where genetic material gets mixed up so that each resulting reproductive cell is genetically unique. Centrosomes, which will start pulling the chromosomes with their fibers, move to the opposite poles of the cell."
         } else {
-            game_text.innerHTML="Хромосомы упакованы в плотные палочки. Двухроматидные хромосомы находят свои пары, одна из которых унаследована от отца, а другая от матери. Хромосомы прилепляются одна к другой и обмениваются частями равной длины. Здесь перемешивается генетический материал, и поэтому каждая образующаяся половая клетка генетически уникальна. Центросомы, начинающие тянуть хромосомы своими нитями, движутся к противоположным концам клетки.";
+            game_text.innerHTML="Хромосомы упакованы в плотные палочки. Двухроматидные хромосомы находят свои пары, одна из которых унаследована от отца, а другая от матери.</p>Хромосомы прилепляются одна к другой и обмениваются частями равной длины. Здесь перемешивается генетический материал, и поэтому каждая образующаяся половая клетка генетически уникальна. Центросомы, начинающие тянуть хромосомы своими нитями, движутся к противоположным концам клетки.";
+            phase_animation.setAttribute("src", "assets/meioos_anim_game_RU 1.mp4");
+            await sleep(11200);
+            if (playAudio) phase_animation.setAttribute("src", "assets/meioos_anim_game_RU 2.mp4");
         }
-        //phase_animation.setAttribute("src", "assets/bears.mp4");
+
     } else if (id === "d2") {
         if (lang === 0) {
-            game_text.innerHTML="Kõik kromosoomid liiguvad paaridena ühele tasapinnale. Sääse puhul on neid kuus. Tsentrosoomid on raku poolustele jõudnud. Tsentrosoomidest lähtuvad niidikesed kinnituvad kromosoomide keskosa külge, kus kromatiidid on teineteisega ühendatud.";
+            game_text.innerHTML="</p>Kõik kromosoomid liiguvad paaridena ühele tasapinnale. Sääse puhul on neid kuus.</p>Tsentrosoomid on raku poolustele jõudnud. Tsentrosoomidest lähtuvad niidikesed kinnituvad kromosoomide keskosa külge, kus kromatiidid on teineteisega ühendatud.";
+            phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_3.mp4");
         } else if (lang === 1) {
             game_text.innerHTML="All chromosomes move in pairs to the same plane. A mosquito has six of them. Centrosomes have reached the poles of the cell. The fibers extending out from the centrosomes attach to the center of the chromosomes, where the chromatids are connected to each other.";
         } else {
-            game_text.innerHTML="Все хромосомы выстраиваются парами в одной плоскости. У комара хромосом шесть. Центросомы достигли полюсов клетки. Нити, исходящие из центросом, прикрепляются к центральной части хромосом, где хроматиды соединены друг с другом.";
+            game_text.innerHTML="</p>Все хромосомы выстраиваются парами в одной плоскости. У комара хромосом шесть.</p>Центросомы достигли полюсов клетки. Нити, исходящие из центросом, прикрепляются к центральной части хромосом, где хроматиды соединены друг с другом.";
+            phase_animation.setAttribute("src", "assets/meioos_anim_game_RU 3.mp4");
         }
-        //phase_animation.setAttribute("src", "assets/bears.mp4");
     } else if (id === "d3") {
         if (lang === 0) {
-            game_text.innerHTML="Kuna niidikesed lühenevad, siis tõmmatakse kromosoomide paarilised teineteisest lahku tsentrosoomide poole, raku poolustele. Kromosoomid on endiselt kahekromatiidilised.";
+            game_text.innerHTML="</p>Kuna niidikesed lühenevad, siis tõmmatakse kromosoomide paarilised teineteisest lahku tsentrosoomide poole, raku poolustele.</p>Kromosoomid on endiselt kahekromatiidilised.";
+            phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_4.mp4");
         } else if (lang === 1) {
             game_text.innerHTML="As the fibers shorten, the chromosome pairs are pulled apart towards the centrosomes, to the poles of the cell. The chromosomes are still double-chromatid.";
         } else {
-            game_text.innerHTML="Так как нити укорачиаются, то парные хромосомы отделяются друг от друга и растаскиваются в сторону центросом, к полюсам клетки. Хромосомы по-прежнему двухроматидные.";
+            game_text.innerHTML="</p>Так как нити укорачиаются, то парные хромосомы отделяются друг от друга и растаскиваются в сторону центросом, к полюсам клетки.</p>Хромосомы по-прежнему двухроматидные.";
+            phase_animation.setAttribute("src", "assets/meioos_anim_game_RU 4.mp4");
         }
-        //phase_animation.setAttribute("src", "assets/bears.mp4");
     } else if (id === "d4") {
         if (lang === 0) {
-            game_text.innerHTML = "Kuna  paarilised kromosoomid on teineteisest lahutatud, siis on kummaski tekkivas rakus poole vähem kromosoome. Tekivad rakumembraanid, kuid rakud hakkavad kohe uuesti jagunema.";
+            game_text.innerHTML = "</p>Kuna  paarilised kromosoomid on teineteisest lahutatud, siis on kummaski tekkivas rakus poole vähem kromosoome.</p>Tekivad rakumembraanid, kuid rakud hakkavad kohe uuesti jagunema.";
+            phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_5.mp4");
         } else if (lang === 1) {
             game_text.innerHTML = "As the chromosome pairs have been pulled apart, both of the forming cells have half the number of chromosomes. Cell membranes form but the cells immediately start to divide again.";
         } else {
-            game_text.innerHTML = "Так как парные хромосомы отделены друг от друга, то в каждой образующейся клетке хромосом вдвое меньше. Образуются клеточные мембраны, однако клетки сразу начинают делиться снова.";
+            game_text.innerHTML = "</p>Так как парные хромосомы отделены друг от друга, то в каждой образующейся клетке хромосом вдвое меньше.</p>Образуются клеточные мембраны, однако клетки сразу начинают делиться снова.";
+            phase_animation.setAttribute("src", "assets/meioos_anim_game_RU 5.mp4");
         }
-        //phase_animation.setAttribute("src", "assets/bears.mp4");
     } else if (id === "d5") {
         if (lang === 0) {
-            game_text.innerHTML="Enne teist jagunemist ei toimu DNA kahekordistumist. Sääse puhul on rakus kolm kromosoomi. Kromosoomid on endiselt kahekromatiidilised. Tuumamembraan laguneb. Tsentrosoomid liiguvad raku poolustele.";
+            game_text.innerHTML="</p>Enne teist jagunemist ei toimu DNA kahekordistumist.</p>Sääse puhul on rakus kolm kromosoomi. Kromosoomid on endiselt kahekromatiidilised.</p>Tuumamembraan laguneb.</p>Tsentrosoomid liiguvad raku poolustele.";
+            phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_6.mp4");
         } else if (lang === 1) {
             game_text.innerHTML="The second division is not preceded by DNA replication. In a mosquito, the cell contains three chromosomes. The chromosomes remain double-chromatid. The nuclear membrane breaks up. The centrosomes move to the poles of the cell.";
         } else {
-            game_text.innerHTML="До второго деления удвоения ДНК не происходит. У комара в клетке три хромосомы. Хромосомы по-прежнему двухроматидные. Ядерная мембрана распадается. Центросомы движутся к полюсам клетки.";
+            game_text.innerHTML="</p>До второго деления удвоения ДНК не происходит. У комара в клетке три хромосомы. Хромосомы по-прежнему двухроматидные.</p>Ядерная мембрана распадается.</p>Центросомы движутся к полюсам клетки.";
+            phase_animation.setAttribute("src", "assets/meioos_anim_game_RU 6.mp4");
         }
-        //phase_animation.setAttribute("src", "assets/bears.mp4");
         document.getElementById("n1").style.visibility = "visible";
         document.getElementById("n1").style.WebkitAnimation = "nAnswerDropped 2s";
     } else if (id === "d6") {
         if (lang === 0) {
-            game_text.innerHTML="Kõik kahekromatiidilised kromosoomid liiguvad ühele tasapinnale ja tsentrosoomid on raku poolustele jõudnud. Tsentrosoomidest lähtuvad kinnituvad niidikesed kromosoomide keskosa külge, kus kromatiidid on teineteisega ühendatud.";
-
+            game_text.innerHTML="</p>Kõik kahekromatiidilised kromosoomid liiguvad ühele tasapinnale ja tsentrosoomid on raku poolustele jõudnud.</p>Tsentrosoomidest lähtuvad kinnituvad niidikesed kromosoomide keskosa külge, kus kromatiidid on teineteisega ühendatud.";
+            phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_7.mp4");
         } else if (lang === 1) {
             game_text.innerHTML="All double-chromatid chromosomes move to the same plane and the centrosomes have reached the poles of the cell. The fibers extending from the centrosomes attach to the center of the chromosomes, where the chromatids are connected to each other.";
         } else {
-            game_text.innerHTML="Все двухроматидные хромосомы движутся в одну плоскость, а центросомы достигли полюсов клетки. Нити, исходящие из центросом, прикрепляются к центральной части хромосом, где хроматиды соединены друг с другом.";
+            game_text.innerHTML="</p>Все двухроматидные хромосомы движутся в одну плоскость, а центросомы достигли полюсов клетки.</p>Нити, исходящие из центросом, прикрепляются к центральной части хромосом, где хроматиды соединены друг с другом.";
+            phase_animation.setAttribute("src", "assets/meioos_anim_game_RU 7.mp4");
         }
-        //phase_animation.setAttribute("src", "assets/bears.mp4");
         document.getElementById("n2").style.visibility = "visible";
         document.getElementById("n2").style.WebkitAnimation = "nAnswerDropped 2s";
     } else if (id === "d7") {
         if (lang === 0) {
-            game_text.innerHTML="Kuna niidikesed lühenevad, siis tõmmatakse kromosoomide kromatiidid teineteisest lahku tsentrosoomide poole, raku poolustele. Nüüd muutuvad kromosoomid taas ühekromatiidilisteks.";
+            game_text.innerHTML="</p>Kuna niidikesed lühenevad, siis tõmmatakse kromosoomide kromatiidid teineteisest lahku tsentrosoomide poole, raku poolustele.</p>Nüüd muutuvad kromosoomid taas ühekromatiidilisteks.";
+            phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_8.mp4");
         } else if (lang === 1) {
             game_text.innerHTML="As the fibers shorten, the sister chromatids of the chromosomes are pulled apart towards the centrosomes, to the poles of the cell. Now the chromosomes become single-chromatid again.";
         } else {
-            game_text.innerHTML="Так как нити укорачиваются, то хроматиды хромосом отделяются друг от друга и растаскиваются в сторону центросом, к полюсам клетки. Теперь хромосомы снова становятся однохроматидными.";
+            game_text.innerHTML="</p>Так как нити укорачиваются, то хроматиды хромосом отделяются друг от друга и растаскиваются в сторону центросом, к полюсам клетки.</p>Теперь хромосомы снова становятся однохроматидными.";
+            phase_animation.setAttribute("src", "assets/meioos_anim_game_RU 8.mp4");
         }
-        //phase_animation.setAttribute("src", "assets/bears.mp4");
         document.getElementById("n3").style.visibility = "visible";
         document.getElementById("n3").style.WebkitAnimation = "nAnswerDropped 2s";
     } else if (id === "d8") {
         if (lang === 0) {
-            game_text.innerHTML="Kromosoomid, mis on nüüd ühekromatiidilised, hakkavad lahti hargnema. Moodustuvad rakumembraanid. Tekkinud sugurakkudes on kromosoomide arv vähenenud kaks korda. Sääse puhul on kromosoome kolm ja nad on ühekromatiidilised. Kõik neli sugurakku on geneetiliselt ainulaadsed, sest paariliste kromosoomide osade vahel toimus vahetus.";
+            game_text.innerHTML="Kromosoomid, mis on nüüd ühekromatiidilised, hakkavad lahti hargnema. Moodustuvad rakumembraanid.</p>Tekkinud sugurakkudes on kromosoomide arv vähenenud kaks korda. Sääse puhul on kromosoome kolm ja nad on ühekromatiidilised.</p>Kõik neli sugurakku on geneetiliselt ainulaadsed, sest paariliste kromosoomide osade vahel toimus vahetus.";
+            phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_9.mp4");
+            await sleep(16900);
+            if (playAudio) phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_10.mp4");
         } else if (lang === 1) {
             game_text.innerHTML="The chromosomes are now single-chromatid and start to separate. Cell membranes form. In the resulting reproductive cells, the number of chromosomes has been reduced by half. In mosquitoes, each cell now has three chromosomes, each composed of a single chromatid. All four reproductive cells are genetically unique because the paired chromosomes have exchanged segments.";
         } else {
-            game_text.innerHTML="Хромосомы, теперь однохроматидные, начинают расщепляться. Образуются клеточные мембраны. В образовавшихся половых клетках число хромосом уменьшилось в два раза. У комара три хромосомы, и они однохроматидные. Все четыре половые клетки генетически уникальны, так как между парными частями хромосом произошёл обмен.";
+            game_text.innerHTML="Хромосомы, теперь однохроматидные, начинают расщепляться. Образуются клеточные мембраны.</p>В образовавшихся половых клетках число хромосом уменьшилось в два раза. У комара три хромосомы, и они однохроматидные.</p>Все четыре половые клетки генетически уникальны, так как между парными частями хромосом произошёл обмен.";
+            phase_animation.setAttribute("src", "assets/meioos_anim_game_RU 9.mp4");
+            await sleep(17500);
+            if (playAudio) phase_animation.setAttribute("src", "assets/meioos_anim_game_RU 10.mp4");
         }
-        //phase_animation.setAttribute("src", "assets/bears.mp4");
         document.getElementById("n4").style.visibility = "visible";
         document.getElementById("n4").style.WebkitAnimation = "nAnswerDropped 2s";
     }
 
-    game_animation.style.WebkitAnimation = "moveIn 1s";
-    game_animation.style.animationFillMode = "forwards";
 
 }
 
@@ -627,7 +645,6 @@ interact('.dropzone').dropzone({
     // listen for drop related events:
     ondrop: function (event) {
         console.log("ondrop");
-        console.log("whichone is " + stage);
         if (event.target.id[1] === event.relatedTarget.id[1] && event.target.id[1] == stage){
             event.relatedTarget.style.WebkitAnimation = "rightAnswerDropped 2s";
             stage += 1;

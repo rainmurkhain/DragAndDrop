@@ -33,16 +33,9 @@ html {
 }
 
 
-.mang img {
-    width: 300px;
-    height: 300px;
-    border: solid white 3px;
-}
-
 .mang video {
     width: 300px;
     height: 300px;
-    border: solid white 3px;
 }
 
 #gamesNames {

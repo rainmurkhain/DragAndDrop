@@ -163,7 +163,6 @@ body {
 
 #game_animation #phase_animation {
     position: absolute;
-    visibility: hidden;
     left: 70%;
     top: 40px;
     width: 25%;
@@ -172,8 +171,9 @@ body {
 
 #game_animation #arrow_down {
     position: absolute;
-    top: 350px;
+    top: 380px;
     left: 50%;
+    z-index: 1;
 }
 
 @keyframes moveIn {
