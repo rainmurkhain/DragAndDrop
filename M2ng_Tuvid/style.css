@@ -10,7 +10,7 @@
 
 @-webkit-keyframes moveMe {
     0%   {filter: drop-shadow(0 0 0px white);}
-    50%  {filter: drop-shadow(0 0 1px white);}
+    50%  {filter: drop-shadow(0 0 3px white);}
     100% {filter: drop-shadow(0 0 0px white);}
 }
 

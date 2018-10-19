@@ -15,12 +15,6 @@ html {
     font-family: U8ProMedium;
 }
 
-p {
-    text-align: center;
-    line-height: 100px;
-    font-size: 60px;
-}
-
 .mang {
     position: absolute;
     top: 400px;
@@ -49,4 +43,16 @@ p {
     width: 300px;
     height: 300px;
     border: solid white 3px;
+}
+
+#gamesNames {
+    position: fixed;
+    left:0;
+    top:0
+}
+
+#background {
+    position: fixed;
+    left:0;
+    top:0
 }
