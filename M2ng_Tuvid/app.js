@@ -18,7 +18,7 @@ let welcomeScreenTextNr = 0;
 
 const welcomeScreenVideoEst = ["assets/vid_est1.mp4", "assets/vid_est2.mp4", "assets/vid_est3.mp4", "assets/vid_est4.mp4"];
 const welcomeScreenVideoRus = ["assets/vid_rus1.mp4", "assets/vid_rus2.mp4", "assets/vid_rus3.mp4", "assets/vid_rus44.mp4"];
-const welcomeScreenVideoEng = ["assets/vid_eng1.mp4", "assets/vid_eng2.mp4", "assets/vid_eng3.mp4", "assets/vid_eng4.mp4"];
+const welcomeScreenVideoEng = ["assets/eng slide1.mp4", "assets/eng slide2.mp4", "assets/eng slide3.mp4", "assets/eng slide4.mp4"];
 
 
 /* ********************** */
@@ -202,25 +202,15 @@ async function startPhase1(){
     phase = 1;
     document.getElementById("phase1").style.visibility = "visible";
     if (lang === 1) {
-        document.getElementById("seletus_lahter").style.WebkitAnimation = "moveIn 0.1s forwards";
-        document.getElementById("seletus_lahtri_tekst").innerHTML = "The male is ash-red and carries two different alleles: ash-red and brown." +
-            "The female is grey and carries one allele - grey.</p>Touch the screen to continue!";
-        document.getElementById("nimi_tekst").innerHTML = "GENETICS STUDENT";
-        document.getElementById("tase_tekst").innerHTML = "LEVEL I";
-        document.getElementById("phase1_video").style.src = "assets/tuvid5.mp4"
+        document.getElementById("phase1_video").setAttribute("src", "assets/tase1eng.mp4");
     } else if (lang === 2) {
-        document.getElementById("seletus_lahter").style.WebkitAnimation = "moveIn 0.1s forwards";
-        document.getElementById("seletus_lahtri_tekst").innerHTML = "Самец — бронзово-красный, он является носителем двух разных аллелей: бронзово-красной и коричневой.</p>" +
-            "Самка — серая, она является носителем одной аллели, серой.</p>Потомки этих голубей-родителей могут быть следующими.";
-        document.getElementById("nimi_tekst").innerHTML = "ученик-генетик";
-        document.getElementById("tase_tekst").innerHTML = "I уровень";
-        document.getElementById("phase1_video").style.src = "assets/tuvid5.mp4"
+        document.getElementById("phase1_video").setAttribute("src", "assets/tase1rus.mp4");
+    } else if (lang === 0) {
+        document.getElementById("phase1_video").setAttribute("src", "assets/tase1est.mp4");
     }
 
     document.getElementById("phase1_video").play();
-
-    await sleep(1800);
-    document.getElementById("phase1_video").pause();
+    await sleep(19500);
     document.getElementById("clickable_screen").style.visibility = "visible";
 
     //document.getElementById("seletus_lahter").style.WebkitAnimation = "moveIn 1s forwards";
@@ -357,9 +347,6 @@ async function screenClicked() {
     document.getElementById("clickable_screen").style.visibility = "hidden";
 
     if (phase === 1) {
-        document.getElementById("phase1_video").play();
-        await sleep(20000);
-        document.getElementById("phase1_video").pause();
         startPhase2();
     } else if (phase === 2) {
         continuePhase2();
