@@ -94,9 +94,11 @@ function chooseLang(langNr) {
         document.getElementById("welcome_screen_arrow_back").src = "assets/tagasiEngRus.png";
 
         if (lang === 1) {
-            document.getElementById("skeem").src = "assets/skeem_eng.png"
-        } else {
-            document.getElementById("skeem").src = "assets/skeem_rus.png"
+            document.getElementById("skeem").src = "assets/skeem_eng.png";
+            document.getElementById("s22sk").src = "assets/MEIOOS_LOGO_ENG.png";
+        } else if (lang === 2) {
+            document.getElementById("skeem").src = "assets/skeem_rus.png";
+            document.getElementById("s22sk").src = "assets/MEIOOS_LOGO_RUS.png";
         }
     }
 
@@ -146,7 +148,7 @@ function welcomeScreenMoveForward() {
     welcomeScreenTextNr += 1;
     let welcomeScreenVid = document.getElementById("animation_img");
     welcomeScreenVid.setAttribute("src", "");
-    if (welcomeScreenTextNr >= 3) {
+    if (welcomeScreenTextNr >= 2) {
         //kutsu välja funktsioon, mis paneb järgmise screeni peale
         beginGame();
     } else {
@@ -205,27 +207,32 @@ function beginGame() {
 
     moveBlocker(0); //moves blocker over the screen
 
-    game_text = document.getElementById("game_text");
-    game_animation = document.getElementById("game_animation");
+    let game_text = document.getElementById("game_text");
+    let game_animation = document.getElementById("game_animation");
+    let phase_animation = document.getElementById("phase_animation");
 
     document.getElementById("dialog_animation").style.visibility = "hidden";
     game_animation.style.WebkitAnimation = "moveIn 1s";
     game_animation.style.animationFillMode = "forwards";
-    if (lang === 0) {
-        document.getElementById("start").innerHTML = "Alusta";
-    } else if (lang === 1) {
-        document.getElementById("start").innerHTML = "Start";
-    } else {
-        document.getElementById("start").innerHTML = "Начинай";
-    }
+
+
 
     if (lang === 0) {
         game_text.innerHTML = "</p>Sääsel on keharakkudes kuus kromosoomi.</p>Paiguta sääse meioosi etappide pildid õigesse järjestusse.</p>Iga faasi paigutamiseks on sul aega " + timerDuration + " sekundit ja võimalik saada vihjeid. Mida kiiremini vastad, seda rohkem punkte kogud.";
+        phase_animation.setAttribute("src", "assets/meioos_tutorial_est.mp4");
     } else if (lang === 1) {
         game_text.innerHTML = "Before meiosis begins, a body cell undergoes DNA replication, which results in each chromosome becoming double-chromatid and starting to resemble the letter X.";
+        phase_animation.setAttribute("src", "assets/meioos_tutorial_eng.mp4");
     } else {
         game_text.innerHTML = "До мейоза в клетке тела происходит удвоение ДНК, в результате чего хромосомы становятся двухроматидными и начинают напоминать букву Х.";
+        phase_animation.setAttribute("src", "assets/meioos_tutorial_rus.mp4");
     }
+
+    let arrow_down = document.getElementById("arrow_down");
+
+    arrow_down.src = "assets/noolalla.png";
+    arrow_down.style.width = "50px";
+    arrow_down.style.height = "50px";
 
     stage = 1;
     score = 0;
@@ -237,16 +244,17 @@ function startGame() {
 
     moveBlocker(1080); //moves blocker away
 
-    phase_animation = document.getElementById("phase_animation");
+    let game_animation = document.getElementById("game_animation");
+    let arrow_down = document.getElementById("arrow_down");
+
+    let phase_animation = document.getElementById("phase_animation");
     phase_animation.pause();
 
     playAudio = false;
 
-    game_animation = document.getElementById("game_animation");
-    arrow_down = document.getElementById("arrow_down");
+
     game_animation.style.WebkitAnimation = "moveOut 2s";
     game_animation.style.animationFillMode = "forwards";
-    document.getElementById("start").style.visibility = "hidden";
     arrow_down.src = "assets/noolalla.png";
     arrow_down.style.width = "50px";
     arrow_down.style.height = "50px";
@@ -363,9 +371,9 @@ async function rightAnswer(id) {
         } else if (lang === 1) {
             game_text.innerHTML="Chromosomes are packed into dense rods. Double-chromatid chromosomes pair up: each chromosome from the father pairs up with one from the mother.</p>Chromosomes cling together and exchange segments of equal length. This is where genetic material gets mixed up so that each resulting reproductive cell is genetically unique. Centrosomes, which will start pulling the chromosomes with their fibers, move to the opposite poles of the cell."
             phase_animation.muted = "true";
-            phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_1.mp4");
+            phase_animation.setAttribute("src", "assets/meioos_anim_game_ENG 1.mp4");
             await sleep(9200);
-            if (playAudio) {phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_2.mp4");}
+            if (playAudio) {phase_animation.setAttribute("src", "assets/meioos_anim_game_ENG 2.mp4");}
         } else {
             game_text.innerHTML="Хромосомы упакованы в плотные палочки. Двухроматидные хромосомы находят свои пары, одна из которых унаследована от отца, а другая от матери.</p>Хромосомы прилепляются одна к другой и обмениваются частями равной длины. Здесь перемешивается генетический материал, и поэтому каждая образующаяся половая клетка генетически уникальна. Центросомы, начинающие тянуть хромосомы своими нитями, движутся к противоположным концам клетки.";
             phase_animation.setAttribute("src", "assets/meioos_anim_game_RU 1.mp4");
@@ -379,7 +387,7 @@ async function rightAnswer(id) {
             phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_3.mp4");
         } else if (lang === 1) {
             game_text.innerHTML="</p>All chromosomes move in pairs to the same plane. A mosquito has six of them.</p>Centrosomes have reached the poles of the cell. The fibers extending out from the centrosomes attach to the center of the chromosomes, where the chromatids are connected to each other.";
-            phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_3.mp4");
+            phase_animation.setAttribute("src", "assets/meioos_anim_game_ENG 3.mp4");
         } else {
             game_text.innerHTML="</p>Все хромосомы выстраиваются парами в одной плоскости. У комара хромосом шесть.</p>Центросомы достигли полюсов клетки. Нити, исходящие из центросом, прикрепляются к центральной части хромосом, где хроматиды соединены друг с другом.";
             phase_animation.setAttribute("src", "assets/meioos_anim_game_RU 3.mp4");
@@ -390,7 +398,7 @@ async function rightAnswer(id) {
             phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_4.mp4");
         } else if (lang === 1) {
             game_text.innerHTML="</p>As the fibers shorten, the chromosome pairs are pulled apart towards the centrosomes, to the poles of the cell.</p>The chromosomes are still double-chromatid.";
-            phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_4.mp4");
+            phase_animation.setAttribute("src", "assets/meioos_anim_game_ENG 4.mp4");
         } else {
             game_text.innerHTML="</p>Так как нити укорачиаются, то парные хромосомы отделяются друг от друга и растаскиваются в сторону центросом, к полюсам клетки.</p>Хромосомы по-прежнему двухроматидные.";
             phase_animation.setAttribute("src", "assets/meioos_anim_game_RU 4.mp4");
@@ -401,20 +409,20 @@ async function rightAnswer(id) {
             phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_5.mp4");
         } else if (lang === 1) {
             game_text.innerHTML = "</p>As the chromosome pairs have been pulled apart, both of the forming cells have half the number of chromosomes.</p>Cell membranes form but the cells immediately start to divide again.";
-            phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_5.mp4");
+            phase_animation.setAttribute("src", "assets/meioos_anim_game_ENG 5.mp4");
         } else {
             game_text.innerHTML = "</p>Так как парные хромосомы отделены друг от друга, то в каждой образующейся клетке хромосом вдвое меньше.</p>Образуются клеточные мембраны, однако клетки сразу начинают делиться снова.";
             phase_animation.setAttribute("src", "assets/meioos_anim_game_RU 5.mp4");
         }
     } else if (id === "d5") {
         if (lang === 0) {
-            game_text.innerHTML="</p>Enne teist jagunemist ei toimu DNA kahekordistumist.</p>Sääse puhul on rakus kolm kromosoomi. Kromosoomid on endiselt kahekromatiidilised.</p>Tuumamembraan laguneb.</p>Tsentrosoomid liiguvad raku poolustele.";
+            game_text.innerHTML="</p>Enne teist jagunemist ei toimu DNA kahekordistumist.</p>Sääse puhul on rakus kolm kromosoomi. Kromosoomid on endiselt kahekromatiidilised.</p>Tsentrosoomid liiguvad raku poolustele.";
             phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_6.mp4");
         } else if (lang === 1) {
-            game_text.innerHTML="</p>The second division is not preceded by DNA replication. In a mosquito, the cell contains three chromosomes. The chromosomes remain double-chromatid.</p>The nuclear membrane breaks up.</p>The centrosomes move to the poles of the cell.";
-            phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_6.mp4");
+            game_text.innerHTML="</p>The second division is not preceded by DNA replication. In a mosquito, the cell contains three chromosomes. The chromosomes remain double-chromatid.</p>The centrosomes move to the poles of the cell.";
+            phase_animation.setAttribute("src", "assets/meioos_anim_game_ENG 6.mp4");
         } else {
-            game_text.innerHTML="</p>До второго деления удвоения ДНК не происходит. У комара в клетке три хромосомы. Хромосомы по-прежнему двухроматидные.</p>Ядерная мембрана распадается.</p>Центросомы движутся к полюсам клетки.";
+            game_text.innerHTML="</p>До второго деления удвоения ДНК не происходит. У комара в клетке три хромосомы. Хромосомы по-прежнему двухроматидные.</p>Центросомы движутся к полюсам клетки.";
             phase_animation.setAttribute("src", "assets/meioos_anim_game_RU 6.mp4");
         }
         document.getElementById("n1").style.visibility = "visible";
@@ -425,7 +433,7 @@ async function rightAnswer(id) {
             phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_7.mp4");
         } else if (lang === 1) {
             game_text.innerHTML="</p>All double-chromatid chromosomes move to the same plane and the centrosomes have reached the poles of the cell.</p>The fibers extending from the centrosomes attach to the center of the chromosomes, where the chromatids are connected to each other.";
-            phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_7.mp4");
+            phase_animation.setAttribute("src", "assets/meioos_anim_game_ENG 7.mp4");
         } else {
             game_text.innerHTML="</p>Все двухроматидные хромосомы движутся в одну плоскость, а центросомы достигли полюсов клетки.</p>Нити, исходящие из центросом, прикрепляются к центральной части хромосом, где хроматиды соединены друг с другом.";
             phase_animation.setAttribute("src", "assets/meioos_anim_game_RU 7.mp4");
@@ -438,7 +446,7 @@ async function rightAnswer(id) {
             phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_8.mp4");
         } else if (lang === 1) {
             game_text.innerHTML="</p>As the fibers shorten, the sister chromatids of the chromosomes are pulled apart towards the centrosomes, to the poles of the cell.</p>Now the chromosomes become single-chromatid again.";
-            phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_8.mp4");
+            phase_animation.setAttribute("src", "assets/meioos_anim_game_ENG 8.mp4");
         } else {
             game_text.innerHTML="</p>Так как нити укорачиваются, то хроматиды хромосом отделяются друг от друга и растаскиваются в сторону центросом, к полюсам клетки.</p>Теперь хромосомы снова становятся однохроматидными.";
             phase_animation.setAttribute("src", "assets/meioos_anim_game_RU 8.mp4");
@@ -453,9 +461,9 @@ async function rightAnswer(id) {
             if (playAudio) phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_10.mp4");
         } else if (lang === 1) {
             game_text.innerHTML="The chromosomes are now single-chromatid and start to separate. Cell membranes form.</p>In the resulting reproductive cells, the number of chromosomes has been reduced by half. In mosquitoes, each cell now has three chromosomes, each composed of a single chromatid.</p>All four reproductive cells are genetically unique because the paired chromosomes have exchanged segments.";
-            phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_9.mp4");
+            phase_animation.setAttribute("src", "assets/meioos_anim_game_ENG 9.mp4");
             await sleep(16900);
-            if (playAudio) phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_10.mp4");
+            if (playAudio) phase_animation.setAttribute("src", "assets/meioos_anim_game_ENG 10.mp4");
         } else {
             game_text.innerHTML="Хромосомы, теперь однохроматидные, начинают расщепляться. Образуются клеточные мембраны.</p>В образовавшихся половых клетках число хромосом уменьшилось в два раза. У комара три хромосомы, и они однохроматидные.</p>Все четыре половые клетки генетически уникальны, так как между парными частями хромосом произошёл обмен.";
             phase_animation.setAttribute("src", "assets/meioos_anim_game_RU 9.mp4");

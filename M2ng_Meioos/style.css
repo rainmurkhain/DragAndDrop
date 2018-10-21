@@ -84,7 +84,7 @@ body {
     position: absolute;
     height: 35px;
     width: auto;
-    top: 450px;
+    top: 520px;
     left: 0;
 }
 
@@ -92,7 +92,7 @@ body {
     position: absolute;
     height: 35px;
     width: auto;
-    top: 450px;
+    top: 520px;
     left: 550px;
 }
 
@@ -356,6 +356,7 @@ Blocker
     top: 1080px;
     left: 0;
 }
+
 
 #circle {
     position: absolute;
