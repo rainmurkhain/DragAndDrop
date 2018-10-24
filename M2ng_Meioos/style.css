@@ -254,27 +254,27 @@ body {
 
 #a1 {
     position: absolute;
-    top: 195px;
-    left: 0;
+    top: 194px;
+    left: -2px;
 }
 
 #a2 {
     position: absolute;
-    top: 195px;
-    left: 187px;
+    top: 194px;
+    left: 185px;
 }
 
 
 #a3 {
     position: absolute;
-    top: 195px;
-    left: 375px
+    top: 194px;
+    left: 374px
 }
 
 #a4 {
     position: absolute;
-    top: 195px;
-    left: 560px;
+    top: 194px;
+    left: 561px;
 }
 
 
@@ -301,7 +301,7 @@ body {
 #a8 {
     position: absolute;
     top: 288px;
-    left: 1350px;
+    left: 1351px;
 }
 
 
@@ -439,56 +439,56 @@ Blocker
 #hi1 {
     position: absolute;
     color: chartreuse;
-    left: 58px;
+    left: 40px;
     top: 350px;
 }
 
 #hi2 {
     position: absolute;
     color: chartreuse;
-    left: 245px;
+    left: 231px;
     top: 350px;
 }
 
 #hi3 {
     position: absolute;
     color: chartreuse;
-    left: 432px;
+    left: 418px;
     top: 350px;
 }
 
 #hi4 {
     position: absolute;
     color: chartreuse;
-    left: 619px;
+    left: 605px;
     top: 350px;
 }
 
 #hi5 {
     position: absolute;
     color: chartreuse;
-    left: 843px;
+    left: 832px;
     top: 440px;
 }
 
 #hi6 {
     position: absolute;
     color: chartreuse;
-    left: 1035px;
+    left: 1023px;
     top: 440px;
 }
 
 #hi7 {
     position: absolute;
     color: chartreuse;
-    left: 1227px;
+    left: 1213px;
     top: 440px;
 }
 
 #hi8 {
     position: absolute;
     color: chartreuse;
-    left: 1419px;
+    left: 1400px;
     top: 440px;
 }
 

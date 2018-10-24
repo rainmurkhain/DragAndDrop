@@ -170,12 +170,12 @@ body {
 }
 
 #tase_tekst {
-    top: 0;
+    top: 40px;
     font-size: 40px;
 }
 
 #nimi_tekst {
-    top: 80px;
+    top: 100px;
     font-size: 40px;
     color: aqua;
 }
@@ -508,6 +508,28 @@ DRUPZONE RELATED STUFF
 .invis {
     visibility: hidden;
     opacity: 0;
+}
+
+
+/*
+PHASE 5
+ */
+
+.phase5vastus {
+    visibility: hidden;
+    color: white;
+    font-size: 30px;
+    position: absolute;
+    top: 150px;
+    left: 80px;
+}
+
+#vastus1 {
+
+}
+
+.vaike_tuvi_kast .sugu1 {
+
 }
 
 @-webkit-keyframes kromDropped {

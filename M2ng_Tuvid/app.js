@@ -682,9 +682,19 @@ function phase5MoveThings(index) {
 
 async function phase5Clicked(index, place) {
     if (index === 1) {
+        let vastus = document.getElementById("vastus1");
+        vastus.style.visibility = "visible";
         if (place === 1) {
             needToAddTime = true;
             document.getElementById("phase5_sugu11").style.webkitAnimation = "toInvisible 1s forwards";
+            if (lang === 0) {
+                vastus.innerHTML = "Vale!";
+            } else if (lang === 1) {
+                vastus.innerHTML = "Wrong!";
+            } else {
+                vastus.innerHTML = "Неправильно";
+            }
+
         } else if (place === 2) {
 
             phase5Answers += 1;
@@ -692,39 +702,99 @@ async function phase5Clicked(index, place) {
             console.log("phase5_krom" + index.toString() + "1");
 
             document.getElementById("phase5_sugu11").style.webkitAnimation = "toInvisible 1s forwards";
+            document.getElementById("phase5_sugu11").onclick = "";
+
+            if (lang === 0) {
+                vastus.innerHTML = "Isane";
+            } else if (lang === 1) {
+                vastus.innerHTML = "Male";
+            } else {
+                vastus.innerHTML = "Самец";
+            }
 
             phase5MoveThings(index);
         }
     } else if (index === 2) {
+        let vastus = document.getElementById("vastus2");
+        vastus.style.visibility = "visible";
         if (place === 1) {
 
             phase5Answers += 1;
 
             document.getElementById("phase5_sugu22").style.webkitAnimation = "toInvisible 1s forwards";
+            document.getElementById("phase5_sugu22").onclick = "";
+
+            if (lang === 0) {
+                vastus.innerHTML = "Emane";
+            } else if (lang === 1) {
+                vastus.innerHTML = "Female";
+            } else {
+                vastus.innerHTML = "Самка";
+            }
+
 
             phase5MoveThings(index);
 
         } else if (place === 2) {
             needToAddTime = true;
             document.getElementById("phase5_sugu22").style.webkitAnimation = "toInvisible 1s forwards";
+            if (lang === 0) {
+                vastus.innerHTML = "Vale!";
+            } else if (lang === 1) {
+                vastus.innerHTML = "Wrong!";
+            } else {
+                vastus.innerHTML = "Неправильно";
+            }
+
         }
     } else if (index === 3) {
+
+        let vastus = document.getElementById("vastus3");
+        vastus.style.visibility = "visible";
+
         if (place === 1) {
 
             phase5Answers += 1;
 
             document.getElementById("phase5_sugu32").style.webkitAnimation = "toInvisible 1s forwards";
+            document.getElementById("phase5_sugu32").onclick = "";
+
+            if (lang === 0) {
+                vastus.innerHTML = "Emane";
+            } else if (lang === 1) {
+                vastus.innerHTML = "Female";
+            } else {
+                vastus.innerHTML = "Самка";
+            }
 
             phase5MoveThings(index);
 
         } else if (place === 2) {
             needToAddTime = true;
             document.getElementById("phase5_sugu32").style.webkitAnimation = "toInvisible 1s forwards";
+            if (lang === 0) {
+                vastus.innerHTML = "Vale!";
+            } else if (lang === 1) {
+                vastus.innerHTML = "Wrong!";
+            } else {
+                vastus.innerHTML = "Неправильно";
+            }
         }
     } else {
+
+        let vastus = document.getElementById("vastus4");
+        vastus.style.visibility = "visible";
+
         if (place === 1) {
             needToAddTime = true;
             document.getElementById("phase5_sugu41").style.webkitAnimation = "toInvisible 1s forwards";
+            if (lang === 0) {
+                vastus.innerHTML = "Vale!";
+            } else if (lang === 1) {
+                vastus.innerHTML = "Wrong!";
+            } else {
+                vastus.innerHTML = "Неправильно";
+            }
         } else if (place === 2) {
 
             phase5Answers += 1;
@@ -732,6 +802,15 @@ async function phase5Clicked(index, place) {
             console.log("phase5_krom" + index.toString() + "1");
 
             document.getElementById("phase5_sugu41").style.webkitAnimation = "toInvisible 1s forwards";
+            document.getElementById("phase5_sugu41").onclick = "";
+
+            if (lang === 0) {
+                vastus.innerHTML = "Isane";
+            } else if (lang === 1) {
+                vastus.innerHTML = "Male";
+            } else {
+                vastus.innerHTML = "Самец";
+            }
 
             phase5MoveThings(index);
         }
