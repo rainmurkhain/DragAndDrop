@@ -238,7 +238,7 @@ function beginGame() {
     score = 0;
 }
 
-function startGame() {
+async function startGame() {
 
     console.log("start game");
 
@@ -260,6 +260,10 @@ function startGame() {
     arrow_down.style.height = "50px";
 
     if (stage === 9) {
+
+        document.getElementById("final_animation").setAttribute("src", "assets/final_animation.mp4");
+        await sleep(5000);
+        document.getElementById("final_animation").src.visibility="hidden";
         document.getElementById("endScreen").style.visibility = "visible";
         if (lang === 0) {
             document.getElementById("endScreenCongratz").innerText = "Mäng läbi!";
@@ -454,6 +458,8 @@ async function rightAnswer(id) {
         document.getElementById("n3").style.visibility = "visible";
         document.getElementById("n3").style.WebkitAnimation = "nAnswerDropped 2s";
     } else if (id === "d8") {
+        document.getElementById("n4").style.visibility = "visible";
+        document.getElementById("n4").style.WebkitAnimation = "nAnswerDropped 2s";
         if (lang === 0) {
             game_text.innerHTML="Kromosoomid, mis on nüüd ühekromatiidilised, hakkavad lahti hargnema. Moodustuvad rakumembraanid.</p>Tekkinud sugurakkudes on kromosoomide arv vähenenud kaks korda. Sääse puhul on kromosoome kolm ja nad on ühekromatiidilised.</p>Kõik neli sugurakku on geneetiliselt ainulaadsed, sest paariliste kromosoomide osade vahel toimus vahetus.";
             phase_animation.setAttribute("src", "assets/MeioosAnim_inGame_est_9.mp4");
@@ -470,8 +476,7 @@ async function rightAnswer(id) {
             await sleep(17500);
             if (playAudio) phase_animation.setAttribute("src", "assets/meioos_anim_game_RU 10.mp4");
         }
-        document.getElementById("n4").style.visibility = "visible";
-        document.getElementById("n4").style.WebkitAnimation = "nAnswerDropped 2s";
+
     }
 
 
@@ -484,9 +489,9 @@ function Init() {
 
     for (let i = 0; i < pictureId.length; i++) {
         document.getElementById(pictureId[i]).style.position="fixed";
-        document.getElementById(pictureId[i]).style.top = "600px";
+        document.getElementById(pictureId[i]).style.top = "650px";
         const number = Math.floor(Math.random()*numbers.length);
-        document.getElementById(pictureId[i]).style.left = numbers[number] * 200 + "px";
+        document.getElementById(pictureId[i]).style.left = numbers[number] * 180 + "px";
         numbers = numbers.filter(item => item !== numbers[number]);
 
     }
@@ -632,14 +637,14 @@ interact('.draggable')
         },
         snap: {
             targets: [
-                {x: 274, y:368, range: 100},
-                {x: 458, y:368, range: 100},
-                {x: 647, y:368, range: 100},
-                {x: 835, y:368, range: 100},
-                {x: 1060, y:465, range: 100},
-                {x: 1250, y:465, range: 100},
-                {x: 1439, y:465, range: 100},
-                {x: 1625, y:465, range: 100},
+                {x: 174, y:368, range: 100},
+                {x: 358, y:368, range: 100},
+                {x: 547, y:368, range: 100},
+                {x: 735, y:368, range: 100},
+                {x: 960, y:465, range: 100},
+                {x: 1150, y:465, range: 100},
+                {x: 1339, y:465, range: 100},
+                {x: 1525, y:465, range: 100},
                 ],
             relativePoints: [
                    // snap relative to the element's top-left,

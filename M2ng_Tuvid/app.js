@@ -877,6 +877,8 @@ interact('.dropzone').dropzone({
                 await sleep(1000);
                 event.target.style.animation = "dragHereWrong 2s";
                 console.log(event.target.style.Animation);
+                event.relatedTarget.style.animation="wrongAnswerDropped 2s forwards";
+                await sleep(1000);
                 event.relatedTarget.style.webkitAnimation = "disElement 1s forwards";
             }
 

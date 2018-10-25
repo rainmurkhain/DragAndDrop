@@ -17,7 +17,8 @@ html, body {
 body {
     overflow: hidden;
     position: absolute;
-    left: 200px;
+    left: 100px;
+    left: 100px;
     top: 100px;
 }
 
@@ -212,6 +213,12 @@ body {
     left: 0;
     width: 1500px;
     height: auto;
+}
+
+#final_animation {
+    position: fixed;
+    left: 1620px;
+    top: 150px;
 }
 
 .draggable {
