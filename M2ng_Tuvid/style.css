@@ -10,9 +10,16 @@
 
 @-webkit-keyframes moveMe {
     0%   {filter: drop-shadow(0 0 0px white);}
-    50%  {filter: drop-shadow(0 0 3px white);}
+    50%  {filter: drop-shadow(0 0 12px white);}
     100% {filter: drop-shadow(0 0 0px white);}
 }
+
+@-webkit-keyframes moveHere {
+    0%   {filter: invert(0);}
+    50%  {filter: invert(1);}
+    100% {filter: invert(0);}
+}
+
 
 
 .dragBig {
@@ -150,12 +157,31 @@ body {
     left: 730px;
 }
 
+
+
+#hint_lahter {
+    position: fixed;
+    width: 1652px;
+    height: 300px;
+    top: 1100px;
+    left: 134px;
+    background-image: url("assets/seletus lahter.png");
+    z-index: 1;
+}
+
+#hint {
+    color: white;
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    font-size: 30px;
+}
+
+
+
 #seletus_lahter {
     position: fixed;
     width: 1652px;
-    /*
-    top: 506 et oleks nähtav
-     */
     height: 574px;
     top: 1100px;
     left: 134px;
@@ -221,6 +247,14 @@ body {
     100% {top: 1100px}
 }
 
+@keyframes moveInHint {
+    100% {top: 800px}
+}
+
+@keyframes moveOutHint {
+    100% {top: 1000px}
+}
+
 
 #clickable_screen {
     position: fixed;
@@ -253,11 +287,6 @@ body {
     top: 330px;
 }
 
-#phase2 {
-    visibility: visible;
-}
-
-
 
 
 .suur_tuvi_kast {
@@ -278,7 +307,7 @@ body {
 
 .suur_tuvi_kast .kromosoom {
     height: 300px;
-    z-index: 1;
+    z-index: 4;
 }
 
 .suur_tuvi_kast .kromosoom_vasak {
@@ -342,6 +371,7 @@ body {
 
 .vaike_tuvi_kast .kromosoom {
     height: 150px;
+    z-index: 4;
 }
 
 .vaike_tuvi_kast .kromosoom_vasak {

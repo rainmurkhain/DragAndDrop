@@ -7,11 +7,12 @@ let stopperTime = 0;
 let timer;
 let phase1Answers = 0;
 let phase2AnswersCount = 0;
-let phase2Answers = "";
-let phase3NotAnswered = [["m1", "f1"], ["m1", "f2"], ["m2", "f1"], ["m2", "f2"], ["f1", "m1"], ["f1", "m2"], ["f2", "m1"], ["f2", "m2"]];
-let phase3Answers = [{left: "", right: ""}, {left: "", right: ""}, {left: "", right: ""}, {left: "", right: ""}];
-let phase3WrongAnswers = 0;
+let phase2Answer = 0;
+let phase3NotAnswered = [[1, 3], [1, 4], [2, 3], [2, 4], [3, 1], [3, 2], [4, 1], [4, 2]];
+let phase3Answers = [{left: 0, right: 0}, {left: 0, right: 0}, {left: 0, right: 0}, {left: 0, right: 0}];
 let phase5Answers = 0;
+
+let chosenChrom = 0;
 
 let lang = -1; //0 is Estonian, 1 is English
 let welcomeScreenTextNr = 0;
@@ -217,6 +218,189 @@ async function startPhase1(){
 
 }
 
+function chromosomeClicked(num) {
+
+    //document.getElementById("hint_lahter").style.animation = "moveOut 1s forwards";
+
+    if (phase === 2) {
+
+        chosenChrom = num;
+
+        //remove blinking already present
+        for (let i = 1; i < 5; i++) {
+            document.getElementById("phase2_" + i).style.animation = "";
+        }
+
+        if (num > 0) {
+            //put chrom clicked blinking
+            let chrom = document.getElementById("phase2_" + num);
+            chrom.style.animation = "moveMe 2s infinite";
+
+
+            for (let i = 1; i < 3; i++) {
+                //make chromosomes that are not yet gotten the right answer, blink
+                if (document.getElementById("phase2_krom4" + i).classList.contains("blinking")) {document.getElementById("phase2_krom4" + i).style.animation = "moveHere 2s infinite";}
+                console.log(document.getElementById("phase2_krom4" + i).classList[2])
+            }
+        }
+
+
+
+    }
+
+    if (phase === 3 || phase === 4) {
+
+        chosenChrom = num;
+
+        //remove blinking already present
+        for (let i = 1; i < 5; i++) { document.getElementById("phase" + phase + "_" + i).style.animation = ""; }
+
+        if (num > 0) {
+            //put chrom clicked blinking
+            let chrom = document.getElementById("phase" + phase + "_" + num);
+            chrom.style.animation = "moveMe 2s infinite";
+
+
+            for (let i = 1; i < 5; i++) {
+                //make chromosomes that are not yet gotten the right answer, blink
+                for (let j = 1; j < 3; j++) {
+                    let chromosome = document.getElementById("phase" + phase + "_krom" + i + j);
+                    if (chromosome.classList.contains("blinking")) {chromosome.style.animation = "moveHere 2s infinite";}
+                    console.log(chromosome.toString());
+                }
+            }
+        }
+    }
+}
+
+function chromosomePlaced(num1, num2) {
+    //num1 is pidgeon number counting from left
+    //num2 = 1 is left chromosome =2 is right chromosome
+
+    if (chosenChrom !== 0) {
+
+
+        //chromosome is selected beforehand
+        if (phase === 2) {
+            if (chosenChrom === 2 && phase2Answer !== 2) {
+                phase2Answer = 2;
+                phase2AnswersCount += 1;
+                let chromosome = document.getElementById("phase2_krom4" + num2);
+                chromosome.src = "assets/kromosoom%20sinine_2.png";
+                chromosome.style.animation = "";
+                chromosome.classList.remove("blinking");
+            } else if (chosenChrom === 3 && phase2Answer !== 3) {
+                phase2Answer = 3;
+                phase2AnswersCount += 1;
+                let chromosome = document.getElementById("phase2_krom4" + num2);
+                chromosome.src = "assets/kromosoom%20punane_2.png";
+                chromosome.style.animation = "";
+                chromosome.classList.remove("blinking");
+            }
+
+            if (phase2AnswersCount >= 2) startPhase3();
+
+
+
+        } else {
+
+            //PHASE 3 AND 4 HERE
+
+            const index = num1 - 1;
+            let pair = phase3Answers[index];
+
+            if (num2 === 1) {
+                //left pidgeon
+                if (phase3Answers[index].left === 0) {
+                    phase3Answers[index].left = chosenChrom;
+                    let chromosome = document.getElementById("phase"+ phase + "_krom"+ num1 + num2);
+                    chromosome.src = document.getElementById("phase" + phase + "_" + chosenChrom).src;
+                    chromosome.style.animation = "";
+                    chromosome.classList.remove("blinking")
+                }
+            } else {
+                //right pidgeon
+                if (phase3Answers[index].right === 0) {
+                    phase3Answers[index].right = chosenChrom;
+                    let chromosome = document.getElementById("phase"+ phase + "_krom" + num1 + num2);
+                    chromosome.src = document.getElementById("phase" + phase + "_" + chosenChrom).src;
+                    chromosome.style.animation = "";
+                    chromosome.classList.remove("blinking")
+                }
+            }
+
+
+
+
+
+            if (answerIsNotAnswered(index)) {
+
+                if (pair.left !== 0 && pair.right !== 0) {
+
+                    let pair1Remove = [];
+                    let pair2Remove = [];
+                    pair1Remove.push(pair.left);
+                    pair2Remove.push(pair.right);
+                    pair1Remove.push(pair.right);
+                    pair2Remove.push(pair.left);
+                    phase3NotAnswered = phase3NotAnswered.filter(function(item) {
+                        return !compareArrays(item, pair1Remove)
+                    });
+                    phase3NotAnswered = phase3NotAnswered.filter(function(item) {
+                        return !compareArrays(item, pair2Remove)
+                    });
+
+                    let arr = [];
+                    arr.push(phase3Answers[index].left);
+                    arr.push(phase3Answers[index].right);
+
+
+                    if (compareArrays(arr, [1, 3]) || compareArrays(arr, [1, 4]) || compareArrays(arr, [3, 1]) || compareArrays(arr, [4, 1])) {
+                        document.getElementById("phase" + phase + "_new" + (index + 1)).src = "assets/tuvi%20pruun.png";
+                        document.getElementById("phase"+ phase + "_new" + (index + 1)).style.webkitAnimation = "toVisible 1s forwards";
+                    } else {
+                        document.getElementById("phase"+ phase + "_new" + (index + 1)).src = "assets/tuvi%20sinine.png";
+                        document.getElementById("phase"+ phase + "_new" + (index + 1)).style.webkitAnimation = "toVisible 1s forwards";
+                    }
+
+                    if (phase3NotAnswered.length === 0) {
+                        stopTimer();
+                        //await sleep(1500);
+                        if (phase === 3) document.getElementById("phase3_edasi_nupp").style.visibility = "visible";
+                        else if (phase === 4) document.getElementById("phase4_edasi_nupp").style.visibility = "visible";
+                    }
+                }
+
+            } else {
+                //await sleep(1000);
+
+                //do something, if the chromosome did not fit!
+                let chromosome = document.getElementById("phase" + phase + "_krom" + num1 + num2);
+                chromosome.src = "assets/kromosoom%20dashed.png";
+                chromosome.style.animation = "moveHere 2s infinite";
+                chromosome.classList.add("blinking");
+
+                console.log("this is crap");
+
+                //document.getElementById("hint_lahter").style.animation = "moveIn 1s forwards";
+
+                document.getElementById("hint").innerHTML = "See kromosoom ei sobi sinna!";
+
+
+                if (num2 === 1) {
+                    //left pidgeon
+                    phase3Answers[num1 - 1].left = 0;
+                } else {
+                    //right pidgeon
+                    phase3Answers[num1 - 1].right = 0;
+                }
+
+            }
+        }
+    }
+    chromosomeClicked(0);
+}
+
 function startPhase2(){
 
     phase = 2;
@@ -252,9 +436,11 @@ function continuePhase2() {
     document.getElementById("clickable_screen").style.visibility = "hidden";
 }
 
-function startPhase3() {
+async function startPhase3() {
 
     console.log("Phase 3 started!");
+
+    await sleep(1000);
 
     document.getElementById("phase2").style.visibility = "hidden";
     phase = 3;
@@ -308,9 +494,8 @@ function startPhase4() {
 
     document.getElementById("timer").style.visibility = "visible";
 
-    phase3NotAnswered = [["m1", "f1"], ["m1", "f2"], ["m2", "f1"], ["m2", "f2"], ["f1", "m1"], ["f1", "m2"], ["f2", "m1"], ["f2", "m2"]];
-    phase3Answers = [{left: "", right: ""}, {left: "", right: ""}, {left: "", right: ""}, {left: "", right: ""}];
-    phase3WrongAnswers = 0;
+    phase3NotAnswered = [[1, 3], [1, 4], [2, 3], [2, 4], [3, 1], [3, 2], [4, 1], [4, 2]];
+    phase3Answers = [{left: 0, right: 0}, {left: 0, right: 0}, {left: 0, right: 0}, {left: 0, right: 0}];
 
 }
 
@@ -525,18 +710,18 @@ function compareArrays(array1, array2) {
 
 function answerIsNotAnswered(index) {
 
-    if (phase3Answers[index].left === "") {
+    if (phase3Answers[index].left === 0) {
         for (let i = 0; i < phase3NotAnswered.length; i++) {
             if (phase3NotAnswered[i][1] === phase3Answers[index].right) return true;
         }
 
-    } else if (phase3Answers[index].right === "") {
+    } else if (phase3Answers[index].right === 0) {
         for (let i = 0; i < phase3NotAnswered.length; i++) {
             if (phase3NotAnswered[i][0] === phase3Answers[index].left) return true;
         }
     } else {
         for (let i = 0; i < phase3NotAnswered.length; i++) {
-            let arr = [phase3Answers[index].left.toString(), phase3Answers[index].right.toString()];
+            let arr = [phase3Answers[index].left, phase3Answers[index].right];
             if (compareArrays(arr, phase3NotAnswered[i])) return true;
         }
     }
