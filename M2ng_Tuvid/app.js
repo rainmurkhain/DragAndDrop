@@ -220,7 +220,6 @@ async function startPhase1(){
 
 function chromosomeClicked(num) {
 
-    //document.getElementById("hint_lahter").style.animation = "moveOut 1s forwards";
 
     if (phase === 2) {
 
@@ -240,7 +239,6 @@ function chromosomeClicked(num) {
             for (let i = 1; i < 3; i++) {
                 //make chromosomes that are not yet gotten the right answer, blink
                 if (document.getElementById("phase2_krom4" + i).classList.contains("blinking")) {document.getElementById("phase2_krom4" + i).style.animation = "moveHere 2s infinite";}
-                console.log(document.getElementById("phase2_krom4" + i).classList[2])
             }
         }
 
@@ -256,6 +254,9 @@ function chromosomeClicked(num) {
         for (let i = 1; i < 5; i++) { document.getElementById("phase" + phase + "_" + i).style.animation = ""; }
 
         if (num > 0) {
+
+            document.getElementById("hint_lahter").style.webkitAnimation = "hintOut 1s forwards";
+
             //put chrom clicked blinking
             let chrom = document.getElementById("phase" + phase + "_" + num);
             chrom.style.animation = "moveMe 2s infinite";
@@ -378,13 +379,13 @@ function chromosomePlaced(num1, num2) {
                 let chromosome = document.getElementById("phase" + phase + "_krom" + num1 + num2);
                 chromosome.src = "assets/kromosoom%20dashed.png";
                 chromosome.style.animation = "moveHere 2s infinite";
+
                 chromosome.classList.add("blinking");
 
                 console.log("this is crap");
 
-                //document.getElementById("hint_lahter").style.animation = "moveIn 1s forwards";
-
-                document.getElementById("hint").innerHTML = "See kromosoom ei sobi sinna!";
+                document.getElementById("hint_lahter").style.webkitAnimation = "hintIn 1s forwards";
+                document.getElementById("hint").innerHTML = "See kromosoom ei sobi sinna!</p>Meeldetuletus: tuvitibu saab ühe kromosoomi emalt ja ühe isalt!";
 
 
                 if (num2 === 1) {

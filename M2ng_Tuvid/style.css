@@ -158,6 +158,14 @@ body {
 }
 
 
+@-webkit-keyframes hintIn {
+    100% {top: 800px}
+}
+
+@-webkit-keyframes hintOut {
+    100% {top: 1100px}
+}
+
 
 #hint_lahter {
     position: fixed;
@@ -247,13 +255,6 @@ body {
     100% {top: 1100px}
 }
 
-@keyframes moveInHint {
-    100% {top: 800px}
-}
-
-@keyframes moveOutHint {
-    100% {top: 1000px}
-}
 
 
 #clickable_screen {
