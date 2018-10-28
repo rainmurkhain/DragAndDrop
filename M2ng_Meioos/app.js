@@ -238,6 +238,26 @@ function beginGame() {
     score = 0;
 }
 
+function showScore() {
+    document.getElementById("goToScore").style.visibility = "hidden";
+    document.getElementById("final_animation").style.visibility="hidden";
+    document.getElementById("endScreen").style.visibility = "visible";
+    if (lang === 0) {
+        document.getElementById("endScreenCongratz").innerText = "Mäng läbi!";
+        document.getElementById("endScreenScore").innerHTML = "Sinu skoor oli " + score + " punkti!";
+        document.getElementById("restartGame").innerHTML = "Alusta uuesti!";
+
+    } else if (lang === 1) {
+        document.getElementById("endScreenCongratz").innerText = "Game Over!";
+        document.getElementById("restartGame").innerHTML = "Start again!";
+        document.getElementById("endScreenScore").innerHTML = "You scored " + score + " points!";
+    } else {
+        document.getElementById("endScreenCongratz").innerText = "Игра окончена!";
+        document.getElementById("restartGame").innerHTML = "Играть снова!";
+        document.getElementById("endScreenScore").innerHTML = "Вы набрали " + score + " очков!";
+    }
+}
+
 async function startGame() {
 
     console.log("start game");
@@ -261,24 +281,22 @@ async function startGame() {
 
     if (stage === 9) {
 
-        document.getElementById("final_animation").setAttribute("src", "assets/final_animation.mp4");
-        await sleep(5000);
-        document.getElementById("final_animation").src.visibility="hidden";
-        document.getElementById("endScreen").style.visibility = "visible";
-        if (lang === 0) {
-            document.getElementById("endScreenCongratz").innerText = "Mäng läbi!";
-            document.getElementById("endScreenScore").innerHTML = "Sinu skoor oli " + score + " punkti!";
-            document.getElementById("restartGame").innerHTML = "Alusta uuesti!";
+        /*
+        END GAME VICTORIOUSLY
+         */
 
+        document.getElementById("final_animation").setAttribute("src", "assets/final_animation.mp4");
+
+        if (lang === 0) {
+            document.getElementById("goToScore").src = "assets/score_button_EST.png";
         } else if (lang === 1) {
-            document.getElementById("endScreenCongratz").innerText = "Game Over!";
-            document.getElementById("restartGame").innerHTML = "Start again!";
-            document.getElementById("endScreenScore").innerHTML = "You scored " + score + " points!";
+            document.getElementById("goToScore").src = "assets/score_button_ENG.png";
         } else {
-            document.getElementById("endScreenCongratz").innerText = "Игра окончена!";
-            document.getElementById("restartGame").innerHTML = "Играть снова!";
-            document.getElementById("endScreenScore").innerHTML = "Вы набрали " + score + " очков!";
+            document.getElementById("goToScore").src = "assets/score_button_RUS.png";
         }
+
+        document.getElementById("goToScore").style.animation = "moveInGoToScore 1s forwards";
+
 
     } else {
         if (stage > 1) {
@@ -341,6 +359,10 @@ function timerFunction(){
             document.getElementById("endScreenCongratz").innerText = "Game Over!";
             document.getElementById("restartGame").innerHTML = "Start again!";
             document.getElementById("endScreenScore").innerHTML = "You scored " + score + " points!";
+        } else if (lang === 2) {
+            document.getElementById("endScreenCongratz").innerText = "Игра окончена!";
+            document.getElementById("restartGame").innerHTML = "Играть снова!";
+            document.getElementById("endScreenScore").innerHTML = "Вы набрали " + score + " очков!";
         }
 
     }

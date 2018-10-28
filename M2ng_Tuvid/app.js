@@ -274,7 +274,7 @@ function chromosomeClicked(num) {
     }
 }
 
-function chromosomePlaced(num1, num2) {
+async function chromosomePlaced(num1, num2) {
     //num1 is pidgeon number counting from left
     //num2 = 1 is left chromosome =2 is right chromosome
 
@@ -299,7 +299,14 @@ function chromosomePlaced(num1, num2) {
                 chromosome.classList.remove("blinking");
             }
 
-            if (phase2AnswersCount >= 2) startPhase3();
+            if (phase2AnswersCount >= 2) {
+
+                document.getElementById("phase2_new4").style.animation = "appElement 1s forwards";
+
+                await sleep(1000);
+
+                startPhase3();
+            }
 
 
 
@@ -440,8 +447,6 @@ function continuePhase2() {
 async function startPhase3() {
 
     console.log("Phase 3 started!");
-
-    await sleep(1000);
 
     document.getElementById("phase2").style.visibility = "hidden";
     phase = 3;

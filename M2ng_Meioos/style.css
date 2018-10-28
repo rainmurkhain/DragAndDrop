@@ -175,6 +175,22 @@ body {
     z-index: 1;
 }
 
+/*
+ENDGAME SCREEN BUTTON
+ */
+
+@keyframes moveInGoToScore {
+    100% {top: 880px;}
+}
+
+#goToScore {
+    position: fixed;
+    top: 1100px;
+    left: 1500px;
+    width: 400px;
+    height: 200px;
+}
+
 @keyframes moveIn {
     100% {left:0; top:500px;}
 }
@@ -225,6 +241,7 @@ body {
     position: absolute;
     height: 130px;
     width: 130px;
+    z-index: 1;
 
 }
 
@@ -427,6 +444,8 @@ Blocker
 @keyframes moveInHintBox {
     100% {top:800px;}
 }
+
+
 
 
 #hint1 {
