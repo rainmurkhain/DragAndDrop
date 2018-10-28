@@ -85,6 +85,11 @@ function sleep(ms) {
 }
 
 function chooseLang(langNr) {
+
+    //Play game chosen music
+    audio = new Audio("assets/game-start.mp3");
+    audio.play();
+
     lang = langNr;
     document.getElementById("chooseLang").style.visibility = "hidden";
 

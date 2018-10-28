@@ -15,8 +15,17 @@
 <div class="mang" id="mang3"><video src="ICON3.mp4" onclick="goToGame(3)" autoplay muted loop></video></div>
 
 <script>
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
-    function goToGame(index) {
+    async function goToGame(index) {
+
+        //Play game chosen music
+        audio = new Audio("game-start.mp3");
+        audio.play();
+
+        await sleep(1100);
 
         if (index === 1) document.location = "M2ng_Meioos/index.html";
         else if (index === 2) document.location = "M2ng_Tuvid/index.html";

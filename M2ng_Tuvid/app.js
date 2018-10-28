@@ -14,6 +14,12 @@ let phase5Answers = 0;
 
 let chosenChrom = 0;
 
+const correct_audio = new Audio("assets/correct.wav");
+const wrong_audio = new Audio("assets/wrong.wav");
+const selection_audio = new Audio("assets/selection.wav");
+const home_audio = new Audio("assets/home-sound.mp4");
+const start_audio = new Audio("assets/game-start.mp3");
+
 let lang = -1; //0 is Estonian, 1 is English
 let welcomeScreenTextNr = 0;
 
@@ -109,11 +115,20 @@ const welcomeScreenTextRus = [
 ];
 
 
-function back_to_menu() {
+async function back_to_menu() {
+
+    //Play game chosen music
+    home_audio.play();
+
+    await sleep(500);
+
     document.location = "../index.html"
 }
 
 function chooseLang(langNr) {
+
+    //Play game chosen music
+    start_audio.play();
 
     lang = langNr;
     document.getElementById("chooseLang").style.visibility = "hidden";
@@ -220,6 +235,7 @@ async function startPhase1(){
 
 function chromosomeClicked(num) {
 
+    selection_audio.play();
 
     if (phase === 2) {
 
@@ -284,19 +300,30 @@ async function chromosomePlaced(num1, num2) {
         //chromosome is selected beforehand
         if (phase === 2) {
             if (chosenChrom === 2 && phase2Answer !== 2) {
+                //CORRECT ANSWER
                 phase2Answer = 2;
                 phase2AnswersCount += 1;
                 let chromosome = document.getElementById("phase2_krom4" + num2);
                 chromosome.src = "assets/kromosoom%20sinine_2.png";
                 chromosome.style.animation = "";
                 chromosome.classList.remove("blinking");
+
+                //Play correct answer music
+                correct_audio.play();
             } else if (chosenChrom === 3 && phase2Answer !== 3) {
+                //CORRECT ANSWER
                 phase2Answer = 3;
                 phase2AnswersCount += 1;
                 let chromosome = document.getElementById("phase2_krom4" + num2);
                 chromosome.src = "assets/kromosoom%20punane_2.png";
                 chromosome.style.animation = "";
                 chromosome.classList.remove("blinking");
+
+                //Play correct answer music
+                correct_audio.play();
+            } else {
+                //Play wrong answer music
+                wrong_audio.play();
             }
 
             if (phase2AnswersCount >= 2) {
@@ -319,21 +346,44 @@ async function chromosomePlaced(num1, num2) {
 
             if (num2 === 1) {
                 //left pidgeon
-                if (phase3Answers[index].left === 0) {
+                if (phase3Answers[index].left === 0 && howManyAlreadyPlaced(chosenChrom) < 2) {
+                    //CORRECT ANSWER
                     phase3Answers[index].left = chosenChrom;
                     let chromosome = document.getElementById("phase"+ phase + "_krom"+ num1 + num2);
                     chromosome.src = document.getElementById("phase" + phase + "_" + chosenChrom).src;
                     chromosome.style.animation = "";
                     chromosome.classList.remove("blinking")
+
+                    //Play correct answer music
+                    correct_audio.play();
+
+                } else {
+                    //WRONG ANSWER
+                    document.getElementById("hint_lahter").style.webkitAnimation = "hintIn 1s forwards";
+                    document.getElementById("hint").innerHTML = "See kromosoom ei sobi sinna!";
+
+                    //Play wrong answer music
+                    wrong_audio.play();
                 }
             } else {
                 //right pidgeon
-                if (phase3Answers[index].right === 0) {
+                if (phase3Answers[index].right === 0 && howManyAlreadyPlaced(chosenChrom) < 2) {
+                    //CORRECT ANSWER
                     phase3Answers[index].right = chosenChrom;
                     let chromosome = document.getElementById("phase"+ phase + "_krom" + num1 + num2);
                     chromosome.src = document.getElementById("phase" + phase + "_" + chosenChrom).src;
                     chromosome.style.animation = "";
                     chromosome.classList.remove("blinking")
+
+                    //Play correct answer music
+                    correct_audio.play();
+                } else {
+                    //WRONG ANSWER!
+                    document.getElementById("hint_lahter").style.webkitAnimation = "hintIn 1s forwards";
+                    document.getElementById("hint").innerHTML = "See kromosoom ei sobi sinna!";
+
+                    //Play wrong answer music
+                    wrong_audio.play();
                 }
             }
 
@@ -342,6 +392,9 @@ async function chromosomePlaced(num1, num2) {
 
 
             if (answerIsNotAnswered(index)) {
+
+                //Play correct answer music
+                correct_audio.play();
 
                 if (pair.left !== 0 && pair.right !== 0) {
 
@@ -389,7 +442,8 @@ async function chromosomePlaced(num1, num2) {
 
                 chromosome.classList.add("blinking");
 
-                console.log("this is crap");
+                //Play wrong answer music
+                wrong_audio.play();
 
                 document.getElementById("hint_lahter").style.webkitAnimation = "hintIn 1s forwards";
                 document.getElementById("hint").innerHTML = "See kromosoom ei sobi sinna!</p>Meeldetuletus: tuvitibu saab ühe kromosoomi emalt ja ühe isalt!";
@@ -734,6 +788,16 @@ function answerIsNotAnswered(index) {
     return false;
 }
 
+function howManyAlreadyPlaced(chrom_num) {
+    let res = 0;
+    for (let i = 0; i < 4; i++) {
+        if (phase3Answers[i].left === chrom_num) res += 1;
+        if (phase3Answers[i].right === chrom_num) res += 1;
+    }
+    console.log("res is: " + res);
+    return res;
+}
+
 async function registerDrop3(event) {
 
     let targetId = "5";
@@ -747,7 +811,7 @@ async function registerDrop3(event) {
     }
 
     if (event.target.id.charAt(12) === "1") {
-        if (phase3Answers[Number(event.target.id.charAt(11)) - 1].left === "") {
+        if (phase3Answers[Number(event.target.id.charAt(11)) - 1].left === "" ) {
             phase3Answers[Number(event.target.id.charAt(11)) - 1].left = targetId;
         }
     } else {
@@ -876,6 +940,10 @@ async function phase5Clicked(index, place) {
         let vastus = document.getElementById("vastus1");
         vastus.style.visibility = "visible";
         if (place === 1) {
+
+            //Play wrong answer music
+            wrong_audio.play();
+
             needToAddTime = true;
             document.getElementById("phase5_sugu11").style.webkitAnimation = "toInvisible 1s forwards";
             if (lang === 0) {
@@ -887,6 +955,9 @@ async function phase5Clicked(index, place) {
             }
 
         } else if (place === 2) {
+
+            //Play correct answer music
+            correct_audio.play();
 
             phase5Answers += 1;
 
@@ -903,12 +974,17 @@ async function phase5Clicked(index, place) {
                 vastus.innerHTML = "Самец";
             }
 
+
+
             phase5MoveThings(index);
         }
     } else if (index === 2) {
         let vastus = document.getElementById("vastus2");
         vastus.style.visibility = "visible";
         if (place === 1) {
+
+            //Play correct answer music
+            correct_audio.play();
 
             phase5Answers += 1;
 
@@ -927,6 +1003,10 @@ async function phase5Clicked(index, place) {
             phase5MoveThings(index);
 
         } else if (place === 2) {
+
+            //Play wrong answer music
+            wrong_audio.play();
+
             needToAddTime = true;
             document.getElementById("phase5_sugu22").style.webkitAnimation = "toInvisible 1s forwards";
             if (lang === 0) {
@@ -945,6 +1025,9 @@ async function phase5Clicked(index, place) {
 
         if (place === 1) {
 
+            //Play correct answer music
+            correct_audio.play();
+
             phase5Answers += 1;
 
             document.getElementById("phase5_sugu32").style.webkitAnimation = "toInvisible 1s forwards";
@@ -961,6 +1044,10 @@ async function phase5Clicked(index, place) {
             phase5MoveThings(index);
 
         } else if (place === 2) {
+
+            //Play wrong answer music
+            wrong_audio.play();
+
             needToAddTime = true;
             document.getElementById("phase5_sugu32").style.webkitAnimation = "toInvisible 1s forwards";
             if (lang === 0) {
@@ -977,6 +1064,10 @@ async function phase5Clicked(index, place) {
         vastus.style.visibility = "visible";
 
         if (place === 1) {
+
+            //Play wrong answer music
+            wrong_audio.play();
+
             needToAddTime = true;
             document.getElementById("phase5_sugu41").style.webkitAnimation = "toInvisible 1s forwards";
             if (lang === 0) {
@@ -986,7 +1077,13 @@ async function phase5Clicked(index, place) {
             } else {
                 vastus.innerHTML = "Неправильно";
             }
+
+
+
         } else if (place === 2) {
+
+            //Play correct answer music
+            correct_audio.play();
 
             phase5Answers += 1;
 
