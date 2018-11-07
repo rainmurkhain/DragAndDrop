@@ -7,10 +7,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | kuusk</title>
 
-    <script src="Build/UnityLoader.js"></script>
+    <script src="BuildEST/UnityLoader.js"></script>
 
-    <script>
-    </script>
 
 </head>
 
@@ -61,11 +59,11 @@
 
         document.getElementById("chooseLang").style.visibility = "hidden";
         if (langNr === 0) {
-            let gameInstance = UnityLoader.instantiate("gameContainer", "Build/kuusem2ng_EST.json");
+            let gameInstance = UnityLoader.instantiate("gameContainer", "BuildEST/kuusem2ng_EST.json");
         } else if (langNr === 1) {
-            let gameInstance = UnityLoader.instantiate("gameContainer", "BuildEng/kuusem2ng_ENG.json");
+            let gameInstance = UnityLoader.instantiate("gameContainer", "BuildENG/kuusem2ng_ENG.json");
         } else {
-            let gameInstance = UnityLoader.instantiate("gameContainer", "BuildRus/kuusem2ng_RUS.json");
+            let gameInstance = UnityLoader.instantiate("gameContainer", "BuildRUS/kuusem2ng_RUS.json");
         }
     }
     window.oncontextmenu = function(event) {

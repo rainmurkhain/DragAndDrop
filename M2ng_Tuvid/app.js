@@ -226,7 +226,7 @@ async function startPhase1(){
     }
 
     document.getElementById("phase1_video").play();
-    await sleep(19500);
+    await sleep(1000);
     document.getElementById("clickable_screen").style.visibility = "visible";
 
     //document.getElementById("seletus_lahter").style.WebkitAnimation = "moveIn 1s forwards";
