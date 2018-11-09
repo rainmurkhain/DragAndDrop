@@ -203,6 +203,14 @@ body {
     left: 100px;
 }
 
+#seletus_lahtri_video {
+    position: absolute;
+    left: 1200px;
+    top: 50px;
+    width: 400px;
+    height: 400px;
+}
+
 #tase_tekst {
     top: 40px;
     font-size: 40px;
@@ -217,7 +225,7 @@ body {
 #seletus_lahtri_tekst {
     font-size: 30px;
     top: 225px;
-    max-width: 1400px;
+    max-width: 1000px;
 }
 
 

@@ -563,6 +563,7 @@ function startPhase5() {
 
     console.log("Phase 5 started!");
 
+    document.getElementById("seletus_lahtri_video").setAttribute("src", "");
     document.getElementById("phase4").style.visibility = "hidden";
     phase = 5;
     document.getElementById("phase5").style.webkitAnimation = "appElement 1s forwards";
@@ -591,7 +592,9 @@ async function screenClicked() {
     document.getElementById("seletus_lahter").style.WebkitAnimation = "moveOut 2s forwards";
     document.getElementById("clickable_screen").style.visibility = "hidden";
 
+
     if (phase === 1) {
+        document.getElementById("phase1_video").setAttribute("src", "");
         startPhase2();
     } else if (phase === 2) {
         continuePhase2();
