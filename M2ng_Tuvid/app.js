@@ -57,7 +57,7 @@ let inactivityTime = function () {
 
     function resetTimer() {
         clearTimeout(t);
-        t = setTimeout(restartGame, 1000 * 60 * 5) // 5minutes
+        t = setTimeout(restartGame, 1000 * 60 * 2) // 2minutes
     }
 };
 
