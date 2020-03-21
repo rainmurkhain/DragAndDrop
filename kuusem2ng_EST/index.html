@@ -14,7 +14,7 @@
 
 
 <body>
-<div id="gameContainer" style="position:fixed; top: 0; left: 0; width: 1920px; height: 1080px; margin: 0"></div>
+<div id="gameContainer" style="position:fixed; top: 0; left: 0; width: 100%; height: 100%; margin: 0"></div>
 
 <div id="chooseLang">
     <div class="mang" id="mang1"><img src="assets/eestiK_btn.svg" onclick="chooseLang(0)"><p>Eesti keel</p></div>
@@ -22,6 +22,35 @@
     <div class="mang" id="mang3"><img src="assets/veneK_btn.svg" onclick="chooseLang(2)"><p>Русский</p></div>
 </div>
 <style>
+  @media only screen and (max-width: 1680px) and (max-height: 1050px) {
+    #chooseLang {
+      zoom: 95%;
+    }
+  }
+
+  @media only screen and (max-width: 1601px) and (max-height: 1080px) {
+    #chooseLang {
+      zoom: 83%;
+    }
+  }
+
+  @media only screen and (max-width: 1600px) and (max-height: 900px) {
+    #chooseLang {
+      zoom: 77%;
+    }
+  }
+
+  @media only screen and (max-width: 1368px) and (max-height: 768px) {
+    #chooseLang {
+      zoom: 75%;
+    }
+  }
+
+  @media only screen and (max-width: 1280px) and (max-height: 800px) {
+    #chooseLang {
+      zoom: 80%;
+    }
+  }
     #chooseLang {
         position: fixed;
         top: 0;
