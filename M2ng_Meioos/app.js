@@ -14,7 +14,7 @@ const hints = ["hi1", "hi2", "hi3", "hi4", "hi5", "hi6", "hi7", "hi8"];
 /* ********************** */
 
 document.onload = function() {
-    inactivityTime();
+  inactivityTime();
 };
 document.onmousedown = function() {
     inactivityTime();
